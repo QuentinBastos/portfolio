@@ -46,6 +46,11 @@ ul {
     margin: 2rem 5rem 2rem 5rem;
 }
 
+.logoQb {
+    width: 4rem;
+    height: 4rem;
+}
+
 .rightMenu {
     display: flex;
     justify-content: flex-end;
