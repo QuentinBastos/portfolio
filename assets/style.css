@@ -33,7 +33,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 0;
     text-align: center;
     z-index: 1000;
 }
@@ -43,7 +42,7 @@ ul {
     list-style: none;
     justify-content: space-between;
     padding: 0;
-    margin: 2rem 5rem 2rem 5rem;
+    margin: 2rem 5rem 4rem 5rem;
 }
 
 .logoQb {
