@@ -1,8 +1,5 @@
 .wrapperProject {
-    margin: 0 10%;
-    width: 80%;
-    height: 60%;
-    overflow: auto;
+    margin: 50% 10%;
 }
 
 /* custom scrollbar */
@@ -33,6 +30,7 @@ main {
     display: flex;
     justify-content: center;
     margin-bottom: 4rem;
+    width: 100%;
 }
 
 .project > img {
@@ -55,6 +53,7 @@ main {
 
 .projectDescription {
     margin: 1rem 3rem;
+    width: 100%;
 }
 
 .technologyUse {
@@ -63,6 +62,7 @@ main {
     align-items: center;
     gap: 1rem;
 }
+
 .technology {
     height: 2rem;
     width: 2rem;
