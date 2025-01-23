@@ -1,3 +1,27 @@
+.smallBaseSize {
+    font-size: clamp(0.4rem, 0.1rem + 1vw, 1rem);
+}
+
 .textBaseSize {
     font-size: clamp(0.6rem, 0.1rem + 1vw, 1.5rem);
+}
+
+.midMiddleBaseSize {
+    font-size: clamp(1rem, 0.3rem + 2vw, 4rem);
+}
+
+.middleBaseSize {
+    font-size: clamp(2rem, .5rem + 7vw, 7rem);
+}
+
+.titleBaseSize {
+    font-size: clamp(2.5rem, .714rem + 8.93vw, 8.75rem);
+}
+
+.colorLightGray {
+    color: #cdcdcd;
+}
+
+.blurDarker {
+    filter: blur(5px) brightness(0.5);
 }

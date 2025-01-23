@@ -2,6 +2,8 @@
 
 /* Background */
 html, body {
+    margin: 0;
+    padding: 0;
     user-select: none;
     background: #191d1e; /* Old browsers */
     background: -moz-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* FF3.6+ */
@@ -107,7 +109,6 @@ nav > ul > li {
     font-weight: 600;
     letter-spacing: -.025em;
     line-height: 1;
-    font-size: clamp(2.5rem,.714rem + 8.93vw,8.75rem);
 }
 
 .description {
@@ -159,6 +160,113 @@ nav > ul > li {
     height: 2rem;
 }
 
-.sectionWho {
-    background-color: rgb(27 27 27);
+.sectionWho, .sectionWorks {
+    height: 100vh;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titleWho {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: 1;
+    text-align: center;
+}
+
+.descriptionWho {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: -.025em;
+    line-height: 1;
+    margin: 2rem 0 0 0;
+}
+
+.aboutWho {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: -.025em;
+    line-height: 1;
+    margin: 3rem 0 0 0;
+}
+
+.projectWrapper {
+    margin: 0;
+    padding: 0;
+    z-index: 8;
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+}
+
+.centeredImage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.leftSide {
+    width: 33.33%; /* Adjust as needed */
+    height: 100vh; /* Full viewport height */
+    float: left;
+}
+
+.middleSide {
+    width: min(85vw, 500px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    transform: perspective(1000px);
+}
+
+.middleSide > img {
+    display: flex;
+    width: 100%;
+    margin: 10% 0;
+    object-fit: cover;
+    filter: brightness(0.6);
+    border: #000000 3px solid;
+    border-radius: 5px;
+    scale: 0.8;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 1;
+    width: 33%;
+    height: 100vh
+}
+
+.project {
+    display: flex;
+    width: 100%;
+}
+
+.textOverlay {
+    position: absolute;
+    z-index: 1; /* Ensure the text is above the image */
+    color: white; /* Text color */
+    font-size: 2rem; /* Adjust as needed */
+    text-align: center;
 }
