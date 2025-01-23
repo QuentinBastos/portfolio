@@ -1,9 +1,9 @@
 .smallBaseSize {
-    font-size: clamp(0.4rem, 0.1rem + 1vw, 1rem);
+    font-size: clamp(0.4rem, 0.1rem + 7vw, 1rem);
 }
 
 .textBaseSize {
-    font-size: clamp(0.6rem, 0.1rem + 1vw, 1.5rem);
+    font-size: clamp(1rem, .929rem + 7vw, 1.25rem);
 }
 
 .midMiddleBaseSize {
@@ -25,3 +25,27 @@
 .blurDarker {
     filter: blur(5px) brightness(0.5);
 }
+
+/* Animated hover a */
+.hoverA {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.hoverA::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.hoverA:hover::after {
+    width: 100%;
+    left: 0;
+}
+
