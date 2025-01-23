@@ -7,7 +7,7 @@
 }
 
 .midMiddleBaseSize {
-    font-size: clamp(1rem, 0.3rem + 2vw, 4rem);
+    font-size: clamp(1rem, 0.3rem + 2vw, 3rem);
 }
 
 .middleBaseSize {
@@ -22,9 +22,10 @@
     color: #cdcdcd;
 }
 
-.blurDarker {
-    filter: blur(5px) brightness(0.5);
+.uppercase {
+    text-transform: uppercase;
 }
+
 
 /* Animated hover a */
 .hoverA {
@@ -43,6 +44,7 @@
     background-color: #ffffff;
     transition: width 0.3s ease, left 0.3s ease;
 }
+
 
 .hoverA:hover::after {
     width: 100%;

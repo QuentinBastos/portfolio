@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../assets/css/basicRule.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/background.css">
+    <link rel="stylesheet" href="../../assets/css/card.css">
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="../../assets/js/script.js"></script>
@@ -16,7 +17,7 @@
 <header>
     <nav>
         <ul>
-            <li><a href="home_en.html" class="textBaseSize hoverA">_QB</a></li>
+            <li><a href="home_en.html" class="textBaseSize">_QB</a></li>
             <li class="rightMenu">
                 <a href="#works" class="textBaseSize hoverA">Works</a>
                 <a href="#about" class="textBaseSize hoverA">About</a>
@@ -57,91 +58,163 @@
         </div>
     </section>
     <section id="works" class="sectionWorks">
-        <div class="wrapper">
-            <p class="titleWho middleBaseSize">Works</p>
+
+        <div class="titleWho stickyTitle">
+            <h1 class="middleBaseSize uppercase">Works</h1>
+            <p class="textBaseSize">Want to see my work ?</p>
+            <p class="textBaseSize">Come check below to see my projects 😀</p>
+            <a href="#chess" class="textBaseSize arrowMore">
+                <span class="textBaseSize">Check my projects</span>
+                <img src="../../assets/svg/arrow.svg" alt="arrow">
+            </a>
+        </div>
+        <div id="chess" class="projectWrapper">
+            <img src="/assets/img/projects/chess/background_chess.png" alt="Centered Image"
+                 class="centeredImage blurDarker">
+            <div class="project">
+                <div class="leftSide">
+                    <a href="#phase10" class="smallBaseSize arrowMore projectNext">
+                        <span class="smallBaseSize">Next project</span>
+                        <img src="../../assets/svg/arrow.svg" alt="arrow">
+                    </a>
+                </div>
+                <div class="middleSide">
+                    <div class="pre-container css-only">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class="language-css" tabindex="0">
+                                 <img src="/assets/img/projects/chess/icon_chess.png" alt="icon chess game">
+                            <div class="textOverlay">
+                                <p class="midMiddleBaseSize">ChessJS</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <p class="midMiddleBaseSize title">ChessJS</p>
+                    <p class="descriptionProject">A chess game made with JavaScript.</p>
+                    <a href="#" class="buttonProject hoverA">View project</a>
+                </div>
+            </div>
+        </div>
+        <div id="phase10" class="projectWrapper">
+            <img src="/assets/img/projects/phase10/background_phase10.png" alt="Centered Image"
+                 class="centeredImage blurDarker">
+            <div class="project">
+                <div class="leftSide">
+                    <a href="#interactiveBook" class="smallBaseSize arrowMore projectNext">
+                        <span class="smallBaseSize">Next project</span>
+                        <img src="../../assets/svg/arrow.svg" alt="arrow">
+                    </a>
+                </div>
+                <div class="middleSide">
+                    <div class="pre-container css-only">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class="language-css" tabindex="0">
+                               <img src="/assets/img/projects/phase10/icon_phase10.png" alt="icon game phase 10">
+                            <div class="textOverlay">
+                                <p class="midMiddleBaseSize">Phase 10</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <p class="midMiddleBaseSize title">Phase 10</p>
+                    <p class="descriptionProject">A phase 10 game made with Angular.</p>
+                    <a href="#" class="buttonProject hoverA">View project</a>
+                </div>
+            </div>
+        </div>
+        <div id="interactiveBook" class="projectWrapper">
+            <img src="/assets/img/projects/interactiveBook/background_interactive_book.png" alt="Centered Image"
+                 class="centeredImage blurDarker">
+            <div class="project">
+                <div class="leftSide">
+                    <a href="#spotify" class="smallBaseSize arrowMore projectNext">
+                        <span class="smallBaseSize">Next project</span>
+                        <img src="../../assets/svg/arrow.svg" alt="arrow">
+                    </a>
+                </div>
+                <div class="middleSide">
+                    <div class="pre-container css-only">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class="language-css" tabindex="0">
+                             <img src="/assets/img/projects/interactiveBook/icon_interactive_book.png"
+                                  alt="interactive book icon">
+                            <div class="textOverlay">
+                                <p class="midMiddleBaseSize">InteractiveBook</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <p class="midMiddleBaseSize title">InteractiveBook.</p>
+                    <p class="descriptionProject">A website build to create your own interactive book and share it with others.</p>
+                    <a href="#" class="buttonProject hoverA">View project</a>
+                </div>
+            </div>
+        </div>
+        <div id="spotify" class="projectWrapper">
+            <img src="/assets/img/projects/spotify/background_spotify.png" alt="Centered Image"
+                 class="centeredImage blurDarker">
+            <div class="project">
+                <div class="leftSide">
+                    <a href="#works" class="smallBaseSize arrowMore projectNext reverseArrow">
+                        <img src="../../assets/svg/arrow.svg" alt="arrow">
+                        <span class="smallBaseSize">Back to works</span>
+                    </a>
+                </div>
+                <div class="middleSide">
+                    <div class="pre-container css-only">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class="language-css" tabindex="0">
+                             <img src="/assets/img/projects/spotify/icon_spotify.png"
+                                  alt="interactive book icon">
+                            <div class="textOverlay">
+                                <p class="midMiddleBaseSize">SpotifySong</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <p class="midMiddleBaseSize title">SpotifySong</p>
+                    <p class="descriptionProject">A website that use Spotify API to get information about a song. You can save, listen, share and more.</p>
+                    <a href="#" class="buttonProject hoverA">View project</a>
+                </div>
+            </div>
         </div>
     </section>
-    <div class="projectWrapper">
-        <img src="/assets/img/projects/chess/background_chess.png" alt="Centered Image"
-             class="centeredImage blurDarker">
-        <div class="project">
-            <div class="leftSide">
-
-            </div>
-            <div class="middleSide">
-                <img src="/assets/img/projects/chess/icon_chess.png" alt="chess">
-                <div class="textOverlay">
-                    <p>ChessJS</p>
-                </div>
-            </div>
-            <div class="rightSide">
-                <p class="midMiddleBaseSize title">ChessJS</p>
-                <p class="descriptionProject">A chess game made with JavaScript</p>
-                <a href="#" class="buttonProject hoverA">View project</a>
-            </div>
-        </div>
-    </div>
-    <div class="projectWrapper">
-        <img src="/assets/img/projects/phase10/background_phase10.png" alt="Centered Image"
-             class="centeredImage blurDarker">
-        <div class="project">
-            <div class="leftSide">
-
-            </div>
-            <div class="middleSide">
-                <img src="/assets/img/projects/phase10/icon_phase10.png" alt="chess">
-                <div class="textOverlay">
-                    <p>Phase 10</p>
-                </div>
-            </div>
-            <div class="rightSide">
-                <p class="midMiddleBaseSize title">Phase 10</p>
-                <p class="descriptionProject">A phase 10 game made with Angular </p>
-                <a href="#" class="buttonProject hoverA">View project</a>
-            </div>
-        </div>
-    </div>
-    <div class="projectWrapper">
-        <img src="/assets/img/projects/interactiveBook/background_interactive_book.png" alt="Centered Image"
-             class="centeredImage blurDarker">
-        <div class="project">
-            <div class="leftSide">
-
-            </div>
-            <div class="middleSide">
-                <img src="/assets/img/projects/interactiveBook/icon_interactive_book.png" alt="chess">
-                <div class="textOverlay">
-                    <p>InteractiveBook.</p>
-                </div>
-            </div>
-            <div class="rightSide">
-                <p class="midMiddleBaseSize title">InteractiveBook.</p>
-                <p class="descriptionProject">A website build to create your own interactive book and share it with
-                    others</p>
-                <a href="#" class="buttonProject hoverA">View project</a>
-            </div>
-        </div>
-    </div>
-    <div class="projectWrapper">
-        <img src="/assets/img/projects/spotify/background_spotify.png" alt="Centered Image"
-             class="centeredImage blurDarker">
-        <div class="project">
-            <div class="leftSide">
-
-            </div>
-            <div class="middleSide">
-                <img src="/assets/img/projects/spotify/icon_spotify.png" alt="chess">
-                <div class="textOverlay">
-                    <p>SpotifySong</p>
-                </div>
-            </div>
-            <div class="rightSide">
-                <p class="midMiddleBaseSize title">SpotifySong</p>
-                <p class="descriptionProject">A website with a Spotify API to search, save and listen to songs</p>
-                <a href="#" class="buttonProject hoverA">View project</a>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>
