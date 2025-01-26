@@ -1,35 +1,16 @@
 {% extends "base.html.twig" %}
 {% block body %}
     <canvas id="projector"></canvas>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#" class="textBaseSize">_QB</a></li>
-                <li class="rightMenu">
-                    <a href="#works" class="textBaseSize hoverA">Works</a>
-                    <a href="{{ path('about') }}" class="textBaseSize hoverA">About</a>
-                    {% if app.session.get('_locale') == 'fr' %}
-                        <a href="{{ path('change_language', {'language': 'en'}) }}" class="flex">
-                            <img class="flagCountry" src="{{ asset('assets/svg/uk.svg') }}" alt="flag">
-                        </a>
-                    {% else %}
-                        <a href="{{ path('change_language', {'language': 'fr'}) }}" class="flex">
-                            <img class="flagCountry" src="{{ asset('assets/svg/france.svg') }}" alt="flag">
-                        </a>
-                    {% endif %}
-                </li>
-            </ul>
-        </nav>
-    </header>
+    {% include "header.html.twig" %}
     <main>
         <div class="wrapper">
-            <p class="title titleBaseSize">Nothing</p>
-            <p class="title titleBaseSize">is impossible</p>
-            <p class="description textBaseSize">Quentin Bastos portfolio site</p>
+            <p class="title titleBaseSize">{{ 'nothing'|trans }}</p>
+            <p class="title titleBaseSize">{{ 'is_impossible'|trans }}</p>
+            <p class="description textBaseSize">{{ 'portfolio_description'|trans }}</p>
         </div>
         <div class="more">
             <a href="#who" class="textBaseSize arrowMore">
-                <span class="textBaseSize">More</span>
+                <span class="textBaseSize">{{ 'more'|trans }}</span>
                 <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
             </a>
         </div>
@@ -37,16 +18,13 @@
     <section id="who" class="sectionWho">
         <div id="particles-js"></div>
         <div class="wrapper">
-            <p class="titleWho middleBaseSize">Who is Quentin ?</p>
-            <p class="descriptionWho textBaseSize">21 yo, French, BUT student, full-stack, web developer</p>
-            <p class="descriptionWho textBaseSize colorLightGray">
-                A full-stack developer focused on clean code and great user experiences, skilled in both front-end and
-                back-end, always prioritizing quality and design.
-            </p>
-            <a class="aboutWho smallBaseSize hoverA" href="{{ path('about') }}">Learn more about me</a>
+            <p class="titleWho middleBaseSize">{{ 'who_is_quentin'|trans }}</p>
+            <p class="descriptionWho textBaseSize">{{ 'quentin_description'|trans }}</p>
+            <p class="descriptionWho textBaseSize colorLightGray">{{ 'quentin_details'|trans }}</p>
+            <a class="aboutWho smallBaseSize hoverA" href="{{ path('about') }}">{{ 'learn_more'|trans }}</a>
             <div class="more">
                 <a href="#works" class="textBaseSize arrowMore">
-                    <span class="textBaseSize">More</span>
+                    <span class="textBaseSize">{{ 'more'|trans }}</span>
                     <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
                 </a>
             </div>
@@ -54,11 +32,11 @@
     </section>
     <section id="works" class="sectionWorks">
         <div class="titleWho stickyTitle">
-            <h1 class="middleBaseSize uppercase">Works</h1>
-            <p class="textBaseSize">Want to see my work ?</p>
-            <p class="textBaseSize">Come check below to see my projects 😀</p>
+            <h1 class="middleBaseSize uppercase">{{ 'works'|trans }}</h1>
+            <p class="textBaseSize">{{ 'want_to_see_my_work'|trans }}</p>
+            <p class="textBaseSize">{{ 'come_check_below'|trans }}</p>
             <a href="#chess" class="textBaseSize arrowMore">
-                <span class="textBaseSize">Check my projects</span>
+                <span class="textBaseSize">{{ 'check_my_projects'|trans }}</span>
                 <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
             </a>
         </div>
@@ -68,7 +46,7 @@
             <div class="project">
                 <div class="leftSide">
                     <a href="#phase10" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">Next project</span>
+                        <span class="smallBaseSize">{{ 'next_project'|trans }}</span>
                         <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
                     </a>
                 </div>
@@ -87,15 +65,15 @@
                                  <img src="{{ asset('assets/img/projects/chess/icon_chess.png') }}"
                                       alt="icon chess game">
                             <div class="textOverlay">
-                                <p class="midMiddleBaseSize">ChessJS</p>
+                                <p class="midMiddleBaseSize">{{ 'chess.title'|trans }}</p>
                             </div>
                         </pre>
                     </div>
                 </div>
                 <div class="rightSide">
-                    <p class="midMiddleBaseSize title">ChessJS</p>
-                    <p class="descriptionProject">A chess game made with JavaScript.</p>
-                    <a href="#" class="buttonProject hoverA">View project</a>
+                    <p class="midMiddleBaseSize title">{{ 'chess.title'|trans }}</p>
+                    <p class="descriptionProject">{{ 'chess.description'|trans }}</p>
+                    <a href="#" class="buttonProject hoverA">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -105,7 +83,7 @@
             <div class="project">
                 <div class="leftSide">
                     <a href="#interactive-book" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">Next project</span>
+                        <span class="smallBaseSize">{{ 'next_project'|trans }} </span>
                         <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
                     </a>
                 </div>
@@ -124,15 +102,15 @@
                                <img src="{{ asset('assets/img/projects/phase10/icon_phase10.png') }}"
                                     alt="icon game phase 10">
                             <div class="textOverlay">
-                                <p class="midMiddleBaseSize">Phase 10</p>
+                                <p class="midMiddleBaseSize">{{ 'phase10.title'|trans }}</p>
                             </div>
                         </pre>
                     </div>
                 </div>
                 <div class="rightSide">
-                    <p class="midMiddleBaseSize title">Phase 10</p>
-                    <p class="descriptionProject">A phase 10 game made with Angular.</p>
-                    <a href="#" class="buttonProject hoverA">View project</a>
+                    <p class="midMiddleBaseSize title">{{ 'phase10.title'|trans }}</p>
+                    <p class="descriptionProject">{{ 'phase10.description'|trans }}.</p>
+                    <a href="#" class="buttonProject hoverA">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -143,7 +121,7 @@
             <div class="project">
                 <div class="leftSide">
                     <a href="#spotify" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">Next project</span>
+                        <span class="smallBaseSize">{{ 'next_project'|trans }}</span>
                         <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
                     </a>
                 </div>
@@ -162,16 +140,15 @@
                              <img src="{{ asset('assets/img/projects/interactive_book/icon_interactive_book.png') }}"
                                   alt="interactive book icon">
                             <div class="textOverlay">
-                                <p class="midMiddleBaseSize">InteractiveBook</p>
+                                <p class="midMiddleBaseSize">{{ 'interactive_book.title'|trans }}</p>
                             </div>
                         </pre>
                     </div>
                 </div>
                 <div class="rightSide">
-                    <p class="midMiddleBaseSize title">InteractiveBook.</p>
-                    <p class="descriptionProject">A website build to create your own interactive book and share it with
-                        others.</p>
-                    <a href="#" class="buttonProject hoverA">View project</a>
+                    <p class="midMiddleBaseSize title">{{ 'interactive_book.title'|trans }}</p>
+                    <p class="descriptionProject">{{ 'interactive_book.description'|trans }}</p>
+                    <a href="#" class="buttonProject hoverA">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -182,7 +159,7 @@
                 <div class="leftSide">
                     <a href="#works" class="smallBaseSize arrowMore projectNext reverseArrow">
                         <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                        <span class="smallBaseSize">Back to works</span>
+                        <span class="smallBaseSize">{{ 'back_to_works'|trans }}</span>
                     </a>
                 </div>
                 <div class="middleSide">
@@ -200,16 +177,15 @@
                              <img src="{{ asset('assets/img/projects/spotify/icon_spotify.png') }}"
                                   alt="interactive book icon">
                             <span class="textOverlay">
-                                <span class="midMiddleBaseSize">SpotifySong</span>
+                                <span class="midMiddleBaseSize">{{ 'spotify.title'|trans }}</span>
                             </span>
                         </pre>
                     </div>
                 </div>
                 <div class="rightSide">
-                    <p class="midMiddleBaseSize title">SpotifySong</p>
-                    <p class="descriptionProject">A website that use Spotify API to get information about a song. You
-                        can save, listen, share and more.</p>
-                    <a href="#" class="buttonProject hoverA">View project</a>
+                    <p class="midMiddleBaseSize title">{{ 'spotify.title'|trans }}</p>
+                    <p class="descriptionProject">{{ 'spotify.description'|trans }}</p>
+                    <a href="#" class="buttonProject hoverA">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <ul>
+            <li><a href="#" class="textBaseSize">_QB</a></li>
+            <li class="rightMenu">
+                <a href="#works" class="textBaseSize hoverA">{{ 'works'|trans }}</a>
+                <a href="{{ path('about') }}" class="textBaseSize hoverA">{{ 'about'|trans }}</a>
+                {% if app.session.get('_locale') == 'fr' %}
+                    <a href="{{ path('change_language', {'language': 'en'}) }}" class="flex" data-toggle="refresh">
+                        <img class="flagCountry" src="{{ asset('assets/svg/uk.svg') }}" alt="flag">
+                    </a>
+                {% else %}
+                    <a href="{{ path('change_language', {'language': 'fr'}) }}" class="flex" data-toggle="refresh">
+                        <img class="flagCountry" src="{{ asset('assets/svg/france.svg') }}" alt="flag">
+                    </a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+</header>

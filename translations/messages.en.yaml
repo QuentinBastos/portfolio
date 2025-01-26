@@ -1,0 +1,37 @@
+# translations/messages.en.yaml
+works: "Works"
+about: "About"
+nothing: "Nothing"
+is_impossible: "is impossible"
+portfolio_description: "This is my portfolio description."
+more: "More"
+who_is_quentin: "Who is Quentin?"
+quentin_description: "21 years old, French, IT student, fullstack, web developer."
+quentin_details: "Web developer specialized in clean code and user experience, proficient in frontend and backend, I prioritize quality and performance."
+learn_more: "Learn more"
+want_to_see_my_work: "Want to see my work?"
+come_check_below: "Come check below to see my projects 😀"
+check_my_projects: "Check my projects"
+next_project: "Next project"
+view_project: "View project"
+back_to_works: "Back to works"
+under_construction: "Under construction"
+check_back_later: "Check back later"
+back_home: "Back home"
+
+chess:
+  title: "ChessJS"
+  description: "A chess game made with Javascript."
+
+phase10:
+  title: "Phase 10"
+  description: "A phase 10 game made with Angular."
+
+interactive_book:
+  title: "Interactive book"
+  description: "A website build to create your own interactive book and share it with others."
+
+spotify:
+  title: "SpotifySong"
+  description: "A website that use Spotify API to get information about a song. You can save, listen, share and more."
+

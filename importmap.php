@@ -24,6 +24,10 @@ return [
         'path' => './assets/js/particles.js',
         'entrypoint' => true,
     ],
+    'loader_js' => [
+        'path' => './assets/js/loader.js',
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],

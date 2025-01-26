@@ -1,0 +1,33 @@
+# translations/messages.fr.yaml
+works: "Projects"
+about: "À propos"
+nothing: "Rien"
+is_impossible: "est impossible"
+portfolio_description: "Ceci est la description de mon portfolio."
+more: "Plus"
+who_is_quentin: "Qui est Quentin?"
+quentin_description: "21 ans, Français, BUT informatique étudiant, fullstack, développeur web."
+quentin_details: "Développeur web spécialisé dans le code propre et l'expérience utilisateur, compétant dans le frontend et le backend, je privilégie la qualité et la performance."
+learn_more: "En savoir plus"
+want_to_see_my_work: "Vous voulez voir mon travail?"
+come_check_below: "Venez voir ci-dessous pour voir mes projets 😀"
+check_my_projects: "Voir mes projets"
+next_project: "Projet suivant"
+view_project: "Voir le projet"
+back_to_works: "Retour aux travaux"
+
+chess:
+  title: "ChessJS"
+  description: "Un jeu d'échecs réalisé avec Javascript."
+
+phase10:
+  title: "Phase 10"
+  description: "Un jeu Phase 10 réalisé avec Angular."
+
+interactive_book:
+  title: "InteractiveBook"
+  description: "Un site web conçu pour créer votre propre livre interactif et le partager avec d'autres."
+
+spotify:
+  title: "SpotifySong"
+  description: "Un site web qui utilise l'API Spotify pour obtenir des informations sur une chanson. Vous pouvez enregistrer, écouter, partager et plus encore."

@@ -13,10 +13,12 @@
             {{ importmap('app') }}
             {{ importmap('background_js') }}
             {{ importmap('particles_js') }}
+            {{ importmap('loader_js') }}
         {% endblock %}
     {% endblock %}
 </head>
 <body>
+<div id="loader" class="loader"></div>
 {% block body %}{% endblock %}
 </body>
 </html>
