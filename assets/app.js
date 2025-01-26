@@ -10,6 +10,3 @@ import './css/background.css';
 import './css/basic-rule.css';
 import './css/card.css';
 import './css/particles.css';
-import './css/projects.css';
-
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
