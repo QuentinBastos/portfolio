@@ -34,14 +34,11 @@ a {
 }
 
 main {
-    height: 100vh; /* 100% of the viewport height */
     padding-left: 5.5%;
     padding-right: 5.5%;
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
-    z-index: 9;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,6 +51,8 @@ header {
     width: 100%;
     text-align: center;
     z-index: 1000;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    height: 5.5rem;
 }
 
 ul {

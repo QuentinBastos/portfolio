@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/* document.addEventListener("DOMContentLoaded", function() {
     const loader = document.getElementById('loader');
     const counter = document.createElement('div');
     counter.id = 'counter';
@@ -18,4 +18,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }, 10); // Adjust the interval time as needed
     }
-});
+}); */

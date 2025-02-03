@@ -1,0 +1,58 @@
+.smallIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #ffffff;
+    padding: 0.2rem;
+    border: 0.1rem solid #000000;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.titleAbout {
+    margin: 1rem 0;
+}
+
+.language {
+    width: 15rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sectionSkills {
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.sectionContact {
+    margin-top: 10rem;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sectionSkills > .title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

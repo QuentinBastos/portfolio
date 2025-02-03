@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include "header.html.twig" %}
+    <section class="sectionSkills">
+        <h1 class="title titleBaseSize text-center">{{ "about_page.skills"|trans }}</h1>
+        <div class="row gap-x-2">
+            <div class="col-3 align-center flex flex-column">
+                <img class="smallIcon" src="{{ asset('assets/img/icon/frontend.png') }}" alt="designer icon">
+                <h2 class="titleAbout">{{ "frontend"|trans }}</h2>
+                <p class="descriptionAbout text-center">{{ "about_page.frontend.description"|trans }}</p>
+                <h3 class="smallTitle">{{ "about_page.frontend.small_title"|trans }}</h3>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/vue.png') }}" alt="vuejs"><span
+                            class="">VueJs</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/js.png') }}" alt="js"><span
+                            class="">JS</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/typescript.png') }}"
+                                           alt="js"><span class="">Typescript</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/angular.png') }}"
+                                           alt="angular"><span class="">Angular</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/bootstrap.png') }}"
+                                           alt="bootstrap"><span class="">Bootstrap</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/tailwinds.png') }}"
+                                           alt="tailwinds"><span class="">Tailwinds</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/twig.png') }}" alt="twig"><span
+                            class="">Twig</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/scss.png') }}" alt="scss"><span
+                            class="">SASS</span></div>
+            </div>
+            <div class="col-3 align-center flex flex-column">
+                <img class="smallIcon" src="{{ asset('assets/img/icon/backend.png') }}" alt="designer icon">
+                <h2 class="titleAbout">{{ "backend"|trans }}</h2>
+                <p class="descriptionAbout text-center">{{ "about_page.backend.description"|trans }}</p>
+                <h3 class="smallTitle">{{ "about_page.backend.small_title"|trans }}</h3>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/symfony.png') }}"
+                                           alt="symfony"><span class="">Symfony</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/node.png') }}"
+                                           alt="angular"><span class="">NodeJS</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/socket.png') }}"
+                                           alt="socket"><span class="">Socket.io</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/java.png') }}"
+                                           alt="java"><span class="">Java</span></div>
+            </div>
+            <div class="col-3 align-center flex flex-column">
+                <img class="smallIcon" src="{{ asset('assets/img/icon/devops.png') }}" alt="designer icon">
+                <h2 class="titleAbout">{{ "devops_tools"|trans }}</h2>
+                <p class="descriptionAbout text-center">{{ "about_page.devops.description"|trans }}</p>
+                <h3 class="smallTitle">{{ "about_page.devops.small_title"|trans }}</h3>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/git.png') }}"
+                                           alt="git"><span class="">Git</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/docker.png') }}"
+                                           alt="docker"><span class="">Docker</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/figma.png') }}"
+                                           alt="figma"><span class="">Figma</span></div>
+                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/intellij.png') }}"
+                                           alt="intellij"><span class="">Intellij</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="sectionContact">
+        <h1 class="title titleBaseSize text-center">{{ "about_page.contact.title"|trans }}</h1>
+        <div class=""></div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}

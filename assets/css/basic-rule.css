@@ -85,3 +85,51 @@
     left: 0;
 }
 
+.col-3 {
+    width: 33.33%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.gap-x-2 {
+    gap: 0 2rem;
+}
+
+.mt-7 {
+    margin-top: 7rem;
+}

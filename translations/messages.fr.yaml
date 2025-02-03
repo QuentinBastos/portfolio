@@ -31,3 +31,14 @@ interactive_book:
 spotify:
   title: "SpotifySong"
   description: "Un site web qui utilise l'API Spotify pour obtenir des informations sur une chanson. Vous pouvez enregistrer, écouter, partager et plus encore."
+
+about_page:
+  frontend:
+    description: "Je crois en la création d'interfaces utilisateur qui sont à la fois esthétiques, fonctionnelles et conviviales. Mon objectif est d'assurer des interactions fluides, intuitives et agréables."
+    small_title: "Langages"
+  backend:
+    description: "Je suis passionné par la création de systèmes backend efficaces, évolutifs et maintenables. Je me concentre sur la performance, la sécurité et la fiabilité."
+    small_title: "Langages"
+  devops:
+    description: "Je m'intéresse au DevOps et je cherche toujours des moyens d'améliorer le processus de déploiement, la surveillance et l'automatisation."
+    small_title: "Outils"

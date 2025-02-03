@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -11,8 +11,6 @@
     {% block javascripts %}
         {% block importmap %}
             {{ importmap('app') }}
-            {{ importmap('background_js') }}
-            {{ importmap('particles_js') }}
             {{ importmap('loader_js') }}
         {% endblock %}
     {% endblock %}

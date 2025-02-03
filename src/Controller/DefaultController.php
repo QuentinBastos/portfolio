@@ -9,8 +9,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'default')]
-    public function index() : Response
+    public function index(): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', [
+            'works' => true,
+        ]);
     }
 }

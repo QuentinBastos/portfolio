@@ -1,5 +1,8 @@
 # translations/messages.en.yaml
 works: "Works"
+frontend: "Frontend"
+backend: "Backend"
+devops_tools: "DevOps & tools"
 about: "About"
 nothing: "Nothing"
 is_impossible: "is impossible"
@@ -35,3 +38,16 @@ spotify:
   title: "SpotifySong"
   description: "A website that use Spotify API to get information about a song. You can save, listen, share and more."
 
+about_page:
+  skills: "Skills"
+  frontend:
+    description: "I believe in creating user interfaces that are visually appealing, functional, and user-friendly. My goal is to ensure smooth, intuitive, and enjoyable interactions."
+    small_title: "Languages"
+  backend:
+    description: "I am passionate about creating efficient, scalable, and maintainable backend systems. I focus on performance, security, and reliability."
+    small_title: "Languages"
+  devops:
+    description: "I am interested in DevOps and I am always looking for ways to improve the deployment process, monitoring, and automation."
+    small_title: "Tools"
+  contact:
+    title: "Contact me"
