@@ -56,3 +56,13 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+
+.formGroup {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+}
+
+.formGroup > div {
+    margin: 2rem;
+}

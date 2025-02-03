@@ -60,7 +60,21 @@
     </section>
     <section id="contact" class="sectionContact">
         <h1 class="title titleBaseSize text-center">{{ "about_page.contact.title"|trans }}</h1>
-        <div class=""></div>
+        <p class="midMiddleBaseSize text-center">{{ "about_page.contact.description"|trans }}</p>
+        <div class="formGroup">
+            <div class="flex justify-center gap-1 ">
+                <img src="{{ asset('assets/img/contact/me.png') }}" alt="Quentin Bastos">
+                <div class="form">
+                    {{ form_start(form) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.subject) }}
+                    {{ form_row(form.message) }}
+                    {{ form_row(form.submit) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
     </section>
 {% endblock %}
 {% block javascripts %}
