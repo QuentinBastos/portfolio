@@ -10,6 +10,10 @@
     width: 1.5rem;
     height: 1.5rem;
 }
+.iconContact {
+    width: 4rem;
+    height: 4rem;
+}
 
 .titleAbout {
     margin: 1rem 0;
@@ -59,7 +63,6 @@
 
 .formGroup {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
 }
 

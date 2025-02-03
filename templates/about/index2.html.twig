@@ -35,8 +35,6 @@
                                            alt="symfony"><span class="">Symfony</span></div>
                 <div class="language"><img class="icon" src="{{ asset('assets/img/icon/node.png') }}"
                                            alt="angular"><span class="">NodeJS</span></div>
-                <div class="language"><img class="icon" src="{{ asset('assets/img/icon/socket.png') }}"
-                                           alt="socket"><span class="">Socket.io</span></div>
                 <div class="language"><img class="icon" src="{{ asset('assets/img/icon/java.png') }}"
                                            alt="java"><span class="">Java</span></div>
             </div>
@@ -59,20 +57,19 @@
         </div>
     </section>
     <section id="contact" class="sectionContact">
-        <h1 class="title titleBaseSize text-center">{{ "about_page.contact.title"|trans }}</h1>
+        <h1 class="title middleBaseSize text-center">{{ "about_page.contact.title"|trans }}</h1>
         <p class="midMiddleBaseSize text-center">{{ "about_page.contact.description"|trans }}</p>
         <div class="formGroup">
             <div class="flex justify-center gap-1 ">
-                <img src="{{ asset('assets/img/contact/me.png') }}" alt="Quentin Bastos">
-                <div class="form">
-                    {{ form_start(form) }}
-                    {{ form_row(form.name) }}
-                    {{ form_row(form.email) }}
-                    {{ form_row(form.subject) }}
-                    {{ form_row(form.message) }}
-                    {{ form_row(form.submit) }}
-                    {{ form_end(form) }}
-                </div>
+                <a href="https://fr.linkedin.com/in/quentin-bastos-a02838222" target="_blank">
+                    <img class="iconContact" src="{{ asset('assets/img/icon/linkedin.png') }}" alt="linkedin">
+                </a>
+                <a href="mailto:bastos.quentin.pro@gmail.com" target="_blank">
+                    <img class="iconContact" src="{{ asset('assets/img/icon/mail.png') }}" alt="linkedin">
+                </a>
+                <a href="https://github.com/QuentinBastos" target="_blank">
+                    <img class="iconContact" src="{{ asset('assets/img/icon/github.png') }}" alt="github">
+                </a>
             </div>
         </div>
     </section>
