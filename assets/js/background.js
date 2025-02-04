@@ -2,16 +2,26 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', function() {
-    var particles = new ParticleEngine('projector');
-    createjs.Ticker.addEventListener("tick", updateCanvas);
-    window.addEventListener('resize', resizeCanvas, false);
-
-    function updateCanvas(){
-        particles.render();
+    var projectorElement = document.getElementById('projector');
+    if (!projectorElement) {
+        console.error('Element with ID "projector" not found.');
+        return;
     }
 
-    function resizeCanvas(){
-        particles.resize();
+    try {
+        var particles = new ParticleEngine('projector');
+        createjs.Ticker.addEventListener("tick", updateCanvas);
+        window.addEventListener('resize', resizeCanvas, false);
+
+        function updateCanvas(){
+            particles.render();
+        }
+
+        function resizeCanvas(){
+            particles.resize();
+        }
+    } catch (error) {
+        console.error('Error initializing ParticleEngine:', error);
     }
 });
 

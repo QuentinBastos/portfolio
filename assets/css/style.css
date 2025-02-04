@@ -33,7 +33,7 @@ a {
     display: flex;
 }
 
-main {
+main, .sectionSkill, .sectionContact {
     height: 100vh; /* 100% of the viewport height */
     padding-left: 5.5%;
     padding-right: 5.5%;
@@ -277,6 +277,10 @@ nav > ul > li {
 
 .stickyTitle  {
     margin-bottom: 30%;
+}
+
+.sectionWorks {
+    height: 100%;
 }
 
 .sectionWorks .stickyTitle {

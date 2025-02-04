@@ -39,7 +39,8 @@ spotify:
   description: "A website that use Spotify API to get information about a song. You can save, listen, share and more."
 
 about_page:
-  skills: "Skills"
+  title: "I am a fullstack web developer"
+  more: "See about me"
   frontend:
     description: "I believe in creating user interfaces that are visually appealing, functional, and user-friendly. My goal is to ensure smooth, intuitive, and enjoyable interactions."
     small_title: "Languages"
