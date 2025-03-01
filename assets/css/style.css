@@ -47,6 +47,18 @@ main, .sectionSkill, .sectionContact {
     justify-content: center;
 }
 
+.sectionEnd {
+    position: relative;
+    height: 10vh;
+    max-width: 1440px;
+    margin: 2rem auto;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 header {
     position: fixed;
     top: 0;

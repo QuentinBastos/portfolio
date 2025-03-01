@@ -15,6 +15,8 @@ check_my_projects: "Voir mes projets"
 next_project: "Projet suivant"
 view_project: "Voir le projet"
 back_to_works: "Retour aux travaux"
+back_home: "Retour à l'accueil"
+reach_end: "🚀 Félicitations, vous avez atteint la fin de la page ! Vous voulez voir plus de projets ? 🚀"
 
 chess:
   title: "ChessJS"
@@ -33,6 +35,8 @@ spotify:
   description: "Un site web qui utilise l'API Spotify pour obtenir des informations sur une chanson. Vous pouvez enregistrer, écouter, partager et plus encore."
 
 about_page:
+  title: "Je suis un développeur web fullstack"
+  more: "Voir plus"
   frontend:
     description: "Je crois en la création d'interfaces utilisateur qui sont à la fois esthétiques, fonctionnelles et conviviales. Mon objectif est d'assurer des interactions fluides, intuitives et agréables."
     small_title: "Langages"
@@ -42,3 +46,6 @@ about_page:
   devops:
     description: "Je m'intéresse au DevOps et je cherche toujours des moyens d'améliorer le processus de déploiement, la surveillance et l'automatisation."
     small_title: "Outils"
+  contact:
+    title: "Contactez-moi"
+    description: "Si vous avez des questions ou si vous souhaitez travailler avec moi, n'hésitez pas à me contacter."

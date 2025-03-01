@@ -21,6 +21,7 @@ back_to_works: "Back to works"
 under_construction: "Under construction"
 check_back_later: "Check back later"
 back_home: "Back home"
+reach_end: "🚀 Congratulations, you reach the end of the page ! Wanna see more projects ? 🚀"
 
 chess:
   title: "ChessJS"
@@ -37,6 +38,10 @@ interactive_book:
 spotify:
   title: "SpotifySong"
   description: "A website that use Spotify API to get information about a song. You can save, listen, share and more."
+
+aloas:
+  title: "Aloas"
+  description: "A website that are created to help people to find manage tournament for disabled people."
 
 about_page:
   title: "I am a fullstack web developer"

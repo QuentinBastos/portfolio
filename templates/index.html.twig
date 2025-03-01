@@ -157,9 +157,9 @@
                  class="centeredImage blurDarker">
             <div class="project">
                 <div class="leftSide">
-                    <a href="#works" class="smallBaseSize arrowMore projectNext reverseArrow">
+                    <a href="#aloas" class="smallBaseSize arrowMore projectNext">
+                        <span class="smallBaseSize">{{ 'next_project'|trans }}</span>
                         <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                        <span class="smallBaseSize">{{ 'back_to_works'|trans }}</span>
                     </a>
                 </div>
                 <div class="middleSide">
@@ -188,6 +188,48 @@
                     <a href="#" class="buttonProject hoverA">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
+        </div>
+        <div id="aloas" class="projectWrapper">
+            <img src="{{ asset('assets/img/projects/aloas/background_aloas.png') }}" alt="Centered Image"
+                 class="centeredImage blurDarker">
+            <div class="project">
+                <div class="leftSide">
+                    <a href="#works" class="smallBaseSize arrowMore projectNext reverseArrow">
+                        <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
+                        <span class="smallBaseSize">{{ 'back_to_works'|trans }}</span>
+                    </a>
+                </div>
+                <div class="middleSide">
+                    <div class="pre-container css-only">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class="language-css" tabindex="0">
+                             <img src="{{ asset('assets/img/projects/aloas/icon_aloas.png') }}"
+                                  alt="interactive book icon">
+                            <span class="textOverlay">
+                                <span class="midMiddleBaseSize">{{ 'aloas.title'|trans }}</span>
+                            </span>
+                        </pre>
+                    </div>
+                </div>
+                <div class="rightSide">
+                    <p class="midMiddleBaseSize title">{{ 'aloas.title'|trans }}</p>
+                    <p class="descriptionProject">{{ 'aloas.description'|trans }}</p>
+                    <a href="https://aloas-tournoi.com" class="buttonProject hoverA" target="_blank">{{ 'view_project'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectionEnd">
+        <div class="wrapper flex align-center flex-column">
+            <p class="descriptionWho textBaseSize colorLightGray">{{ 'reach_end'|trans }}</p>
         </div>
     </section>
 {% endblock %}
