@@ -14,7 +14,6 @@ class LanguageController extends AbstractController
     {
         $request->getSession()->set('_locale', $language);
         $this->addFlash('success', 'Language changed to ' . $language);
-
-        return $this->redirectToRoute('default');
+        return $this->redirect($request->headers->get('referer'));
     }
 }

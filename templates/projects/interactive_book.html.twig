@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include "header.html.twig" %}
+    <section class="projectView">
+        <div class="wrapperView">
+            <div class="titleProject">
+                <h1 class="middleBaseSize">{{ "interactive_book.title"|trans }}</h1>
+            </div>
+            <div class="wrapperVideo">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/C0DPdy98e4c?si=hrVjMjvVi8ekfXRu"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="wrapperInformation">
+                <div class="wrapperDescription">
+                    <div class="align-center flex flex-column h-100">
+                        <h2 class="midMiddleBaseSize">{{ "description"|trans }}</h2>
+                        <p class="smallBaseSize">{{ "interactive_book.long_description"|trans }}</p>
+                    </div>
+                </div>
+                <div class="wrapperDescription">
+                    <div class="align-center flex flex-column h-100">
+                        <h2 class="midMiddleBaseSize">{{ "languages"|trans }}</h2>
+                        <div class="flex flex-wrap justify-center">
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/dark-symfony.png') }}" alt="symfony">
+                                <span class="flex align-center smallBaseSize">Symfony</span>
+                            </div>
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/tailwinds.png') }}"
+                                     alt="tailwinds">
+                                <span class="flex align-center smallBaseSize">Tailwinds</span>
+                            </div>
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/twig.png') }}" alt="twig">
+                                <span class="flex align-center smallBaseSize">Twig</span>
+                            </div>
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/scss.png') }}" alt="scss">
+                                <span class="flex align-center smallBaseSize">SASS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}

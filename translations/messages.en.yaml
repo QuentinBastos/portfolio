@@ -48,6 +48,7 @@ spotify:
 aloas:
   title: "Aloas"
   description: "A website created to help tournament organizers manage tournaments for disabled people."
+  long_description: "Aloas is a website designed to help tournament organizers manage tournaments for disabled people. The website provides tools for creating and managing tournaments, including registration, scheduling, timer and scoring. Organizers can create custom tournament formats, set up teams, and track results. The website also includes features for communicating with participants, sharing updates, and promoting events. Aloas is a user-friendly and accessible platform that makes it easy to organize and run tournaments for disabled people."
 
 about_page:
   title: "I am a fullstack web developer"

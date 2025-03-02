@@ -23,7 +23,7 @@ description: "Description"
 chess:
   title: "ChessJS"
   description: "Un jeu d'échecs réalisé avec Javascript."
-  long_description: "ChessJS is a fully-featured chess game built using Typescript and NodeJS. It offers a seamless and interactive experience for both beginners and advanced players. The game includes features such as move validation and game history. The clean and intuitive interface ensures an enjoyable user experience, while the robust backend guarantees smooth and efficient gameplay. If you want to challenge a friend, ChessJS provides a comprehensive platform for all your chess needs."
+  long_description: "ChessJS est un jeu d'échecs complet développé avec Typescript et NodeJS. Il offre une expérience interactive et fluide pour les débutants comme pour les joueurs avancés. Le jeu inclut des fonctionnalités telles que la validation des coups et l'historique des parties. L'interface propre et intuitive assure une expérience utilisateur agréable, tandis que le backend robuste garantit un gameplay fluide et efficace. Si vous voulez défier un ami, ChessJS fournit une plateforme complète pour tous vos besoins en matière d'échecs."
 
 phase10:
   title: "Phase 10"
