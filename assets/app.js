@@ -13,3 +13,4 @@ import './css/basic-rule.css';
 import './css/card.css';
 import './css/particles.css';
 import './css/about.css';
+import './css/project-view.css';

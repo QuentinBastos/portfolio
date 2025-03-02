@@ -17,22 +17,32 @@ view_project: "Voir le projet"
 back_to_works: "Retour aux travaux"
 back_home: "Retour à l'accueil"
 reach_end: "🚀 Félicitations, vous avez atteint la fin de la page ! Vous voulez voir plus de projets ? 🚀"
+languages: "Langages"
+description: "Description"
 
 chess:
   title: "ChessJS"
   description: "Un jeu d'échecs réalisé avec Javascript."
+  long_description: "ChessJS is a fully-featured chess game built using Typescript and NodeJS. It offers a seamless and interactive experience for both beginners and advanced players. The game includes features such as move validation and game history. The clean and intuitive interface ensures an enjoyable user experience, while the robust backend guarantees smooth and efficient gameplay. If you want to challenge a friend, ChessJS provides a comprehensive platform for all your chess needs."
 
 phase10:
   title: "Phase 10"
   description: "Un jeu Phase 10 réalisé avec Angular."
+  long_description: "Phase 10 est un jeu de cartes qui se joue avec un jeu de cartes standard. Le jeu se compose de dix phases, chacune avec un ensemble unique de conditions. Les joueurs doivent compléter chaque phase avant de passer à la suivante. Le jeu est gagné par le premier joueur à compléter les dix phases. Phase 10 est un jeu amusant et stimulant qui nécessite de la stratégie, des compétences et un peu de chance. Le jeu est facile à apprendre mais difficile à maîtriser, ce qui en fait un excellent choix pour les joueurs de tous niveaux. Le site utilise socket.io, vous pouvez donc jouer avec vos amis en temps réel."
 
 interactive_book:
-  title: "InteractiveBook"
-  description: "Un site web conçu pour créer votre propre livre interactif et le partager avec d'autres."
+  title: "Livre interactif"
+  description: "Un site web conçu pour créer votre propre livre interactif et le partager avec les autres."
+  long_description: "Livre Interactif est un site web qui permet aux utilisateurs de créer et de partager leurs propres livres interactifs. Les utilisateurs peuvent ajouter du texte, des images et des liens pour créer une expérience de lecture unique et engageante. Le site propose une interface conviviale qui facilite la création et l'édition des livres. Les utilisateurs peuvent également partager leurs livres avec d'autres, leur permettant de lire et d'interagir avec le contenu. Livre Interactif est un moyen amusant et créatif de partager des histoires, des idées et des informations avec les autres. Vous pouvez également utiliser l'IA générative pour créer votre propre histoire en lui donnant quelques mots."
 
 spotify:
   title: "SpotifySong"
   description: "Un site web qui utilise l'API Spotify pour obtenir des informations sur une chanson. Vous pouvez enregistrer, écouter, partager et plus encore."
+  long_description: "SpotifySong est un site web qui permet aux utilisateurs de rechercher et d'écouter des chansons en utilisant l'API Spotify. Les utilisateurs peuvent rechercher des chansons par titre, artiste ou album, et les écouter directement sur le site. Le site fournit également des informations sur la chanson, telles que l'artiste, l'album et la date de sortie. Les utilisateurs peuvent enregistrer des chansons dans leur bibliothèque, créer des playlists et partager des chansons avec d'autres. SpotifySong est un moyen pratique et convivial de découvrir de nouvelles musiques et de profiter de vos chansons préférées."
+
+aloas:
+    title: "Aloas"
+    description: "Un site web créé une association pour aider les créateurs de tournois à gérer les tournois pour les personnes handicapées."
 
 about_page:
   title: "Je suis un développeur web fullstack"

@@ -399,3 +399,38 @@ nav > ul > li {
     width: 10rem;
     height: 10rem;
 }
+
+@media (max-width: 1024px) {
+    .project {
+        flex-direction: column-reverse;
+    }
+
+    .rightSide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40%;
+    }
+
+    .middleSide {
+        width: 100%;
+        height: 20%;
+    }
+
+    .leftSide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40%;
+    }
+
+    .descriptionProject {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 2rem;
+    }
+}

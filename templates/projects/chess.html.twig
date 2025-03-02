@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include "header.html.twig" %}
+    <section class="projectView">
+        <div class="wrapperView">
+            <div class="titleProject">
+                <h1 class="middleBaseSize">{{ "chess.title"|trans }}</h1>
+            </div>
+            <div class="wrapperVideo">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/C0DPdy98e4c?si=hrVjMjvVi8ekfXRu"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="wrapperInformation">
+                <div class="wrapperDescription">
+                    <div class="align-center flex flex-column h-100">
+                        <h2 class="midMiddleBaseSize">{{ "description"|trans }}</h2>
+                        <p class="smallBaseSize">{{ "chess.long_description"|trans }}</p>
+                    </div>
+                </div>
+                <div class="wrapperDescription">
+                    <div class="align-center flex flex-column h-100">
+                        <h2 class="midMiddleBaseSize">{{ "languages"|trans }}</h2>
+                        <div class="flex flex-wrap justify-center">
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/node.png') }}" alt="angular">
+                                <span class="flex align-center smallBaseSize">NodeJS</span>
+                            </div>
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/tailwinds.png') }}"
+                                     alt="tailwinds">
+                                <span class="flex align-center smallBaseSize">Tailwinds</span>
+                            </div>
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/typescript.png') }}" alt="js">
+                                <span class="flex align-center smallBaseSize">Typescript</span>
+                            </div>
+                            <div class="language">
+                                <img class="icon" src="{{ asset('assets/img/icon/vue.png') }}" alt="vue js">
+                                <span class="flex align-center smallBaseSize">VueJs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
