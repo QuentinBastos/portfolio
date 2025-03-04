@@ -96,20 +96,20 @@ class __TwigTemplate_9f229608921c7ab62b8963ff18b92074 extends Template
         yield "</h2>
                         <div class=\"flex flex-wrap justify-center\">
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"/assets/img/icon/tailwinds.png\"
+                                <img class=\"icon\" src=\"/./assets/img/icon/tailwinds.png\"
                                      alt=\"tailwinds\">
                                 <span class=\"flex align-center smallBaseSize\">Tailwinds</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"/assets/img/icon/dark-symfony.png\" alt=\"symfony\">
+                                <img class=\"icon\" src=\"./../../assets/img/icon/dark-symfony.png\" alt=\"symfony\">
                                 <span class=\"flex align-center smallBaseSize\">Symfony</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"/assets/img/icon/twig.png\" alt=\"twig\">
+                                <img class=\"icon\" src=\"assets/img/icon/twig.png\" alt=\"twig\">
                                 <span class=\"flex align-center smallBaseSize\">Twig</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"/assets/img/icon/scss.png\" alt=\"sass\">
+                                <img class=\"icon\" src=\"assets/img/icon/scss.png\" alt=\"sass\">
                                 <span class=\"flex align-center smallBaseSize\">SASS</span>
                             </div>
                         </div>
