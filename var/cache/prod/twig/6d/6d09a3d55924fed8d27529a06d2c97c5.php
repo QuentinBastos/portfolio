@@ -70,7 +70,10 @@ class __TwigTemplate_6e56a83a8f645bdce214fae3f635d12a extends Template
             </div>
             <div class=\"wrapperVideo\">
                 <video class=\"video\" controls>
-                    <source src=\"/assets/video/chess.mp4\" type=\"video/mp4\">
+                    <source src=\"";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/video/chess.mp4"), "html", null, true);
+        yield "\" type=\"video/mp4\">
                     ";
         // line 12
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("video.not_supported"), "html", null, true);
@@ -187,7 +190,7 @@ class __TwigTemplate_6e56a83a8f645bdce214fae3f635d12a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  162 => 56,  155 => 55,  147 => 52,  140 => 51,  125 => 40,  118 => 36,  110 => 31,  103 => 27,  97 => 24,  89 => 19,  85 => 18,  76 => 12,  68 => 7,  63 => 4,  60 => 3,  53 => 2,  42 => 1,);
+        return array (  165 => 56,  158 => 55,  150 => 52,  143 => 51,  128 => 40,  121 => 36,  113 => 31,  106 => 27,  100 => 24,  92 => 19,  88 => 18,  79 => 12,  75 => 11,  68 => 7,  63 => 4,  60 => 3,  53 => 2,  42 => 1,);
     }
 
     public function getSourceContext(): Source
