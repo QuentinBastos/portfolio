@@ -28,6 +28,15 @@ DirectoryIndex public/index.php
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^ - [L]
 
+    # Alias for serving assets from an external directory
+    Alias /assets /var/www/portfolio/assets
+
+    <Directory /var/www/portfolio/assets>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
     # project in a subdirectory, the base path will be prepended to allow proper
