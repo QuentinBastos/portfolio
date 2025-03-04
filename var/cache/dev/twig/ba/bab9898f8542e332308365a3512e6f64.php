@@ -1,0 +1,814 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+use Twig\TemplateWrapper;
+
+/* index.html.twig */
+class __TwigTemplate_ac8eb8eb7bdc57fa33e305873ecfdb79 extends Template
+{
+    private Source $source;
+    /**
+     * @var array<string, Template>
+     */
+    private array $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'body' => [$this, 'block_body'],
+            'javascripts' => [$this, 'block_javascripts'],
+        ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "index.html.twig"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "index.html.twig"));
+
+        $this->parent = $this->loadTemplate("base.html.twig", "index.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 2
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_body(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 3
+        yield "    <canvas id=\"projector\"></canvas>
+    ";
+        // line 4
+        yield from $this->loadTemplate("header.html.twig", "index.html.twig", 4)->unwrap()->yield($context);
+        // line 5
+        yield "    <main>
+        <div class=\"wrapper\">
+            <p class=\"title titleBaseSize\">";
+        // line 7
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nothing"), "html", null, true);
+        yield "</p>
+            <p class=\"title titleBaseSize\">";
+        // line 8
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("is_impossible"), "html", null, true);
+        yield "</p>
+            <p class=\"description textBaseSize\">";
+        // line 9
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("portfolio_description"), "html", null, true);
+        yield "</p>
+        </div>
+        <div class=\"more\">
+            <a href=\"#who\" class=\"textBaseSize arrowMore\">
+                <span class=\"textBaseSize\">";
+        // line 13
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("more"), "html", null, true);
+        yield "</span>
+                <img src=\"";
+        // line 14
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+            </a>
+        </div>
+    </main>
+    <section id=\"who\" class=\"sectionWho\">
+        <div id=\"particles-js\"></div>
+        <div class=\"wrapper\">
+            <p class=\"titleWho middleBaseSize\">";
+        // line 21
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("who_is_quentin"), "html", null, true);
+        yield "</p>
+            <p class=\"descriptionWho textBaseSize\">";
+        // line 22
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("quentin_description"), "html", null, true);
+        yield "</p>
+            <p class=\"descriptionWho textBaseSize colorLightGray\">";
+        // line 23
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("quentin_details"), "html", null, true);
+        yield "</p>
+            <a class=\"aboutWho smallBaseSize hoverA\" href=\"";
+        // line 24
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about");
+        yield "\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("learn_more"), "html", null, true);
+        yield "</a>
+            <div class=\"more\">
+                <a href=\"#works\" class=\"textBaseSize arrowMore\">
+                    <span class=\"textBaseSize\">";
+        // line 27
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("more"), "html", null, true);
+        yield "</span>
+                    <img src=\"";
+        // line 28
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id=\"works\" class=\"sectionWorks\">
+        <div class=\"titleWho stickyTitle\">
+            <h1 class=\"middleBaseSize uppercase\">";
+        // line 35
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("works"), "html", null, true);
+        yield "</h1>
+            <p class=\"textBaseSize\">";
+        // line 36
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("want_to_see_my_work"), "html", null, true);
+        yield "</p>
+            <p class=\"textBaseSize\">";
+        // line 37
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("come_check_below"), "html", null, true);
+        yield "</p>
+            <a href=\"#chess\" class=\"textBaseSize arrowMore\">
+                <span class=\"textBaseSize\">";
+        // line 39
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("check_my_projects"), "html", null, true);
+        yield "</span>
+                <img src=\"";
+        // line 40
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+            </a>
+        </div>
+        <div id=\"chess\" class=\"projectWrapper\">
+            <img src=\"";
+        // line 44
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/chess/background_chess.png"), "html", null, true);
+        yield "\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#phase10\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">";
+        // line 49
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
+        yield "</span>
+                        <img src=\"";
+        // line 50
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                                 <img src=\"";
+        // line 65
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/chess/icon_chess.png"), "html", null, true);
+        yield "\"
+                                      alt=\"icon chess game\">
+                            <div class=\"textOverlay\">
+                                <p class=\"midMiddleBaseSize\">";
+        // line 68
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.title"), "html", null, true);
+        yield "</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">";
+        // line 74
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.title"), "html", null, true);
+        yield "</p>
+                    <p class=\"descriptionProject smallBaseSize\">";
+        // line 75
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.description"), "html", null, true);
+        yield "</p>
+                    <a href=\"";
+        // line 76
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_chess");
+        yield "\" class=\"buttonProject hoverA smallBaseSize\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
+        yield "</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"phase10\" class=\"projectWrapper\">
+            <img src=\"";
+        // line 81
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/phase10/background_phase10.png"), "html", null, true);
+        yield "\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#interactive-book\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">";
+        // line 86
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
+        yield " </span>
+                        <img src=\"";
+        // line 87
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                               <img src=\"";
+        // line 102
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/phase10/icon_phase10.png"), "html", null, true);
+        yield "\"
+                                    alt=\"icon game phase 10\">
+                            <div class=\"textOverlay\">
+                                <p class=\"midMiddleBaseSize\">";
+        // line 105
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.title"), "html", null, true);
+        yield "</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">";
+        // line 111
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.title"), "html", null, true);
+        yield "</p>
+                    <p class=\"descriptionProject smallBaseSize\">";
+        // line 112
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.description"), "html", null, true);
+        yield ".</p>
+                    <a href=\"";
+        // line 113
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_phase10");
+        yield "\" class=\"buttonProject hoverA smallBaseSize\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
+        yield "</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"interactive-book\" class=\"projectWrapper\">
+            <img src=\"";
+        // line 118
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/interactive_book/background_interactive_book.png"), "html", null, true);
+        yield "\"
+                 alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#spotify\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">";
+        // line 124
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
+        yield "</span>
+                        <img src=\"";
+        // line 125
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                             <img src=\"";
+        // line 140
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/interactive_book/icon_interactive_book.png"), "html", null, true);
+        yield "\"
+                                  alt=\"interactive book icon\">
+                            <div class=\"textOverlay\">
+                                <p class=\"midMiddleBaseSize\">";
+        // line 143
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.title"), "html", null, true);
+        yield "</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">";
+        // line 149
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.title"), "html", null, true);
+        yield "</p>
+                    <p class=\"descriptionProject smallBaseSize\">";
+        // line 150
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.description"), "html", null, true);
+        yield "</p>
+                    <a href=\"";
+        // line 151
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_interactive_book");
+        yield "\" class=\"buttonProject hoverA smallBaseSize\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
+        yield "</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"spotify\" class=\"projectWrapper\">
+            <img src=\"";
+        // line 156
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/spotify/background_spotify.png"), "html", null, true);
+        yield "\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#aloas\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">";
+        // line 161
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
+        yield "</span>
+                        <img src=\"";
+        // line 162
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                             <img src=\"";
+        // line 177
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/spotify/icon_spotify.png"), "html", null, true);
+        yield "\"
+                                  alt=\"interactive book icon\">
+                            <span class=\"textOverlay\">
+                                <span class=\"midMiddleBaseSize\">";
+        // line 180
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("spotify.title"), "html", null, true);
+        yield "</span>
+                            </span>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">";
+        // line 186
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("spotify.title"), "html", null, true);
+        yield "</p>
+                    <p class=\"descriptionProject smallBaseSize\">";
+        // line 187
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("spotify.description"), "html", null, true);
+        yield "</p>
+                    <a href=\"";
+        // line 188
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_spotify");
+        yield "\" class=\"buttonProject hoverA smallBaseSize\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
+        yield "</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"aloas\" class=\"projectWrapper\">
+            <img src=\"";
+        // line 193
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/aloas/background_aloas.png"), "html", null, true);
+        yield "\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#works\" class=\"smallBaseSize arrowMore projectNext reverseArrow\">
+                        <img src=\"";
+        // line 198
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+        yield "\" alt=\"arrow\">
+                        <span class=\"smallBaseSize\">";
+        // line 199
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("back_to_works"), "html", null, true);
+        yield "</span>
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                             <img src=\"";
+        // line 214
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/aloas/icon_aloas.png"), "html", null, true);
+        yield "\"
+                                  alt=\"interactive book icon\">
+                            <span class=\"textOverlay\">
+                                <span class=\"midMiddleBaseSize\">";
+        // line 217
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("aloas.title"), "html", null, true);
+        yield "</span>
+                            </span>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">";
+        // line 223
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("aloas.title"), "html", null, true);
+        yield "</p>
+                    <p class=\"descriptionProject smallBaseSize\">";
+        // line 224
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("aloas.description"), "html", null, true);
+        yield "</p>
+                    <a href=\"";
+        // line 225
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_aloas");
+        yield "\" class=\"buttonProject hoverA smallBaseSize\" target=\"_blank\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
+        yield "</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class=\"sectionEnd\">
+        <div class=\"wrapper flex align-center flex-column\">
+            <p class=\"descriptionWho textBaseSize colorLightGray\">";
+        // line 232
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("reach_end"), "html", null, true);
+        yield "</p>
+        </div>
+    </section>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 237
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_javascripts(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 238
+        yield "    ";
+        yield $this->env->getRuntime('Symfony\Bridge\Twig\Extension\ImportMapRuntime')->importmap("background_js");
+        yield "
+    ";
+        // line 239
+        yield $this->env->getRuntime('Symfony\Bridge\Twig\Extension\ImportMapRuntime')->importmap("particles_js");
+        yield "
+    <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
+    <script src=\"https://cdn.jsdelivr.net/npm/particles.js\"></script>
+    ";
+        // line 243
+        yield from $this->yieldParentBlock("javascripts", $context, $blocks);
+        yield "
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName(): string
+    {
+        return "index.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo(): array
+    {
+        return array (  531 => 243,  524 => 239,  519 => 238,  506 => 237,  491 => 232,  479 => 225,  475 => 224,  471 => 223,  462 => 217,  456 => 214,  438 => 199,  434 => 198,  426 => 193,  416 => 188,  412 => 187,  408 => 186,  399 => 180,  393 => 177,  375 => 162,  371 => 161,  363 => 156,  353 => 151,  349 => 150,  345 => 149,  336 => 143,  330 => 140,  312 => 125,  308 => 124,  299 => 118,  289 => 113,  285 => 112,  281 => 111,  272 => 105,  266 => 102,  248 => 87,  244 => 86,  236 => 81,  226 => 76,  222 => 75,  218 => 74,  209 => 68,  203 => 65,  185 => 50,  181 => 49,  173 => 44,  166 => 40,  162 => 39,  157 => 37,  153 => 36,  149 => 35,  139 => 28,  135 => 27,  127 => 24,  123 => 23,  119 => 22,  115 => 21,  105 => 14,  101 => 13,  94 => 9,  90 => 8,  86 => 7,  82 => 5,  80 => 4,  77 => 3,  64 => 2,  41 => 1,);
+    }
+
+    public function getSourceContext(): Source
+    {
+        return new Source("{% extends \"base.html.twig\" %}
+{% block body %}
+    <canvas id=\"projector\"></canvas>
+    {% include \"header.html.twig\" %}
+    <main>
+        <div class=\"wrapper\">
+            <p class=\"title titleBaseSize\">{{ 'nothing'|trans }}</p>
+            <p class=\"title titleBaseSize\">{{ 'is_impossible'|trans }}</p>
+            <p class=\"description textBaseSize\">{{ 'portfolio_description'|trans }}</p>
+        </div>
+        <div class=\"more\">
+            <a href=\"#who\" class=\"textBaseSize arrowMore\">
+                <span class=\"textBaseSize\">{{ 'more'|trans }}</span>
+                <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+            </a>
+        </div>
+    </main>
+    <section id=\"who\" class=\"sectionWho\">
+        <div id=\"particles-js\"></div>
+        <div class=\"wrapper\">
+            <p class=\"titleWho middleBaseSize\">{{ 'who_is_quentin'|trans }}</p>
+            <p class=\"descriptionWho textBaseSize\">{{ 'quentin_description'|trans }}</p>
+            <p class=\"descriptionWho textBaseSize colorLightGray\">{{ 'quentin_details'|trans }}</p>
+            <a class=\"aboutWho smallBaseSize hoverA\" href=\"{{ path('about') }}\">{{ 'learn_more'|trans }}</a>
+            <div class=\"more\">
+                <a href=\"#works\" class=\"textBaseSize arrowMore\">
+                    <span class=\"textBaseSize\">{{ 'more'|trans }}</span>
+                    <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id=\"works\" class=\"sectionWorks\">
+        <div class=\"titleWho stickyTitle\">
+            <h1 class=\"middleBaseSize uppercase\">{{ 'works'|trans }}</h1>
+            <p class=\"textBaseSize\">{{ 'want_to_see_my_work'|trans }}</p>
+            <p class=\"textBaseSize\">{{ 'come_check_below'|trans }}</p>
+            <a href=\"#chess\" class=\"textBaseSize arrowMore\">
+                <span class=\"textBaseSize\">{{ 'check_my_projects'|trans }}</span>
+                <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+            </a>
+        </div>
+        <div id=\"chess\" class=\"projectWrapper\">
+            <img src=\"{{ asset('assets/img/projects/chess/background_chess.png') }}\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#phase10\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">{{ 'next_project'|trans }}</span>
+                        <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                                 <img src=\"{{ asset('assets/img/projects/chess/icon_chess.png') }}\"
+                                      alt=\"icon chess game\">
+                            <div class=\"textOverlay\">
+                                <p class=\"midMiddleBaseSize\">{{ 'chess.title'|trans }}</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">{{ 'chess.title'|trans }}</p>
+                    <p class=\"descriptionProject smallBaseSize\">{{ 'chess.description'|trans }}</p>
+                    <a href=\"{{ path('project_chess') }}\" class=\"buttonProject hoverA smallBaseSize\">{{ 'view_project'|trans }}</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"phase10\" class=\"projectWrapper\">
+            <img src=\"{{ asset('assets/img/projects/phase10/background_phase10.png') }}\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#interactive-book\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">{{ 'next_project'|trans }} </span>
+                        <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                               <img src=\"{{ asset('assets/img/projects/phase10/icon_phase10.png') }}\"
+                                    alt=\"icon game phase 10\">
+                            <div class=\"textOverlay\">
+                                <p class=\"midMiddleBaseSize\">{{ 'phase10.title'|trans }}</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">{{ 'phase10.title'|trans }}</p>
+                    <p class=\"descriptionProject smallBaseSize\">{{ 'phase10.description'|trans }}.</p>
+                    <a href=\"{{ path('project_phase10') }}\" class=\"buttonProject hoverA smallBaseSize\">{{ 'view_project'|trans }}</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"interactive-book\" class=\"projectWrapper\">
+            <img src=\"{{ asset('assets/img/projects/interactive_book/background_interactive_book.png') }}\"
+                 alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#spotify\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">{{ 'next_project'|trans }}</span>
+                        <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                             <img src=\"{{ asset('assets/img/projects/interactive_book/icon_interactive_book.png') }}\"
+                                  alt=\"interactive book icon\">
+                            <div class=\"textOverlay\">
+                                <p class=\"midMiddleBaseSize\">{{ 'interactive_book.title'|trans }}</p>
+                            </div>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">{{ 'interactive_book.title'|trans }}</p>
+                    <p class=\"descriptionProject smallBaseSize\">{{ 'interactive_book.description'|trans }}</p>
+                    <a href=\"{{ path('project_interactive_book') }}\" class=\"buttonProject hoverA smallBaseSize\">{{ 'view_project'|trans }}</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"spotify\" class=\"projectWrapper\">
+            <img src=\"{{ asset('assets/img/projects/spotify/background_spotify.png') }}\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#aloas\" class=\"smallBaseSize arrowMore projectNext\">
+                        <span class=\"smallBaseSize\">{{ 'next_project'|trans }}</span>
+                        <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                             <img src=\"{{ asset('assets/img/projects/spotify/icon_spotify.png') }}\"
+                                  alt=\"interactive book icon\">
+                            <span class=\"textOverlay\">
+                                <span class=\"midMiddleBaseSize\">{{ 'spotify.title'|trans }}</span>
+                            </span>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">{{ 'spotify.title'|trans }}</p>
+                    <p class=\"descriptionProject smallBaseSize\">{{ 'spotify.description'|trans }}</p>
+                    <a href=\"{{ path('project_spotify') }}\" class=\"buttonProject hoverA smallBaseSize\">{{ 'view_project'|trans }}</a>
+                </div>
+            </div>
+        </div>
+        <div id=\"aloas\" class=\"projectWrapper\">
+            <img src=\"{{ asset('assets/img/projects/aloas/background_aloas.png') }}\" alt=\"Centered Image\"
+                 class=\"centeredImage blurDarker\">
+            <div class=\"project\">
+                <div class=\"leftSide\">
+                    <a href=\"#works\" class=\"smallBaseSize arrowMore projectNext reverseArrow\">
+                        <img src=\"{{ asset('assets/svg/arrow.svg') }}\" alt=\"arrow\">
+                        <span class=\"smallBaseSize\">{{ 'back_to_works'|trans }}</span>
+                    </a>
+                </div>
+                <div class=\"middleSide\">
+                    <div class=\"pre-container css-only\">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <pre contenteditable class=\"language-css\" tabindex=\"0\">
+                             <img src=\"{{ asset('assets/img/projects/aloas/icon_aloas.png') }}\"
+                                  alt=\"interactive book icon\">
+                            <span class=\"textOverlay\">
+                                <span class=\"midMiddleBaseSize\">{{ 'aloas.title'|trans }}</span>
+                            </span>
+                        </pre>
+                    </div>
+                </div>
+                <div class=\"rightSide\">
+                    <p class=\"midMiddleBaseSize title\">{{ 'aloas.title'|trans }}</p>
+                    <p class=\"descriptionProject smallBaseSize\">{{ 'aloas.description'|trans }}</p>
+                    <a href=\"{{ path('project_aloas') }}\" class=\"buttonProject hoverA smallBaseSize\" target=\"_blank\">{{ 'view_project'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class=\"sectionEnd\">
+        <div class=\"wrapper flex align-center flex-column\">
+            <p class=\"descriptionWho textBaseSize colorLightGray\">{{ 'reach_end'|trans }}</p>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ importmap('background_js') }}
+    {{ importmap('particles_js') }}
+    <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
+    <script src=\"https://cdn.jsdelivr.net/npm/particles.js\"></script>
+    {{ parent() }}
+{% endblock %}", "index.html.twig", "/home/ubuntu/Projects/portfolio/templates/index.html.twig");
+    }
+}
