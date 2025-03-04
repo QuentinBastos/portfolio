@@ -56,9 +56,8 @@ DirectoryIndex public/index.php
     RewriteCond %{ENV:REDIRECT_STATUS} =""
     RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/public/$1 [R=301,L]
 
-    # Fallback to index.php for other requests
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteRule ^ %{ENV:BASE}/public/index.php [L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
