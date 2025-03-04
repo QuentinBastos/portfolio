@@ -28,8 +28,8 @@ DirectoryIndex public/index.php
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^ - [L]
 
-    # Serve images, CSS, and JavaScript files directly
-    RewriteCond %{REQUEST_URI} \.(gif|jpg|jpeg|png|css|js|mp4|svg)$ [NC]
+    # Serve images, CSS, and JavaScript files directly from /assets
+    RewriteCond %{REQUEST_URI} ^/assets/.*\.(gif|jpg|jpeg|png|css|js|mp4|svg)$ [NC]
     RewriteRule ^ - [L]
 
     # Determine the RewriteBase automatically and set it as environment variable.
