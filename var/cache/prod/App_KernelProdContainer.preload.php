@@ -598,8 +598,3 @@ $classes[] = 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableCompiledUrl
 $classes[] = 'Symfony\\Component\\Validator\\Mapping\\ClassMetadata';
 $classes[] = 'Symfony\\Component\\Form\\Extension\\Validator\\Constraints\\Form';
 $preloaded = Preloader::preload($classes, $preloaded);
-
-$classes = [];
-$classes[] = 'Symfony\\Component\\Validator\\Mapping\\ClassMetadata';
-$classes[] = 'Symfony\\Component\\Form\\Extension\\Validator\\Constraints\\Form';
-$preloaded = Preloader::preload($classes, $preloaded);
