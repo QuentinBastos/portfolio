@@ -7,10 +7,10 @@
                 <h1 class="middleBaseSize">{{ "chess.title"|trans }}</h1>
             </div>
             <div class="wrapperVideo">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/C0DPdy98e4c?si=hrVjMjvVi8ekfXRu"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <video class="video" controls>
+                    <source src="{{ asset('assets/video/chess.mp4') }}" type="video/mp4">
+                    {{ "video.not_supported"|trans }}
+                </video>
             </div>
             <div class="wrapperInformation">
                 <div class="wrapperDescription">
