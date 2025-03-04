@@ -109,7 +109,7 @@ class __TwigTemplate_9f229608921c7ab62b8963ff18b92074 extends Template
                                 <span class=\"flex align-center smallBaseSize\">Twig</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"/assets/img/icon/scss.png\" alt=\"sass\">
+                                <img class=\"icon\" src=\"/public/assets/img/icon/scss.png\" alt=\"sass\">
                                 <span class=\"flex align-center smallBaseSize\">SASS</span>
                             </div>
                         </div>
