@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM fully loaded and parsed");
-    // Your JavaScript functionality here
 });
 
 document.querySelectorAll('[data-toggle="refresh"]').forEach(function(element) {

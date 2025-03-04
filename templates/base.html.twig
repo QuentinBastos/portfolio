@@ -6,13 +6,19 @@
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
     {% block stylesheets %}
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/loader.css">
+        <link rel="stylesheet" href="/assets/css/background.css">
+        <link rel="stylesheet" href="/assets/css/basic-rule.css">
+        <link rel="stylesheet" href="/assets/css/card.css">
+        <link rel="stylesheet" href="/assets/css/particles.css">
+        <link rel="stylesheet" href="/assets/css/about.css">
+        <link rel="stylesheet" href="/assets/css/project-view.css">
     {% endblock %}
 
     {% block javascripts %}
-        {% block importmap %}
-            {{ importmap('app') }}
-            {{ importmap('loader_js') }}
-        {% endblock %}
+        <script src="/assets/js/language.js"></script>
+        <script src="/assets/js/loader.js"></script>
     {% endblock %}
 </head>
 <body>
