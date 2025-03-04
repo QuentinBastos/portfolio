@@ -96,32 +96,20 @@ class __TwigTemplate_9f229608921c7ab62b8963ff18b92074 extends Template
         yield "</h2>
                         <div class=\"flex flex-wrap justify-center\">
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"";
-        // line 25
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/tailwinds.png"), "html", null, true);
-        yield "\"
+                                <img class=\"icon\" src=\"/assets/img/icon/tailwinds.png\"
                                      alt=\"tailwinds\">
                                 <span class=\"flex align-center smallBaseSize\">Tailwinds</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"";
-        // line 30
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/dark-symfony.png"), "html", null, true);
-        yield "\" alt=\"symfony\">
+                                <img class=\"icon\" src=\"/assets/img/icon/dark-symfony.png\" alt=\"symfony\">
                                 <span class=\"flex align-center smallBaseSize\">Symfony</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"";
-        // line 34
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/twig.png"), "html", null, true);
-        yield "\" alt=\"twig\">
+                                <img class=\"icon\" src=\"/assets/img/icon/twig.png\" alt=\"twig\">
                                 <span class=\"flex align-center smallBaseSize\">Twig</span>
                             </div>
                             <div class=\"language\">
-                                <img class=\"icon\" src=\"";
-        // line 38
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/scss.png"), "html", null, true);
-        yield "\" alt=\"sass\">
+                                <img class=\"icon\" src=\"/assets/img/icon/scss.png\" alt=\"sass\">
                                 <span class=\"flex align-center smallBaseSize\">SASS</span>
                             </div>
                         </div>
@@ -185,7 +173,7 @@ class __TwigTemplate_9f229608921c7ab62b8963ff18b92074 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  160 => 54,  153 => 53,  145 => 50,  138 => 49,  123 => 38,  116 => 34,  109 => 30,  101 => 25,  95 => 22,  87 => 17,  83 => 16,  75 => 11,  68 => 7,  63 => 4,  60 => 3,  53 => 2,  42 => 1,);
+        return array (  148 => 54,  141 => 53,  133 => 50,  126 => 49,  95 => 22,  87 => 17,  83 => 16,  75 => 11,  68 => 7,  63 => 4,  60 => 3,  53 => 2,  42 => 1,);
     }
 
     public function getSourceContext(): Source
