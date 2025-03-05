@@ -1,41 +1,20 @@
 # Activer la réécriture d'URL
-<IfModule mod_rewrite.c>
-    RewriteEngine On
+RewriteEngine On
 
-    # Autoriser l'accès direct aux fichiers existants (CSS, JS, images...)
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
+# Autoriser l'accès direct aux fichiers existants (CSS, JS, images...)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-    # Rediriger toutes les autres requêtes vers index.php (Symfony)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ index.php [QSA,L]
-</IfModule>
+# Rediriger toutes les autres requêtes vers index.php (Symfony)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
 
-# Corriger le problème des fichiers statiques sur OVH
-<IfModule mod_headers.c>
-    # Activer la compression Gzip pour les fichiers statiques
-    <FilesMatch "\.(css|js|html|svg|ttf|woff|woff2|otf|eot|ico|png|jpg|jpeg|gif)$">
-        Header set Cache-Control "max-age=31536000, public"
-    </FilesMatch>
-</IfModule>
-
-# Définir l'encodage UTF-8
-AddDefaultCharset UTF-8
-
-# Désactiver l'affichage des erreurs PHP sur OVH
+# Désactiver l'affichage des erreurs PHP en production
 php_flag display_errors Off
 php_flag log_errors On
 
-# Augmenter la mémoire PHP si besoin
-php_value memory_limit 256M
-
-# Empêcher l'accès aux fichiers sensibles
-<FilesMatch "(composer\.json|composer\.lock|.env|.htaccess)">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
 
 # Désactiver l'indexation des fichiers
 Options -Indexes
