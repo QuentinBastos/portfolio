@@ -1,4 +1,5 @@
 {% extends "base.html.twig" %}
+{% block title2 %} - {{ "welcome"|trans }}{% endblock %}
 {% block body %}
     <canvas id="projector"></canvas>
     {% include "header.html.twig" %}
@@ -73,7 +74,8 @@
                 <div class="rightSide">
                     <p class="midMiddleBaseSize title">{{ 'chess.title'|trans }}</p>
                     <p class="descriptionProject smallBaseSize">{{ 'chess.description'|trans }}</p>
-                    <a href="{{ path('project_chess') }}" class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
+                    <a href="{{ path('project_chess') }}"
+                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -110,7 +112,8 @@
                 <div class="rightSide">
                     <p class="midMiddleBaseSize title">{{ 'phase10.title'|trans }}</p>
                     <p class="descriptionProject smallBaseSize">{{ 'phase10.description'|trans }}.</p>
-                    <a href="{{ path('project_phase10') }}" class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
+                    <a href="{{ path('project_phase10') }}"
+                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -148,7 +151,8 @@
                 <div class="rightSide">
                     <p class="midMiddleBaseSize title">{{ 'interactive_book.title'|trans }}</p>
                     <p class="descriptionProject smallBaseSize">{{ 'interactive_book.description'|trans }}</p>
-                    <a href="{{ path('project_interactive_book') }}" class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
+                    <a href="{{ path('project_interactive_book') }}"
+                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -185,7 +189,8 @@
                 <div class="rightSide">
                     <p class="midMiddleBaseSize title">{{ 'spotify.title'|trans }}</p>
                     <p class="descriptionProject smallBaseSize">{{ 'spotify.description'|trans }}</p>
-                    <a href="{{ path('project_spotify') }}" class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
+                    <a href="{{ path('project_spotify') }}"
+                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
@@ -222,7 +227,8 @@
                 <div class="rightSide">
                     <p class="midMiddleBaseSize title">{{ 'aloas.title'|trans }}</p>
                     <p class="descriptionProject smallBaseSize">{{ 'aloas.description'|trans }}</p>
-                    <a href="{{ path('project_aloas') }}" class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
+                    <a href="{{ path('project_aloas') }}"
+                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>

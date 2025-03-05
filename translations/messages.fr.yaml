@@ -19,9 +19,17 @@ back_home: "Retour à l'accueil"
 reach_end: "🚀 Félicitations, vous avez atteint la fin de la page ! Vous voulez voir plus de projets ? 🚀"
 languages: "Langages"
 description: "Description"
+portfolio: "Portfolio"
+welcome: "Bienvenue"
+
 video:
   soon: "Une vidéo sera bientôt disponible ⏰"
   not_supported: "Votre navigateur ne prend pas en charge la balise vidéo."
+
+nav:
+  works: "Projets"
+  about: "À propos"
+  contact: "Contact"
 
 chess:
   title: "ChessJS"

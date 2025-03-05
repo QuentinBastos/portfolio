@@ -24,9 +24,17 @@ back_home: "Back home"
 reach_end: "🚀 Congratulations, you reach the end of the page ! Wanna see more projects ? 🚀"
 languages: "Languages"
 description: "Description"
+portfolio: "Portfolio"
+welcome: "Welcome"
+
 video:
   soon: "Video coming soon ⏰"
   not_supported: "Your browser does not support the video tag."
+
+nav:
+  works: "Works"
+  about: "About"
+  contact: "Contact"
 
 chess:
   title: "ChessJS"

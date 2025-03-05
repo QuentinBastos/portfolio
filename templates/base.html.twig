@@ -2,8 +2,8 @@
 <html lang="">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="{{ asset('assets/img/contact/qb.png') }}" type="image/png">
+    <title>{% block title %{{ "portfolio"|trans }}{% endblock %}{% block title2 %}{% endblock %}</title>
+    <link rel="icon" href="{{ asset('assets/img/contact/qb.png') }}">
     {% block stylesheets %}
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/loader.css">
