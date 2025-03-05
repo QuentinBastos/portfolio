@@ -72,10 +72,7 @@ class __TwigTemplate_5a95eeba7fec808d1a1786b8c43a7d0c extends Template
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("change_language", ["language" => "en"]);
             yield "\" class=\"flex\" data-toggle=\"refresh\">
-                        <img class=\"flagCountry\" src=\"";
-            // line 10
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/uk.svg"), "html", null, true);
-            yield "\" alt=\"flag\">
+                        <img class=\"flagCountry\" src=\"/public/assets/svg/uk.svg\" alt=\"flag\">
                     </a>
                 ";
         } else {
@@ -119,7 +116,7 @@ class __TwigTemplate_5a95eeba7fec808d1a1786b8c43a7d0c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  94 => 17,  88 => 14,  83 => 13,  77 => 10,  72 => 9,  70 => 8,  64 => 7,  52 => 6,  47 => 4,  42 => 1,);
+        return array (  91 => 17,  85 => 14,  80 => 13,  72 => 9,  70 => 8,  64 => 7,  52 => 6,  47 => 4,  42 => 1,);
     }
 
     public function getSourceContext(): Source
