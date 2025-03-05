@@ -26,6 +26,9 @@ video:
   soon: "Une vidéo sera bientôt disponible ⏰"
   not_supported: "Votre navigateur ne prend pas en charge la balise vidéo."
 
+
+default:
+  meta_description: "Portfolio de Quentin, un développeur web fullstack passionné par la création d'interfaces utilisateur esthétiques, fonctionnelles et conviviales."
 nav:
   works: "Projets"
   about: "À propos"
