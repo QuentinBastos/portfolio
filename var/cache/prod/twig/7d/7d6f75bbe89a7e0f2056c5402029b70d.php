@@ -34,6 +34,7 @@ class __TwigTemplate_e648af4a75895327b5b17f49ba3ee0ad extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'title2' => [$this, 'block_title2'],
+            'meta_description' => [$this, 'block_meta_description'],
             'stylesheets' => [$this, 'block_stylesheets'],
             'javascripts' => [$this, 'block_javascripts'],
             'body' => [$this, 'block_body'],
@@ -57,22 +58,26 @@ class __TwigTemplate_e648af4a75895327b5b17f49ba3ee0ad extends Template
         // line 6
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/contact/qb.png"), "html", null, true);
         yield "\">
-    ";
+    <meta name=\"description\" content=\"";
         // line 7
+        yield from $this->unwrap()->yieldBlock('meta_description', $context, $blocks);
+        yield "\">
+    ";
+        // line 8
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 17
+        // line 18
         yield "
     ";
-        // line 18
+        // line 19
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 22
+        // line 23
         yield "</head>
 <body>
 <div id=\"loader\" class=\"loader\"></div>
 ";
-        // line 25
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 26
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 27
         yield "</body>
 </html>
 ";
@@ -103,10 +108,21 @@ class __TwigTemplate_e648af4a75895327b5b17f49ba3ee0ad extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
+    public function block_meta_description(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("default.meta_description"), "html", null, true);
+        yield from [];
+    }
+
+    // line 8
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 8
+        // line 9
         yield "        <link rel=\"stylesheet\" href=\"/assets/css/style.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/loader.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/background.css\">
@@ -119,21 +135,21 @@ class __TwigTemplate_e648af4a75895327b5b17f49ba3ee0ad extends Template
         yield from [];
     }
 
-    // line 18
+    // line 19
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 19
+        // line 20
         yield "        <script src=\"/assets/js/language.js\"></script>
         <script src=\"/assets/js/loader.js\"></script>
     ";
         yield from [];
     }
 
-    // line 25
+    // line 26
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -164,7 +180,7 @@ class __TwigTemplate_e648af4a75895327b5b17f49ba3ee0ad extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  137 => 25,  130 => 19,  123 => 18,  110 => 8,  103 => 7,  83 => 5,  76 => 26,  74 => 25,  69 => 22,  67 => 18,  64 => 17,  62 => 7,  58 => 6,  53 => 5,  47 => 1,);
+        return array (  153 => 26,  146 => 20,  139 => 19,  126 => 9,  119 => 8,  108 => 7,  88 => 5,  81 => 27,  79 => 26,  74 => 23,  72 => 19,  69 => 18,  67 => 8,  63 => 7,  59 => 6,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext(): Source
