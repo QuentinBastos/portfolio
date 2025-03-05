@@ -2,10 +2,14 @@
 framework:
     secret: '%env(APP_SECRET)%'
     default_locale: en
+    asset_mapper: false
     # Note that the session will be started ONLY if you read or write from it.
     session: true
     assets:
         base_path: '/'
+        packages:
+            app:
+                base_path: '/assets'
 
     #esi: true
     #fragments: true

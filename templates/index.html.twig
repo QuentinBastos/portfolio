@@ -222,21 +222,17 @@
                 <div class="rightSide">
                     <p class="midMiddleBaseSize title">{{ 'aloas.title'|trans }}</p>
                     <p class="descriptionProject smallBaseSize">{{ 'aloas.description'|trans }}</p>
-                    <a href="{{ path('project_aloas') }}" class="buttonProject hoverA smallBaseSize" target="_blank">{{ 'view_project'|trans }}</a>
+                    <a href="{{ path('project_aloas') }}" class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="sectionEnd">
-        <div class="wrapper flex align-center flex-column">
-            <p class="descriptionWho textBaseSize colorLightGray">{{ 'reach_end'|trans }}</p>
-        </div>
-    </section>
+    <div style="height: 1px; width: 100%; margin: 0; padding: 0; overflow: hidden;"></div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="/assets/js/background.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="/assets/js/particles.js"></script>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
