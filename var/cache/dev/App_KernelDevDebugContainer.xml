@@ -1704,12 +1704,6 @@
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
     </service>
-    <service id="assets._package_app" class="Symfony\Component\Asset\PathPackage">
-      <tag name="assets.package" package="app"/>
-      <argument>/assets</argument>
-      <argument type="service" id="assets.empty_version_strategy"/>
-      <argument type="service" id="assets.context"/>
-    </service>
     <service id="http_client.transport" class="Symfony\Contracts\HttpClient\HttpClientInterface">
       <tag name="monolog.logger" channel="http_client"/>
       <tag name="kernel.reset" method="reset" on_invalid="ignore"/>
@@ -9519,8 +9513,6 @@
     <service id="Symfony\Contracts\Cache\TagAwareCacheInterface" alias="cache.app.taggable"/>
     <service id="Symfony\Contracts\Translation\TranslatorInterface" alias="translator.data_collector"/>
     <service id="Symfony\Component\Asset\Packages" alias="assets.packages"/>
-    <service id=".Symfony\Component\Asset\PackageInterface $app.package" alias="assets._package_app"/>
-    <service id="Symfony\Component\Asset\PackageInterface $appPackage" alias="assets._package_app"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias=".debug.http_client"/>
     <service id="mailer" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>

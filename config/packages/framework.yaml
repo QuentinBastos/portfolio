@@ -6,10 +6,7 @@ framework:
     # Note that the session will be started ONLY if you read or write from it.
     session: true
     assets:
-        base_path: '/'
-        packages:
-            app:
-                base_path: '/assets'
+        base_path: "/"
 
     #esi: true
     #fragments: true

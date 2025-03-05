@@ -24,14 +24,6 @@ DirectoryIndex public/index.php
 
     RewriteEngine On
 
-    # Serve static files directly
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ - [L]
-
-    # Serve images, CSS, and JavaScript files directly from /assets
-    RewriteCond %{REQUEST_URI} ^/assets/.*\.(gif|jpg|jpeg|png|css|js|mp4|svg)$ [NC]
-    RewriteRule ^ - [L]
-
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
     # project in a subdirectory, the base path will be prepended to allow proper
@@ -60,11 +52,9 @@ DirectoryIndex public/index.php
     RewriteCond %{ENV:REDIRECT_STATUS} =""
     RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/public/$1 [R=301,L]
 
-    # If the requested filename exists, simply serve it.
-    # We only want to let Apache serve files and not directories.
-    # Rewrite all other queries to the front controller.
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ %{ENV:BASE}/public/index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [QSA,L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
