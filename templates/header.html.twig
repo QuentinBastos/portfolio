@@ -7,7 +7,7 @@
                 <a href="{{ path('about') }}" class="textBaseSize hoverA">{{ 'about'|trans }}</a>
                 {% if app.session.get('_locale') == 'fr' %}
                     <a href="{{ path('change_language', {'language': 'en'}) }}" class="flex" data-toggle="refresh">
-                        <img class="flagCountry" src="/public/assets/svg/uk.svg" alt="flag">
+                        <img class="flagCountry" src="{{ asset('assets/svg/uk.svg') }}" alt="flag">
                     </a>
                 {% else %}
                     <a href="{{ path('change_language', {'language': 'fr'}) }}" class="flex" data-toggle="refresh">
