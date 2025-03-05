@@ -18,3 +18,5 @@ Options -Indexes
     RewriteCond %{HTTP:Authorization} .+
     RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
 </IfModule>
+
+Options -Indexes
