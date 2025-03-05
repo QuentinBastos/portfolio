@@ -14,7 +14,6 @@ html, body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191d1e', endColorstr='#283139', GradientType=1); /* IE6-9 fallback on horizontal gradient */
     background-attachment: fixed;
     scroll-behavior: smooth;
-    overscroll-behavior: none; /* Empêche le défilement au-delà des limites */
     color: #ffffff;
 
     /* Add font */
@@ -277,8 +276,7 @@ nav > ul > li {
     position: sticky;
     top: 0;
     z-index: 1;
-    min-height: 100vh;
-    height: auto;
+    height: 100vh; /* Full viewport height */
     display: flex;
     justify-content: center;
 }
@@ -314,9 +312,8 @@ nav > ul > li {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 33.33%;
-    min-height: 100vh;
-    height: auto;
+    width: 33.33%; /* Adjust as needed */
+    height: 100vh; /* Full viewport height */
     z-index: 1;
     float: left;
 }
@@ -353,8 +350,7 @@ nav > ul > li {
     justify-content: center;
     z-index: 1;
     width: 33%;
-    min-height: 100vh;
-    height: auto;
+    height: 100vh
 }
 
 .descriptionProject {
