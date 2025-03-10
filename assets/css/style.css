@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+
+/* Background */
+html, body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    background: #191d1e; /* Old browsers */
+    background: -moz-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* IE10+ */
+    background: linear-gradient(0deg, #191d1e 50%, #283139 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191d1e', endColorstr='#283139', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    overscroll-behavior: none; /* Empêche le défilement au-delà des limites */
+    color: #ffffff;
+
+    /* Add font */
+    font-family: "Geologica", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 0;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+}
+
+main, .sectionSkill, .sectionContact {
+    height: 100vh; /* 100% of the viewport height */
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sectionEnd {
+    position: relative;
+    height: 10vh;
+    max-width: 1440px;
+    margin: 2rem auto;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    height: 5.5rem;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0;
+    margin: 1rem 8% 0 8%;
+}
+
+nav > ul > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoQb {
+    width: 4rem;
+    height: 4rem;
+    transition: transform 0.3s;
+}
+
+.logoQb:hover {
+    transform: scale(1.05);
+}
+
+.flagCountry {
+    width: 3rem;
+    height: 3rem;
+    transition: transform 0.3s;
+}
+
+.flagCountry:hover {
+    transform: scale(1.05);
+}
+
+.rightMenu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+.wrapper {
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: start;
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: 1;
+}
+
+.description {
+    text-transform: uppercase;
+    text-align: start;
+    font-weight: 400;
+    letter-spacing: -.025em;
+    line-height: 1;
+    margin: 3rem 0 0 0;
+}
+
+.wrapperButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 11rem;
+}
+
+.leftButton, .rightButton {
+    font-size: 1.5rem;
+    position: relative;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.textButton {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.more {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.arrowMore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrowDirection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 0;
+}
+.reverseArrow > img {
+    rotate: 180deg;
+}
+
+.arrowMore > span {
+
+}
+
+.arrowMore > img {
+    width: 2rem;
+    height: 2rem;
+}
+
+@keyframes moveArrow {
+    0%, 100% {
+        transform: translateX(-1px) rotate(-2deg);
+    }
+    50% {
+        transform: translateX(1px) rotate(2deg);
+    }
+}
+.arrowMore img {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.arrowMore:hover img {
+    animation: moveArrow 0.5s ease-in-out infinite;
+}
+
+
+@keyframes rotateSpan {
+    0%, 100% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+.arrowMore span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.arrowMore:hover span {
+    animation: rotateSpan 0.5s ease-in-out infinite;
+}
+
+.iconBackground {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100px;
+}
+
+.sectionWho {
+    height: 100vh;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titleWho {
+    margin: 0;
+    text-transform: none !important;
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: 1;
+    text-align: center;
+}
+
+.descriptionWho {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-weight: 400;
+    letter-spacing: -.025em;
+    line-height: 1;
+    margin: 1rem 0;
+}
+
+.aboutWho {
+    font-weight: 400;
+    letter-spacing: -.025em;
+    line-height: 1;
+}
+
+.projectWrapper {
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+}
+
+.projectWrapper > img {
+    filter: brightness(0.3) blur(4px);
+    clip-path: inset(0);
+}
+
+.stickyTitle  {
+    margin-bottom: 30%;
+}
+
+.sectionWorks {
+    height: 100%;
+}
+
+.sectionWorks .stickyTitle {
+    position: sticky;
+    top: 60px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.centeredImage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.leftSide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 33.33%; /* Adjust as needed */
+    height: 100vh; /* Full viewport height */
+    z-index: 1;
+    float: left;
+}
+
+.middleSide {
+    width: min(85vw, 500px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    transform: perspective(1000px);
+}
+
+.middleSide img {
+    display: flex;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    border: #000000 3px solid;
+    border-radius: 5px;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 1;
+    width: 33%;
+    height: 100vh;
+}
+
+.descriptionProject {
+    padding: 0 3rem 0 0;
+}
+
+.project {
+    display: flex;
+    width: 100%;
+}
+
+
+.textOverlay {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.textOverlay p {
+    width: 100%;
+    margin: 0;
+}
+
+.build {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.build > * {
+    margin: 0 0 2rem 0;
+}
+
+.build > img {
+    width: 10rem;
+    height: 10rem;
+}
+
+@media (max-width: 1024px) {
+    .project {
+        flex-direction: column-reverse;
+    }
+
+    .rightSide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40%;
+    }
+
+    .middleSide {
+        width: 100%;
+        height: 20%;
+    }
+
+    .leftSide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40%;
+    }
+
+    .descriptionProject {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 2rem;
+    }
+}
