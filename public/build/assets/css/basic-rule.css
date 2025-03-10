@@ -33,22 +33,27 @@
 /* End scrollbar */
 
 .smallBaseSize {
+    word-break: break-word;
     font-size: clamp(0.4rem, 0.1rem + 7vw, 1rem);
 }
 
 .textBaseSize {
+    word-break: break-word;
     font-size: clamp(1rem, .929rem + 7vw, 1.25rem);
 }
 
 .midMiddleBaseSize {
+    word-break: break-word;
     font-size: clamp(1rem, 0.3rem + 2vw, 3rem);
 }
 
 .middleBaseSize {
+    word-break: break-word;
     font-size: clamp(2rem, .5rem + 7vw, 7rem);
 }
 
 .titleBaseSize {
+    word-break: break-word;
     font-size: clamp(2.5rem, .714rem + 8.93vw, 8.75rem);
 }
 

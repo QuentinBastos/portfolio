@@ -6,8 +6,12 @@ pre {
     transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
 }
 
-pre > * {
-    text-shadow: 0 0 0.3em currentColor;
+pre {
+    overflow: hidden;
+}
+
+pre > span > span {
+    font-weight: bold;
 }
 
 pre::before,
