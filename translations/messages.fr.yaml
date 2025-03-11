@@ -23,6 +23,7 @@ languages: "Langages"
 description: "Description"
 portfolio: "Portfolio"
 welcome: "Bienvenue"
+my_works: "Mes tâches"
 
 video:
   soon: "Une vidéo sera bientôt disponible ⏰"
@@ -40,25 +41,31 @@ chess:
   title: "ChessJS"
   description: "Un jeu d'échecs réalisé avec Javascript."
   long_description: "ChessJS est un jeu d'échecs complet développé avec Typescript et NodeJS. Il offre une expérience interactive et fluide pour les débutants comme pour les joueurs avancés. Le jeu inclut des fonctionnalités telles que la validation des coups et l'historique des parties. L'interface propre et intuitive assure une expérience utilisateur agréable, tandis que le backend robuste garantit un gameplay fluide et efficace. Si vous voulez défier un ami, ChessJS fournit une plateforme complète pour tous vos besoins en matière d'échecs."
+  works: "Dans ce projet, nous étions deux. J'ai travaillé sur le backend et mon collègue a travaillé sur le frontend. J'ai fait l'algorithme pour le jeu d'échecs et la validation des coups. Ce fut une excellente expérience de faire un jeu d'échecs, qui est l'un de mes passe-temps."
 
 phase10:
   title: "Phase 10"
   description: "Un jeu Phase 10 réalisé avec Angular."
   long_description: "Phase 10 est un jeu de cartes qui se joue avec un jeu de cartes standard. Le jeu se compose de dix phases, chacune avec un ensemble unique de conditions. Les joueurs doivent compléter chaque phase avant de passer à la suivante. Le jeu est gagné par le premier joueur à compléter les dix phases. Phase 10 est un jeu amusant et stimulant qui nécessite de la stratégie, des compétences et un peu de chance. Le jeu est facile à apprendre mais difficile à maîtriser, ce qui en fait un excellent choix pour les joueurs de tous niveaux. Le site utilise socket.io, vous pouvez donc jouer avec vos amis en temps réel."
+  works: "Dans ce projet, nous étions quatre. J'ai travaillé sur le frontend. Nous avons utilisé Angular pour créer le frontend et NodeJS pour le backend. Nous avons utilisé socket.io pour créer un jeu multijoueur en temps réel. Ce fut une excellente expérience de travailler sur un projet qui combine stratégie, compétence et amusement. (C'était aussi amusant de jouer au jeu pendant le processus de développement 😄)"
 
 interactive_book:
   title: "Livre interactif"
   description: "Un site web conçu pour créer votre propre livre interactif et le partager avec les autres."
   long_description: "Livre Interactif est un site web qui permet aux utilisateurs de créer et de partager leurs propres livres interactifs. Les utilisateurs peuvent ajouter du texte, des images et des liens pour créer une expérience de lecture unique et engageante. Le site propose une interface conviviale qui facilite la création et l'édition des livres. Les utilisateurs peuvent également partager leurs livres avec d'autres, leur permettant de lire et d'interagir avec le contenu. Livre Interactif est un moyen amusant et créatif de partager des histoires, des idées et des informations avec les autres. Vous pouvez également utiliser l'IA générative pour créer votre propre histoire en lui donnant quelques mots."
+  works: "Dans ce projet, nous étions deux. J'ai travaillé sur le backend et mon collègue a travaillé sur le frontend. Nous avons utilisé Symfony pour créer le backend et Twig pour le frontend. Nous avons utilisé Docker pour containeriser l'application. J'ai intégré l'API OpenAI pour générer des histoires. Ce fut un plaisir de travailler sur un projet qui combine créativité et technologie."
 
 spotify:
   title: "SpotifySong"
   description: "Un site web qui utilise l'API Spotify pour obtenir des informations sur une chanson. Vous pouvez enregistrer, écouter, partager et plus encore."
   long_description: "SpotifySong est un site web qui permet aux utilisateurs de rechercher et d'écouter des chansons en utilisant l'API Spotify. Les utilisateurs peuvent rechercher des chansons par titre, artiste ou album, et les écouter directement sur le site. Le site fournit également des informations sur la chanson, telles que l'artiste, l'album et la date de sortie. Les utilisateurs peuvent enregistrer des chansons dans leur bibliothèque, créer des playlists et partager des chansons avec d'autres. SpotifySong est un moyen pratique et convivial de découvrir de nouvelles musiques et de profiter de vos chansons préférées."
+  works: "Dans ce projet, j'ai été seul. J'ai utilisé l'API Spotify pour obtenir des informations sur les chansons et les artistes. J'ai également utilisé mysql pour stocker les données utilisateur et les playlists. Ce projet m'a permis de développer mes compétences en intégration d'API et en gestion de données."
 
 aloas:
-    title: "Aloas"
-    description: "Un site web (mis en ligne) créé une association pour aider les créateurs de tournois à gérer les tournois pour les personnes handicapées."
+  title: "Aloas"
+  description: "Un site web (mis en ligne) créé une association pour aider les créateurs de tournois à gérer les tournois pour les personnes handicapées."
+  long_description: "Aloas est un site web conçu pour aider les organisateurs de tournois à gérer des tournois pour les personnes handicapées. Le site fournit des outils pour créer et gérer des tournois, y compris l'inscription, la planification, le chronométrage et le scoring. Les organisateurs peuvent créer des formats de tournois personnalisés, configurer des équipes et suivre les résultats. Le site comprend également des fonctionnalités pour communiquer avec les participants, partager des mises à jour et promouvoir des événements. Aloas est une plateforme conviviale et accessible qui facilite l'organisation et la gestion des tournois pour les personnes handicapées."
+  works: "Dans ce projet, j'ai travaillé sur le frontend et le backend. J'ai eu un rôle de chef de projet et j'étais en charge du déploiement. J'ai utilisé pour la première fois OVH pour héberger le site web. J'ai également utilisé Render.com pour héberger le conteneur Docker. J'ai utilisé GitLab CI/CD pour automatiser le processus de déploiement. Ce fut une excellente expérience de travailler sur un projet qui a un réel impact sur la vie des gens."
 
 about_page:
   title: "Je suis un développeur web fullstack"

@@ -150,20 +150,32 @@ class __TwigTemplate_f7027111b4495a614e814bbcddd44bdd extends Template
                     </div>
                 </div>
             </div>
+            <div class=\"wrapperDescription flex-column mt-2\">
+                <h2 class=\"midMiddleBaseSize\">";
+        // line 50
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("my_works"), "html", null, true);
+        yield "</h2>
+                <div class=\"flex flex-wrap justify-center\">
+                    ";
+        // line 52
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.works"), "html", null, true);
+        yield "
+                </div>
+            </div>
         </div>
     </section>
 ";
         yield from [];
     }
 
-    // line 53
+    // line 59
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 54
+        // line 60
         yield "    ";
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
@@ -171,14 +183,14 @@ class __TwigTemplate_f7027111b4495a614e814bbcddd44bdd extends Template
         yield from [];
     }
 
-    // line 57
+    // line 63
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 58
+        // line 64
         yield "    ";
         yield from $this->yieldParentBlock("stylesheets", $context, $blocks);
         yield "
@@ -207,7 +219,7 @@ class __TwigTemplate_f7027111b4495a614e814bbcddd44bdd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  182 => 58,  175 => 57,  167 => 54,  160 => 53,  145 => 42,  138 => 38,  130 => 33,  123 => 29,  117 => 26,  109 => 21,  105 => 20,  96 => 14,  92 => 13,  86 => 10,  81 => 8,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
+        return array (  194 => 64,  187 => 63,  179 => 60,  172 => 59,  161 => 52,  156 => 50,  145 => 42,  138 => 38,  130 => 33,  123 => 29,  117 => 26,  109 => 21,  105 => 20,  96 => 14,  92 => 13,  86 => 10,  81 => 8,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
     }
 
     public function getSourceContext(): Source
