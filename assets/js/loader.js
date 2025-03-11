@@ -1,5 +1,7 @@
-/* document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM fully loaded sand parsed");
     const loader = document.getElementById('loader');
+    console.log(loader);
     const counter = document.createElement('div');
     counter.id = 'counter';
     counter.style.fontSize = '2em';
@@ -7,6 +9,7 @@
     loader.appendChild(counter);
 
     if (loader) {
+        console.log("if loader");
         loader.style.display = 'flex'; // Set the loader to display flex when the page loads
         let count = 0;
         const interval = setInterval(function() {
@@ -18,4 +21,4 @@
             }
         }, 10); // Adjust the interval time as needed
     }
-}); */
+});

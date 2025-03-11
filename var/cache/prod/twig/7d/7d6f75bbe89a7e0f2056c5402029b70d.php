@@ -46,7 +46,7 @@ class __TwigTemplate_e648af4a75895327b5b17f49ba3ee0ad extends Template
         $macros = $this->macros;
         // line 1
         yield "<!DOCTYPE html>
-<html lang=\"\">
+<html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
     <title>";

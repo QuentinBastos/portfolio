@@ -52,7 +52,7 @@ class __TwigTemplate_842ff05ed919c760fab8bbf1c57e39fa extends Template
 
         // line 1
         yield "<!DOCTYPE html>
-<html lang=\"\">
+<html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
     <title>";
@@ -270,7 +270,7 @@ class __TwigTemplate_842ff05ed919c760fab8bbf1c57e39fa extends Template
     public function getSourceContext(): Source
     {
         return new Source("<!DOCTYPE html>
-<html lang=\"\">
+<html lang=\"en\">
 <head>
     <meta charset=\"UTF-8\">
     <title>{% block title %}{{ \"portfolio\"|trans }}{% endblock %}{% block title2 %}{% endblock %}</title>
