@@ -550,10 +550,12 @@ $catalogueEn = new MessageCatalogue('en', array (
     'quentin_details' => 'Web developer specialized in clean code and user experience, proficient in frontend and backend, I prioritize quality and performance.',
     'learn_more' => 'Learn more about me',
     'want_to_see_my_work' => 'Want to see my work?',
-    'come_check_below' => 'Come check below to see my projects',
+    'come_check_below' => 'Come check below to see my projects 🚀',
     'check_my_projects' => 'Check my projects',
     'next_project' => 'Next project',
     'view_project' => 'View project',
+    'view_git' => 'View on Git',
+    'view_git_local' => 'View on Git (local git)',
     'back_to_works' => 'Back to works',
     'under_construction' => 'Under construction',
     'check_back_later' => 'Check back later',
@@ -593,6 +595,7 @@ $catalogueEn = new MessageCatalogue('en', array (
     'about_page.devops.small_title' => 'Tools',
     'about_page.contact.title' => 'Contact me',
     'about_page.contact.description' => 'If you have any questions or if you want to work with me, feel free to contact me.',
+    'about_page.contact.resume' => 'Download my resume',
   ),
 ));
 $catalogueNo->addFallbackCatalogue($catalogueEn);

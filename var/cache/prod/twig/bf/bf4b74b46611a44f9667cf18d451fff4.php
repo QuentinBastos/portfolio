@@ -295,23 +295,35 @@ class __TwigTemplate_7df43a86cbc961ba3e59ecfd43ed4351 extends Template
         // line 129
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about_page.contact.description"), "html", null, true);
         yield "</p>
+        <a href=\"";
+        // line 130
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/files/BASTOS_QUENTIN_CV.pdf"), "html", null, true);
+        yield "\" download=\"Quentin_Bastos_Resume.pdf\"
+           class=\"text-center\">
+            <span class=\"hoverA smallBaseSize midMiddleBaseSize \">
+            ";
+        // line 133
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about_page.contact.resume"), "html", null, true);
+        yield "
+            </span>
+        </a>
         <div class=\"formGroup\">
             <div class=\"flex justify-center gap-1 \">
                 <a href=\"https://fr.linkedin.com/in/quentin-bastos-a02838222\" target=\"_blank\">
                     <img class=\"iconContact\" src=\"";
-        // line 133
+        // line 139
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/linkedin.png"), "html", null, true);
         yield "\" alt=\"linkedin\">
                 </a>
                 <a href=\"mailto:bastos.quentin.pro@gmail.com\" target=\"_blank\">
                     <img class=\"iconContact\" src=\"";
-        // line 136
+        // line 142
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/mail.png"), "html", null, true);
         yield "\" alt=\"linkedin\">
                 </a>
                 <a href=\"https://github.com/QuentinBastos\" target=\"_blank\">
                     <img class=\"iconContact\" src=\"";
-        // line 139
+        // line 145
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/github.png"), "html", null, true);
         yield "\" alt=\"github\">
                 </a>
@@ -322,33 +334,33 @@ class __TwigTemplate_7df43a86cbc961ba3e59ecfd43ed4351 extends Template
         yield from [];
     }
 
-    // line 145
+    // line 151
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 146
+        // line 152
         yield "    <script src=\"/assets/js/background.js\"></script>
     <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
     ";
-        // line 149
+        // line 155
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
 ";
         yield from [];
     }
 
-    // line 152
+    // line 158
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 153
+        // line 159
         yield "    ";
         yield from $this->yieldParentBlock("stylesheets", $context, $blocks);
         yield "
@@ -377,7 +389,7 @@ class __TwigTemplate_7df43a86cbc961ba3e59ecfd43ed4351 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  352 => 153,  345 => 152,  338 => 149,  333 => 146,  326 => 145,  315 => 139,  309 => 136,  303 => 133,  296 => 129,  292 => 128,  284 => 123,  280 => 122,  269 => 114,  262 => 110,  255 => 106,  248 => 102,  242 => 99,  238 => 98,  228 => 91,  224 => 90,  213 => 82,  206 => 78,  198 => 73,  190 => 68,  183 => 64,  176 => 60,  169 => 56,  162 => 52,  156 => 49,  152 => 48,  142 => 41,  138 => 40,  127 => 32,  120 => 28,  113 => 24,  107 => 21,  103 => 20,  93 => 13,  89 => 12,  82 => 8,  78 => 6,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
+        return array (  364 => 159,  357 => 158,  350 => 155,  345 => 152,  338 => 151,  327 => 145,  321 => 142,  315 => 139,  306 => 133,  300 => 130,  296 => 129,  292 => 128,  284 => 123,  280 => 122,  269 => 114,  262 => 110,  255 => 106,  248 => 102,  242 => 99,  238 => 98,  228 => 91,  224 => 90,  213 => 82,  206 => 78,  198 => 73,  190 => 68,  183 => 64,  176 => 60,  169 => 56,  162 => 52,  156 => 49,  152 => 48,  142 => 41,  138 => 40,  127 => 32,  120 => 28,  113 => 24,  107 => 21,  103 => 20,  93 => 13,  89 => 12,  82 => 8,  78 => 6,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
     }
 
     public function getSourceContext(): Source

@@ -81,14 +81,18 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.title"), "html", null, true);
         yield "</h1>
             </div>
+            <span class=\"flex w-100 justify-center smallBaseSize\"><a href=\"https://github.com/QuentinBastos/InteractiveBook\" class=\"hoverBlackA mb-3\" target=\"_blank\">";
+        // line 10
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_git"), "html", null, true);
+        yield "</a></span>
             <div class=\"wrapperVideo\">
                 <video class=\"video\" controls>
                     <source src=\"";
-        // line 12
+        // line 13
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/video/interactiveBook.mp4"), "html", null, true);
         yield "\" type=\"video/mp4\">
                     ";
-        // line 13
+        // line 14
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("video.not_supported"), "html", null, true);
         yield "
                 </video>
@@ -97,11 +101,11 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
                 <div class=\"wrapperDescription\">
                     <div class=\"align-center flex flex-column h-100\">
                         <h2 class=\"midMiddleBaseSize\">";
-        // line 19
+        // line 20
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("description"), "html", null, true);
         yield "</h2>
                         <p class=\"smallBaseSize\">";
-        // line 20
+        // line 21
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.long_description"), "html", null, true);
         yield "</p>
                     </div>
@@ -109,20 +113,20 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
                 <div class=\"wrapperDescription\">
                     <div class=\"align-center flex flex-column h-100\">
                         <h2 class=\"midMiddleBaseSize\">";
-        // line 25
+        // line 26
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("languages"), "html", null, true);
         yield "</h2>
                         <div class=\"flex flex-wrap justify-center\">
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 28
+        // line 29
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/dark-symfony.png"), "html", null, true);
         yield "\" alt=\"symfony\">
                                 <span class=\"flex align-center smallBaseSize\">Symfony</span>
                             </div>
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 32
+        // line 33
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/tailwinds.png"), "html", null, true);
         yield "\"
                                      alt=\"tailwinds\">
@@ -130,14 +134,14 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
                             </div>
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 37
+        // line 38
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/twig.png"), "html", null, true);
         yield "\" alt=\"twig\">
                                 <span class=\"flex align-center smallBaseSize\">Twig</span>
                             </div>
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 41
+        // line 42
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/scss.png"), "html", null, true);
         yield "\" alt=\"scss\">
                                 <span class=\"flex align-center smallBaseSize\">SASS</span>
@@ -152,14 +156,14 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
         yield from [];
     }
 
-    // line 52
+    // line 53
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 53
+        // line 54
         yield "    ";
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
@@ -167,14 +171,14 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
         yield from [];
     }
 
-    // line 56
+    // line 57
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 57
+        // line 58
         yield "    ";
         yield from $this->yieldParentBlock("stylesheets", $context, $blocks);
         yield "
@@ -203,7 +207,7 @@ class __TwigTemplate_7e5a459f922ee4c5898495a5fb2fc2ab extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  178 => 57,  171 => 56,  163 => 53,  156 => 52,  141 => 41,  134 => 37,  126 => 32,  119 => 28,  113 => 25,  105 => 20,  101 => 19,  92 => 13,  88 => 12,  81 => 8,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
+        return array (  182 => 58,  175 => 57,  167 => 54,  160 => 53,  145 => 42,  138 => 38,  130 => 33,  123 => 29,  117 => 26,  109 => 21,  105 => 20,  96 => 14,  92 => 13,  86 => 10,  81 => 8,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
     }
 
     public function getSourceContext(): Source

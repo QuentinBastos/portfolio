@@ -10,10 +10,12 @@ quentin_description: "21 ans, Français, BUT informatique étudiant, fullstack, 
 quentin_details: "Développeur web spécialisé dans le code propre et l'expérience utilisateur, compétant dans le frontend et le backend, je privilégie la qualité et la performance."
 learn_more: "En savoir plus"
 want_to_see_my_work: "Vous voulez voir mon travail?"
-come_check_below: "Venez voir ci-dessous pour voir mes projets 😀"
+come_check_below: "Venez voir ci-dessous pour voir mes projets 🚀"
 check_my_projects: "Voir mes projets"
 next_project: "Projet suivant"
 view_project: "Voir le projet"
+view_git: "Voir sur Git"
+view_git_local: "Voir sur Git (git local)"
 back_to_works: "Retour aux travaux"
 back_home: "Retour à l'accueil"
 reach_end: "🚀 Félicitations, vous avez atteint la fin de la page ! Vous voulez voir plus de projets ? 🚀"
@@ -73,3 +75,4 @@ about_page:
   contact:
     title: "Contactez-moi"
     description: "Si vous avez des questions ou si vous souhaitez travailler avec moi, n'hésitez pas à me contacter."
+    resume: "Télécharger mon CV"
