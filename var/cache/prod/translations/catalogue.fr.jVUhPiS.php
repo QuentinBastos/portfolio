@@ -180,10 +180,10 @@ $catalogue = new MessageCatalogue('fr', array (
   ),
   'messages' => 
   array (
-    'works' => 'Projects',
+    'works' => 'Projets',
     'about' => 'À propos',
     'nothing' => 'Rien',
-    'is_impossible' => 'est impossible',
+    'is_impossible' => 'n\'est impossible',
     'portfolio_description' => 'Bienvenue sur mon portfolio',
     'more' => 'Plus',
     'who_is_quentin' => 'Qui est Quentin?',
