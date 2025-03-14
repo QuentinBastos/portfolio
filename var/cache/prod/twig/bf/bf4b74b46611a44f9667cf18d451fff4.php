@@ -291,7 +291,7 @@ class __TwigTemplate_7df43a86cbc961ba3e59ecfd43ed4351 extends Template
         // line 128
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about_page.contact.title"), "html", null, true);
         yield "</h1>
-        <p class=\"midMiddleBaseSize text-center\">";
+        <p class=\"smallBaseSize text-center\">";
         // line 129
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about_page.contact.description"), "html", null, true);
         yield "</p>
@@ -300,7 +300,7 @@ class __TwigTemplate_7df43a86cbc961ba3e59ecfd43ed4351 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/files/BASTOS_QUENTIN_CV.pdf"), "html", null, true);
         yield "\" download=\"Quentin_Bastos_Resume.pdf\"
            class=\"text-center\">
-            <span class=\"hoverA smallBaseSize midMiddleBaseSize \">
+            <span class=\"hoverA smallBaseSize smallBaseSize \">
             ";
         // line 133
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about_page.contact.resume"), "html", null, true);
