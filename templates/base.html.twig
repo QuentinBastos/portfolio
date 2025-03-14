@@ -7,7 +7,6 @@
     <meta name="description" content="{% block meta_description %}{{ 'default.meta_description'|trans }}{% endblock %}">
     {% block stylesheets %}
         <link rel="stylesheet" href="/assets/css/style.css">
-        <link rel="stylesheet" href="/assets/css/loader.css">
         <link rel="stylesheet" href="/assets/css/background.css">
         <link rel="stylesheet" href="/assets/css/basic-rule.css">
         <link rel="stylesheet" href="/assets/css/card.css">
@@ -18,11 +17,9 @@
 
     {% block javascripts %}
         <script src="/assets/js/language.js"></script>
-        <script src="/assets/js/loader.js"></script>
     {% endblock %}
 </head>
 <body>
-<div id="loader" class="loader"></div>
 {% block body %}{% endblock %}
 </body>
 </html>
