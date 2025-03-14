@@ -87,18 +87,20 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("video.soon"), "html", null, true);
         yield "</p>
             </div>
-            <span class=\"flex w-100 justify-center smallBaseSize\"><a href=\"https://iutbg-gitlab.iutbourg.univ-lyon1.fr/2023-2024-sae-but2/phase-10 \" class=\"hoverBlackA mb-3\" target=\"_blank\">";
-        // line 13
+            <span class=\"flex w-100 justify-center smallBaseSize\"><a
+                        href=\"https://iutbg-gitlab.iutbourg.univ-lyon1.fr/2023-2024-sae-but2/phase-10 \"
+                        class=\"hoverBlackA mb-3\" target=\"_blank\">";
+        // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_git_local"), "html", null, true);
         yield "</a></span>
             <div class=\"wrapperVideo\">
                 <video class=\"video\" controls>
                     <source src=\"";
-        // line 16
+        // line 18
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/video/phase10.mp4"), "html", null, true);
         yield "\" type=\"video/mp4\">
                     ";
-        // line 17
+        // line 19
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("video.not_supported"), "html", null, true);
         yield "
                 </video>
@@ -107,11 +109,11 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
                 <div class=\"wrapperDescription\">
                     <div class=\"align-center flex flex-column h-100\">
                         <h2 class=\"midMiddleBaseSize\">";
-        // line 23
+        // line 25
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("description"), "html", null, true);
         yield "</h2>
                         <p class=\"smallBaseSize\">";
-        // line 24
+        // line 26
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.long_description"), "html", null, true);
         yield "</p>
                     </div>
@@ -119,20 +121,20 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
                 <div class=\"wrapperDescription\">
                     <div class=\"align-center flex flex-column h-100\">
                         <h2 class=\"midMiddleBaseSize\">";
-        // line 29
+        // line 31
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("languages"), "html", null, true);
         yield "</h2>
                         <div class=\"flex flex-wrap justify-center\">
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 32
+        // line 34
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/node.png"), "html", null, true);
         yield "\" alt=\"nodejs\">
                                 <span class=\"flex align-center smallBaseSize\">NodeJS</span>
                             </div>
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 36
+        // line 38
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/socket.png"), "html", null, true);
         yield "\"
                                      alt=\"socket\">
@@ -140,14 +142,14 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
                             </div>
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 41
+        // line 43
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/angular.png"), "html", null, true);
         yield "\" alt=\"angular\">
                                 <span class=\"flex align-center smallBaseSize\">Angular</span>
                             </div>
                             <div class=\"language\">
                                 <img class=\"icon\" src=\"";
-        // line 45
+        // line 47
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/typescript.png"), "html", null, true);
         yield "\" alt=\"ts\">
                                 <span class=\"flex align-center smallBaseSize\">Typescript</span>
@@ -158,14 +160,16 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
             </div>
             <div class=\"wrapperDescription flex-column mt-2\">
                 <h2 class=\"midMiddleBaseSize\">";
-        // line 53
+        // line 55
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("my_works"), "html", null, true);
         yield "</h2>
                 <div class=\"flex flex-wrap justify-center\">
-                    ";
-        // line 55
+                    <p class=\"smallBaseSize\">
+                        ";
+        // line 58
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.works"), "html", null, true);
         yield "
+                    </p>
                 </div>
             </div>
         </div>
@@ -174,14 +178,14 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
         yield from [];
     }
 
-    // line 62
+    // line 66
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 63
+        // line 67
         yield "    ";
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
@@ -189,14 +193,14 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
         yield from [];
     }
 
-    // line 66
+    // line 70
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 67
+        // line 71
         yield "    ";
         yield from $this->yieldParentBlock("stylesheets", $context, $blocks);
         yield "
@@ -225,7 +229,7 @@ class __TwigTemplate_640086f37a7f8e666178fe6ccbf3fb4a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  200 => 67,  193 => 66,  185 => 63,  178 => 62,  167 => 55,  162 => 53,  151 => 45,  144 => 41,  136 => 36,  129 => 32,  123 => 29,  115 => 24,  111 => 23,  102 => 17,  98 => 16,  92 => 13,  87 => 11,  81 => 8,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
+        return array (  204 => 71,  197 => 70,  189 => 67,  182 => 66,  170 => 58,  164 => 55,  153 => 47,  146 => 43,  138 => 38,  131 => 34,  125 => 31,  117 => 26,  113 => 25,  104 => 19,  100 => 18,  94 => 15,  87 => 11,  81 => 8,  76 => 5,  73 => 4,  66 => 3,  54 => 2,  43 => 1,);
     }
 
     public function getSourceContext(): Source
