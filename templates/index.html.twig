@@ -20,7 +20,7 @@
         <div id="particles-js"></div>
         <div class="wrapper">
             <p class="titleWho middleBaseSize">{{ 'who_is_quentin'|trans }}</p>
-            <p class="descriptionWho textBaseSize">{{ 'quentin_description'|trans }}</p>
+            <p class="descriptionWho textBaseSize">{{ 'quentin_description'|trans({'%age%': age()}) }}</p>
             <p class="descriptionWho textBaseSize colorLightGray">{{ 'quentin_details'|trans }}</p>
             <a class="aboutWho smallBaseSize hoverA" href="{{ path('about') }}">{{ 'learn_more'|trans }}</a>
             <div class="more">
