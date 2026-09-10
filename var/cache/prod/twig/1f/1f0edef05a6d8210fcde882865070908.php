@@ -288,40 +288,45 @@ class __TwigTemplate_e538add830b7fdaa23340a329e3c5d29 extends Template
         // line 128
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about.contact.description"), "html", null, true);
         yield "</p>
-        <a href=\"";
+        ";
         // line 129
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/files/BASTOS_QUENTIN_CV.pdf"), "html", null, true);
-        yield "\" download=\"Quentin_Bastos_CV.pdf\" class=\"text-center\">
-            <span class=\"hoverA smallBaseSize\">";
+        $context["cv_fr"] = (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 129), "get", ["_locale"], "method", false, false, false, 129) == "fr");
         // line 130
+        yield "        <a href=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((($context["cv_fr"] ?? null)) ? ("assets/files/BASTOS_QUENTIN_CV.pdf") : ("assets/files/BASTOS_QUENTIN_CV_EN.pdf"))), "html", null, true);
+        yield "\" download=\"";
+        yield ((($context["cv_fr"] ?? null)) ? ("Quentin_Bastos_CV.pdf") : ("Quentin_Bastos_Resume.pdf"));
+        yield "\" class=\"text-center\">
+            <span class=\"hoverA smallBaseSize\">";
+        // line 131
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about.contact.resume"), "html", null, true);
         yield "</span>
         </a>
         <div class=\"contactLinks\">
             <a href=\"https://www.linkedin.com/in/quentin-bastos-a02838222\" target=\"_blank\" rel=\"noopener\" aria-label=\"";
-        // line 133
+        // line 134
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about.contact.linkedin"), "html", null, true);
         yield "\">
                 <img class=\"iconContact\" src=\"";
-        // line 134
+        // line 135
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/linkedin.png"), "html", null, true);
         yield "\" alt=\"\">
             </a>
             <a href=\"mailto:bastos.quentin.pro@gmail.com\" aria-label=\"";
-        // line 136
+        // line 137
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about.contact.email"), "html", null, true);
         yield "\">
                 <img class=\"iconContact\" src=\"";
-        // line 137
+        // line 138
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/mail.png"), "html", null, true);
         yield "\" alt=\"\">
             </a>
             <a href=\"https://github.com/QuentinBastos\" target=\"_blank\" rel=\"noopener\" aria-label=\"";
-        // line 139
+        // line 140
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about.contact.github"), "html", null, true);
         yield "\">
                 <img class=\"iconContact\" src=\"";
-        // line 140
+        // line 141
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/icon/github.png"), "html", null, true);
         yield "\" alt=\"\">
             </a>
@@ -331,19 +336,19 @@ class __TwigTemplate_e538add830b7fdaa23340a329e3c5d29 extends Template
         yield from [];
     }
 
-    // line 146
+    // line 147
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 147
+        // line 148
         yield "    <script src=\"/assets/js/background.js\"></script>
     <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
     ";
-        // line 150
+        // line 151
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
 ";
@@ -371,7 +376,7 @@ class __TwigTemplate_e538add830b7fdaa23340a329e3c5d29 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  347 => 150,  342 => 147,  335 => 146,  325 => 140,  321 => 139,  316 => 137,  312 => 136,  307 => 134,  303 => 133,  297 => 130,  293 => 129,  289 => 128,  285 => 127,  279 => 123,  271 => 120,  261 => 117,  255 => 115,  253 => 114,  250 => 113,  246 => 112,  241 => 110,  237 => 109,  234 => 108,  230 => 107,  225 => 105,  219 => 101,  208 => 96,  203 => 94,  199 => 93,  193 => 90,  189 => 89,  185 => 87,  182 => 86,  178 => 85,  173 => 83,  167 => 79,  157 => 74,  148 => 72,  144 => 71,  138 => 68,  134 => 67,  128 => 64,  124 => 63,  120 => 61,  117 => 60,  113 => 59,  108 => 57,  99 => 51,  95 => 50,  88 => 46,  84 => 45,  80 => 43,  78 => 42,  75 => 41,  68 => 40,  56 => 2,  51 => 1,  49 => 4,  42 => 1,);
+        return array (  352 => 151,  347 => 148,  340 => 147,  330 => 141,  326 => 140,  321 => 138,  317 => 137,  312 => 135,  308 => 134,  302 => 131,  295 => 130,  293 => 129,  289 => 128,  285 => 127,  279 => 123,  271 => 120,  261 => 117,  255 => 115,  253 => 114,  250 => 113,  246 => 112,  241 => 110,  237 => 109,  234 => 108,  230 => 107,  225 => 105,  219 => 101,  208 => 96,  203 => 94,  199 => 93,  193 => 90,  189 => 89,  185 => 87,  182 => 86,  178 => 85,  173 => 83,  167 => 79,  157 => 74,  148 => 72,  144 => 71,  138 => 68,  134 => 67,  128 => 64,  124 => 63,  120 => 61,  117 => 60,  113 => 59,  108 => 57,  99 => 51,  95 => 50,  88 => 46,  84 => 45,  80 => 43,  78 => 42,  75 => 41,  68 => 40,  56 => 2,  51 => 1,  49 => 4,  42 => 1,);
     }
 
     public function getSourceContext(): Source

@@ -126,7 +126,8 @@
     <section id="contact" class="sectionContact">
         <h2 class="title middleBaseSize text-center">{{ 'about.contact.title'|trans }}</h2>
         <p class="smallBaseSize text-center">{{ 'about.contact.description'|trans }}</p>
-        <a href="{{ asset('assets/files/BASTOS_QUENTIN_CV.pdf') }}" download="Quentin_Bastos_CV.pdf" class="text-center">
+        {% set cv_fr = app.session.get('_locale') == 'fr' %}
+        <a href="{{ asset(cv_fr ? 'assets/files/BASTOS_QUENTIN_CV.pdf' : 'assets/files/BASTOS_QUENTIN_CV_EN.pdf') }}" download="{{ cv_fr ? 'Quentin_Bastos_CV.pdf' : 'Quentin_Bastos_Resume.pdf' }}" class="text-center">
             <span class="hoverA smallBaseSize">{{ 'about.contact.resume'|trans }}</span>
         </a>
         <div class="contactLinks">

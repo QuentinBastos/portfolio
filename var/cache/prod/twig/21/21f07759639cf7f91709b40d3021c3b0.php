@@ -67,7 +67,7 @@ class __TwigTemplate_9ffedfb951487eb59512f1a9b0a1cff4 extends Template
         yield "</a>
                 <a href=\"";
         // line 8
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/files/BASTOS_QUENTIN_CV.pdf"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl((((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 8), "get", ["_locale"], "method", false, false, false, 8) == "fr")) ? ("assets/files/BASTOS_QUENTIN_CV.pdf") : ("assets/files/BASTOS_QUENTIN_CV_EN.pdf"))), "html", null, true);
         yield "\" class=\"textBaseSize hoverA\" target=\"_blank\" rel=\"noopener\">";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.cv"), "html", null, true);
         yield "</a>
