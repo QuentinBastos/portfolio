@@ -77,7 +77,7 @@ class __TwigTemplate_9ffedfb951487eb59512f1a9b0a1cff4 extends Template
             // line 10
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("change_language", ["language" => "en"]);
-            yield "\" class=\"flex\" data-toggle=\"refresh\" aria-label=\"";
+            yield "\" class=\"flex\" aria-label=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.switch_language"), "html", null, true);
             yield "\">
                         <img class=\"flagCountry\" src=\"";
@@ -90,7 +90,7 @@ class __TwigTemplate_9ffedfb951487eb59512f1a9b0a1cff4 extends Template
             // line 14
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("change_language", ["language" => "fr"]);
-            yield "\" class=\"flex\" data-toggle=\"refresh\" aria-label=\"";
+            yield "\" class=\"flex\" aria-label=\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.switch_language"), "html", null, true);
             yield "\">
                         <img class=\"flagCountry\" src=\"";

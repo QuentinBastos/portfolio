@@ -3,7 +3,7 @@
 {% set title = (t ~ '.title')|trans %}
 {% set image = (app.request.locale == 'en' and project.image_en) ? project.image_en : project.image %}
 
-{% block title2 %} - {{ title }}{% endblock %}
+{% block title2 %} · {{ title }}{% endblock %}
 {% block meta_description %}{{ (t ~ '.tagline')|trans }}{% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
         <a class="pd-back hoverA" href="{{ path('default') }}#works">{{ 'project.all_projects'|trans }}</a>
 
         <div class="pd-hero">
-            <img src="{{ asset(image) }}" alt="{{ title }}">
+            <img src="{{ asset(image) }}" alt="{{ title }}" fetchpriority="high" decoding="async">
         </div>
 
         <div class="pd-head">
@@ -112,7 +112,7 @@
                         {% set caption = (t ~ '.' ~ screen.caption)|trans %}
                         <figure>
                             <a href="{{ asset(screen.image) }}" target="_blank" rel="noopener">
-                                <img src="{{ asset(screen.image) }}" alt="{{ caption }}" loading="lazy">
+                                <img src="{{ asset(screen.image) }}" alt="{{ caption }}" loading="lazy" decoding="async">
                             </a>
                             <figcaption>{{ caption }}</figcaption>
                         </figure>
@@ -124,7 +124,7 @@
         {% if project.video %}
             <section class="pd-video">
                 <h2 class="pd-label">{{ 'project.video_title'|trans }}</h2>
-                <video controls preload="metadata">
+                <video controls playsinline preload="none" poster="{{ asset(image) }}">
                     <source src="{{ asset(project.video) }}" type="video/mp4">
                     {{ 'project.video_unsupported'|trans }}
                 </video>
@@ -149,8 +149,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="/assets/js/background.js"></script>
-    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
+    <script src="/assets/js/background.js" defer></script>
     {{ parent() }}
 {% endblock %}

@@ -190,24 +190,26 @@
     margin-bottom: 3rem;
 }
 
+/* Tablette et téléphone. Les anciennes valeurs (clamp(…, 10vw, 2rem)) plafonnaient déjà
+   à la valeur haute : un texte « petit » faisait 32 px et coupait les mots du menu. */
 @media (max-width: 1024px) {
     .smallBaseSize {
-        font-size: clamp(0.8rem, 0.5rem + 10vw, 2rem);
+        font-size: 1rem;
     }
 
     .textBaseSize {
-        font-size: clamp(1.5rem, 1.2rem + 10vw, 2rem);
+        font-size: 1.125rem;
     }
 
     .midMiddleBaseSize {
-        font-size: clamp(1.5rem, 0.7rem + 5vw, 4rem);
+        font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem);
     }
 
     .middleBaseSize {
-        font-size: clamp(3rem, 1.5rem + 10vw, 10rem);
+        font-size: clamp(2.5rem, 1.5rem + 5vw, 4.5rem);
     }
 
     .titleBaseSize {
-        font-size: clamp(4rem, 1.5rem + 12vw, 12rem);
+        font-size: clamp(3rem, 1.25rem + 8vw, 6rem);
     }
 }

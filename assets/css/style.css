@@ -1,27 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+/* La police Geologica est chargée dans base.html.twig (preconnect + link), plus par @import. */
 
-/* Background */
+html {
+    background: #191d1e;
+    scroll-behavior: smooth;
+    /* Les ancres (#works, #experience...) s'arrêtent sous l'en-tête fixe, pas derrière. */
+    scroll-padding-top: 5.5rem;
+}
+
 html, body {
     margin: 0;
     padding: 0;
-    user-select: none;
-    background: #191d1e; /* Old browsers */
-    background: -moz-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(0deg, #191d1e 50%, #283139 100%); /* IE10+ */
-    background: linear-gradient(0deg, #191d1e 50%, #283139 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#191d1e', endColorstr='#283139', GradientType=1); /* IE6-9 fallback on horizontal gradient */
-    background-attachment: fixed;
-    scroll-behavior: smooth;
     overscroll-behavior: none; /* Empêche le défilement au-delà des limites */
     color: #ffffff;
-
-    /* Add font */
-    font-family: "Geologica", serif;
+    font-family: "Geologica", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "slnt" 0, "CRSV" 0, "SHRP" 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Dégradé de fond sur un calque fixe à part : background-attachment: fixed forçait un
+   repaint à chaque défilement, et s'étirait sur toute la hauteur de la page sur iPhone. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, #191d1e 50%, #283139 100%);
+    pointer-events: none;
 }
 
 a {

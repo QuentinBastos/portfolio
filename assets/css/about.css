@@ -1,30 +1,3 @@
-.smallIcon {
-    width: 3.5rem;
-    height: 3.5rem;
-}
-
-.icon {
-    width: 3rem;
-    height: 3rem;
-}
-.iconContact {
-    width: 4rem;
-    height: 4rem;
-}
-
-.titleAbout {
-    margin: 1rem 0;
-}
-
-.language {
-    width: 15rem;
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    flex-direction: row;
-    justify-content: center;
-}
-
 .sectionContact {
     margin-top: 10rem;
     padding-left: 5.5%;
@@ -37,18 +10,4 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.sectionSkill > .title {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.formGroup {
-    width: 100%;
-    border-radius: 1rem;
-}
-
-.formGroup > div {
-    margin: 2rem;
 }

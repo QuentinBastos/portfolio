@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelProdContainer::class, false)) {
 
 return new \ContainerX0q6IB2\App_KernelProdContainer([
     'container.build_hash' => 'X0q6IB2',
-    'container.build_id' => '49ba1d07',
-    'container.build_time' => 1789032382,
+    'container.build_id' => '936e893e',
+    'container.build_time' => 1789034232,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerX0q6IB2');

@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#191d1e">
+    <meta name="color-scheme" content="dark">
     <title>{% block title %}{{ "portfolio"|trans }}{% endblock %}{% block title2 %}{% endblock %}</title>
     <link rel="icon" href="{{ asset('assets/img/contact/qb.png') }}">
     <meta name="description" content="{% block meta_description %}{{ 'default.meta_description'|trans }}{% endblock %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap">
     {% block stylesheets %}
         <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/background.css">
@@ -16,9 +21,7 @@
         <link rel="stylesheet" href="/assets/css/portfolio-v2.css">
     {% endblock %}
 
-    {% block javascripts %}
-        <script src="/assets/js/language.js"></script>
-    {% endblock %}
+    {% block javascripts %}{% endblock %}
 </head>
 <body>
 {% block body %}{% endblock %}

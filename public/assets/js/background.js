@@ -3,23 +3,54 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var projectorElement = document.getElementById('projector');
-    if (!projectorElement) {
-        console.error('Element with ID "projector" not found.');
+    if (!projectorElement || typeof createjs === 'undefined' || typeof TweenMax === 'undefined') {
+        return;
+    }
+
+    // Mouvement réduit demandé par le système : pas d'animation de fond.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         return;
     }
 
     try {
         var particles = new ParticleEngine('projector');
-        createjs.Ticker.addEventListener("tick", updateCanvas);
-        window.addEventListener('resize', resizeCanvas, false);
 
-        function updateCanvas(){
-            particles.render();
+        // 30 images/s calées sur l'écran : assez pour un fond, et deux fois moins de calcul qu'à 60.
+        createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+        createjs.Ticker.framerate = 30;
+        createjs.Ticker.addEventListener('tick', function (event) {
+            if (!event.paused) {
+                particles.render();
+            }
+        });
+
+        // Le canvas ne couvre que le premier écran : hors de vue ou onglet masqué, tout s'arrête,
+        // ce qui libère le processeur pendant le défilement du reste de la page.
+        var onScreen = true;
+        function syncPause() {
+            var paused = document.hidden || !onScreen;
+            createjs.Ticker.paused = paused;
+            if (paused) {
+                gsap.globalTimeline.pause();
+            } else {
+                gsap.globalTimeline.resume();
+            }
+        }
+        document.addEventListener('visibilitychange', syncPause);
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+                onScreen = entries[0].isIntersecting;
+                syncPause();
+            }).observe(projectorElement);
         }
 
-        function resizeCanvas(){
-            particles.resize();
-        }
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                particles.resize();
+            }, 150);
+        }, false);
     } catch (error) {
         console.error('Error initializing ParticleEngine:', error);
     }

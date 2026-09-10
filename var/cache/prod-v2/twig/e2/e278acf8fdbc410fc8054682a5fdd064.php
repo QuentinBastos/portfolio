@@ -64,7 +64,7 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
     public function block_title2(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        yield " - ";
+        yield " · ";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["title"] ?? null), "html", null, true);
         yield from [];
     }
@@ -107,7 +107,7 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(($context["image"] ?? null)), "html", null, true);
         yield "\" alt=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["title"] ?? null), "html", null, true);
-        yield "\">
+        yield "\" fetchpriority=\"high\" decoding=\"async\">
         </div>
 
         <div class=\"pd-head\">
@@ -344,7 +344,7 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, $context["screen"], "image", [], "any", false, false, false, 115)), "html", null, true);
                 yield "\" alt=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["caption"] ?? null), "html", null, true);
-                yield "\" loading=\"lazy\">
+                yield "\" loading=\"lazy\" decoding=\"async\">
                             </a>
                             <figcaption>";
                 // line 117
@@ -372,7 +372,10 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
             // line 126
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.video_title"), "html", null, true);
             yield "</h2>
-                <video controls preload=\"metadata\">
+                <video controls playsinline preload=\"none\" poster=\"";
+            // line 127
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(($context["image"] ?? null)), "html", null, true);
+            yield "\">
                     <source src=\"";
             // line 128
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "video", [], "any", false, false, false, 128)), "html", null, true);
@@ -442,9 +445,9 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
     {
         $macros = $this->macros;
         // line 152
-        yield "    <script src=\"/assets/js/background.js\"></script>
-    <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
-    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
+        yield "    <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\" defer></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\" defer></script>
+    <script src=\"/assets/js/background.js\" defer></script>
     ";
         // line 155
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
@@ -474,7 +477,7 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  450 => 155,  445 => 152,  438 => 151,  431 => 147,  425 => 144,  421 => 143,  416 => 142,  413 => 141,  407 => 138,  403 => 137,  398 => 136,  396 => 135,  392 => 134,  389 => 133,  382 => 129,  378 => 128,  373 => 126,  370 => 125,  368 => 124,  365 => 123,  360 => 120,  351 => 117,  344 => 115,  340 => 114,  337 => 113,  334 => 112,  330 => 111,  325 => 109,  322 => 108,  320 => 107,  315 => 104,  310 => 101,  300 => 97,  295 => 96,  291 => 95,  286 => 93,  283 => 92,  281 => 91,  276 => 88,  267 => 86,  263 => 85,  258 => 83,  252 => 79,  246 => 76,  242 => 75,  239 => 74,  237 => 73,  233 => 71,  230 => 69,  227 => 67,  225 => 66,  223 => 65,  221 => 64,  217 => 62,  214 => 61,  208 => 58,  204 => 57,  201 => 56,  199 => 55,  194 => 53,  190 => 52,  184 => 49,  176 => 43,  167 => 41,  163 => 40,  158 => 38,  152 => 35,  148 => 34,  142 => 31,  138 => 30,  129 => 24,  124 => 23,  118 => 21,  116 => 20,  107 => 16,  99 => 13,  96 => 12,  94 => 11,  91 => 10,  84 => 9,  73 => 7,  61 => 6,  56 => 1,  54 => 4,  52 => 3,  50 => 2,  43 => 1,);
+        return array (  453 => 155,  448 => 152,  441 => 151,  434 => 147,  428 => 144,  424 => 143,  419 => 142,  416 => 141,  410 => 138,  406 => 137,  401 => 136,  399 => 135,  395 => 134,  392 => 133,  385 => 129,  381 => 128,  377 => 127,  373 => 126,  370 => 125,  368 => 124,  365 => 123,  360 => 120,  351 => 117,  344 => 115,  340 => 114,  337 => 113,  334 => 112,  330 => 111,  325 => 109,  322 => 108,  320 => 107,  315 => 104,  310 => 101,  300 => 97,  295 => 96,  291 => 95,  286 => 93,  283 => 92,  281 => 91,  276 => 88,  267 => 86,  263 => 85,  258 => 83,  252 => 79,  246 => 76,  242 => 75,  239 => 74,  237 => 73,  233 => 71,  230 => 69,  227 => 67,  225 => 66,  223 => 65,  221 => 64,  217 => 62,  214 => 61,  208 => 58,  204 => 57,  201 => 56,  199 => 55,  194 => 53,  190 => 52,  184 => 49,  176 => 43,  167 => 41,  163 => 40,  158 => 38,  152 => 35,  148 => 34,  142 => 31,  138 => 30,  129 => 24,  124 => 23,  118 => 21,  116 => 20,  107 => 16,  99 => 13,  96 => 12,  94 => 11,  91 => 10,  84 => 9,  73 => 7,  61 => 6,  56 => 1,  54 => 4,  52 => 3,  50 => 2,  43 => 1,);
     }
 
     public function getSourceContext(): Source

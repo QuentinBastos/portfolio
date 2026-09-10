@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Portfolio v2 — composants ajoutés en septembre 2026
+   Portfolio v2 : composants ajoutés en septembre 2026
    Garde l'identité existante : fond sombre, Geologica, blanc et gris.
    ========================================================================== */
 
@@ -532,8 +532,8 @@ button:focus-visible {
 }
 
 /* ------------------------------------------------- Tablette et téléphone */
-/* Sous 1024 px, basic-rule.css passe les textes à 2rem et style.css empile les cartes projet
-   en 40/20/40 % de hauteur : le contenu débordait des sections pleine hauteur. */
+/* Sous 1024 px, style.css empile les cartes projet en 40/20/40 % de hauteur : sans ces
+   règles, le contenu débordait des sections pleine hauteur. */
 
 @media (max-width: 1024px) {
     .skillGrid {
@@ -638,22 +638,186 @@ button:focus-visible {
         width: 13rem;
         height: 13rem;
     }
+}
 
+/* ------------------------------------------------------------------ En-tête */
+/* Les liens ne se coupent plus en plein mot. Sous 1024 px, ils gardent une taille de menu. */
+
+header a {
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
     header ul {
-        margin: 1rem 5% 0 5%;
+        margin: 1rem 5% 0;
     }
 
     header .rightMenu {
-        gap: 0.9rem;
+        gap: 1.25rem;
+        align-items: center;
     }
 
-    header .rightMenu a.textBaseSize,
-    header li > a.textBaseSize {
-        font-size: 1rem;
+    header .textBaseSize {
+        font-size: 1.05rem;
     }
 
     header .flagCountry {
         width: 2rem;
         height: 2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    header ul {
+        margin: 0.9rem 4% 0;
+    }
+
+    header .rightMenu {
+        gap: 0.75rem;
+    }
+
+    header .textBaseSize {
+        font-size: 0.9rem;
+    }
+
+    header .flagCountry {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+}
+
+/* ------------------------------------------------------ Sections plein écran */
+/* min-height plutôt que height : le contenu ne déborde plus sur la section suivante quand
+   l'écran est court, et 100svh suit la barre d'adresse des navigateurs mobiles. Le padding
+   garde le contenu hors de l'en-tête fixe et de la flèche du bas. */
+
+main,
+.sectionWho,
+.sectionContact {
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+}
+
+/* Fond opaque sous l'image floutée : tant qu'elle charge, le titre « Projets » ne transparaît
+   plus à travers la carte. */
+.projectWrapper {
+    height: 100vh;
+    height: 100svh;
+    background-color: #191d1e;
+}
+
+@media (min-width: 1025px) {
+    .leftSide,
+    .rightSide {
+        height: 100vh;
+        height: 100svh;
+    }
+}
+
+/* Le titre « Projets » se colle sous l'en-tête, plus derrière. */
+.sectionWorks .stickyTitle {
+    top: 5.5rem;
+}
+
+/* Carte projet : bord discret et coins arrondis, à la place du cadre noir de 3 px. */
+.css-only pre {
+    border-radius: var(--radius);
+}
+
+.middleSide img {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+/* ------------------------------------------------------------------ Contact */
+
+.contactLead {
+    max-width: 60ch;
+    margin: 1.5rem auto 0;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.contactActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2.25rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btnPrimary {
+    background: var(--ink);
+    color: #191d1e;
+}
+
+.btnPrimary:hover {
+    background: #e4e4e4;
+}
+
+.btnGhost {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--ink);
+}
+
+.btnGhost:hover {
+    background: var(--panel-strong);
+    border-color: rgba(255, 255, 255, 0.55);
+}
+
+.contactLinks {
+    gap: 1.75rem;
+    margin-top: 1.75rem;
+}
+
+.contactLinks a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.contactLinks a:hover {
+    color: var(--ink);
+}
+
+@media (max-width: 400px) {
+    .btnGhost {
+        font-size: 0.9rem;
+    }
+}
+
+/* ---------------------------------------------------------- Moins d'animation */
+
+@media (prefers-reduced-motion: reduce) {
+    .arrowMore:hover img,
+    .arrowMore:hover span {
+        animation: none;
+    }
+
+    .css-only pre,
+    .btn,
+    .contactLinks a {
+        transition: none;
     }
 }

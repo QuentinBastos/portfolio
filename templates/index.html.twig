@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block title2 %} - {{ "welcome"|trans }}{% endblock %}
+{% block title2 %} · {{ "welcome"|trans }}{% endblock %}
 {% block body %}
     <canvas id="projector"></canvas>
     {% include "header.html.twig" %}
@@ -46,8 +46,10 @@
             {% set title = (project.key ~ '.title')|trans %}
             {% set next = loop.last ? null : projects[loop.index0 + 1] %}
             {% set image = (app.request.locale == 'en' and project.image_en) ? project.image_en : project.image %}
+            {# Le premier projet arrive juste après l'introduction : ses images partent tout de suite. #}
+            {% set loading = loop.first ? 'eager' : 'lazy' %}
             <div id="{{ project.slug }}" class="projectWrapper">
-                <img src="{{ asset(image) }}" alt="" class="centeredImage blurDarker">
+                <img src="{{ asset(image) }}" alt="" class="centeredImage" loading="{{ loading }}" decoding="async">
                 <div class="project">
                     <div class="leftSide">
                         {% if next %}
@@ -67,7 +69,7 @@
                             <div class="pre-container css-only">
                                 {% for i in 1..9 %}<div></div>{% endfor %}
                                 <pre class="language-css">
-                                    <img src="{{ asset(project.icon) }}" alt="">
+                                    <img src="{{ asset(project.icon) }}" alt="" loading="{{ loading }}" decoding="async">
                                     <span class="textOverlay">
                                         <span class="midMiddleBaseSize">{{ title }}</span>
                                     </span>
@@ -100,14 +102,13 @@
             </div>
         {% endfor %}
     </section>
-    <div style="height: 1px; width: 100%; margin: 0; padding: 0; overflow: hidden;"></div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="/assets/js/background.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-    <script src="/assets/js/particles.js"></script>
-    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="/assets/js/background.js" defer></script>
+    <script src="/assets/js/particles.js" defer></script>
     {{ parent() }}
 {% endblock %}
