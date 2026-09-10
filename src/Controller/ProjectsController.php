@@ -2,41 +2,30 @@
 
 namespace App\Controller;
 
+use App\Portfolio\ProjectCatalog;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/projects')]
 class ProjectsController extends AbstractController
 {
-    #[Route('/chess', name: 'project_chess')]
-    public function chess(Request $request): Response
+    public function __construct(private readonly ProjectCatalog $catalog)
     {
-        return $this->render('projects/chess.html.twig');
     }
 
-    #[Route('/phase10', name: 'project_phase10')]
-    public function phase10(Request $request): Response
+    #[Route('/{slug}', name: 'project_show', requirements: ['slug' => '[a-z0-9-]+'])]
+    public function show(string $slug): Response
     {
-        return $this->render('projects/phase10.html.twig');
-    }
+        $project = $this->catalog->find($slug);
+        if (null === $project) {
+            throw $this->createNotFoundException();
+        }
 
-    #[Route('/interactive-book', name: 'project_interactive_book')]
-    public function interactiveBook(Request $request): Response
-    {
-        return $this->render('projects/interactive_book.html.twig');
-    }
-
-    #[Route('/spotify', name: 'project_spotify')]
-    public function spotify(Request $request): Response
-    {
-        return $this->render('projects/spotify.html.twig');
-    }
-
-    #[Route('/aloas', name: 'project_aloas')]
-    public function aloas(Request $request): Response
-    {
-        return $this->render('projects/aloas.html.twig');
+        return $this->render('projects/show.html.twig', [
+            'project' => $project,
+            'previous' => $this->catalog->previous($slug),
+            'next' => $this->catalog->next($slug),
+        ]);
     }
 }

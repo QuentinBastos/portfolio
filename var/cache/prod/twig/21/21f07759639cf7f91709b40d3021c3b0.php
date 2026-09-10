@@ -57,44 +57,55 @@ class __TwigTemplate_9ffedfb951487eb59512f1a9b0a1cff4 extends Template
             yield "#works\" ";
         }
         yield "class=\"textBaseSize hoverA\">";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("works"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.works"), "html", null, true);
         yield "</a>
                 <a href=\"";
         // line 7
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about");
         yield "\" class=\"textBaseSize hoverA\">";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("about"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.about"), "html", null, true);
+        yield "</a>
+                <a href=\"";
+        // line 8
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/files/BASTOS_QUENTIN_CV.pdf"), "html", null, true);
+        yield "\" class=\"textBaseSize hoverA\" target=\"_blank\" rel=\"noopener\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.cv"), "html", null, true);
         yield "</a>
                 ";
-        // line 8
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 8), "get", ["_locale"], "method", false, false, false, 8) == "fr")) {
-            // line 9
+        // line 9
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "session", [], "any", false, false, false, 9), "get", ["_locale"], "method", false, false, false, 9) == "fr")) {
+            // line 10
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("change_language", ["language" => "en"]);
-            yield "\" class=\"flex\" data-toggle=\"refresh\">
+            yield "\" class=\"flex\" data-toggle=\"refresh\" aria-label=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.switch_language"), "html", null, true);
+            yield "\">
                         <img class=\"flagCountry\" src=\"";
-            // line 10
+            // line 11
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/uk.svg"), "html", null, true);
-            yield "\" alt=\"flag\">
+            yield "\" alt=\"\">
                     </a>
                 ";
         } else {
-            // line 13
+            // line 14
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("change_language", ["language" => "fr"]);
-            yield "\" class=\"flex\" data-toggle=\"refresh\">
+            yield "\" class=\"flex\" data-toggle=\"refresh\" aria-label=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nav.switch_language"), "html", null, true);
+            yield "\">
                         <img class=\"flagCountry\" src=\"";
-            // line 14
+            // line 15
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/france.svg"), "html", null, true);
-            yield "\" alt=\"flag\">
+            yield "\" alt=\"\">
                     </a>
                 ";
         }
-        // line 17
+        // line 18
         yield "            </li>
         </ul>
     </nav>
-</header>";
+</header>
+";
         yield from [];
     }
 
@@ -119,7 +130,7 @@ class __TwigTemplate_9ffedfb951487eb59512f1a9b0a1cff4 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  94 => 17,  88 => 14,  83 => 13,  77 => 10,  72 => 9,  70 => 8,  64 => 7,  52 => 6,  47 => 4,  42 => 1,);
+        return array (  104 => 18,  98 => 15,  91 => 14,  85 => 11,  78 => 10,  76 => 9,  70 => 8,  64 => 7,  52 => 6,  47 => 4,  42 => 1,);
     }
 
     public function getSourceContext(): Source

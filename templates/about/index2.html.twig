@@ -1,160 +1,151 @@
 {% extends 'base.html.twig' %}
 {% block title2 %} - {{ "nav.about"|trans }}{% endblock %}
+
+{% set skills = [
+    {
+        key: 'backend',
+        items: [
+            {name: 'PHP', icon: null},
+            {name: 'Symfony', icon: 'symfony'},
+            {name: 'MySQL', icon: null},
+            {name: 'Node.js', icon: 'node'},
+            {name: 'Java', icon: 'java'},
+            {name: 'C/C++', icon: null},
+        ],
+    },
+    {
+        key: 'frontend',
+        items: [
+            {name: 'Vue', icon: 'vue'},
+            {name: 'TypeScript', icon: 'typescript'},
+            {name: 'JavaScript', icon: 'js'},
+            {name: 'Angular', icon: 'angular'},
+            {name: 'Tailwind', icon: 'tailwinds'},
+            {name: 'Twig', icon: 'twig'},
+            {name: 'SASS', icon: 'scss'},
+        ],
+    },
+    {
+        key: 'devops',
+        items: [
+            {name: 'Docker', icon: 'docker'},
+            {name: 'Git', icon: 'git'},
+            {name: 'GitHub Actions', icon: 'github'},
+            {name: 'Linux', icon: null},
+            {name: 'Figma', icon: 'figma'},
+        ],
+    },
+] %}
+
 {% block body %}
     <canvas id="projector"></canvas>
     {% include "header.html.twig" %}
     <main>
         <div class="wrapper">
-            <h1 class="title middleBaseSize text-start">{{ "about_page.title"|trans }}</h1>
+            <span class="heroKicker smallBaseSize">{{ 'about.kicker'|trans }}</span>
+            <h1 class="title middleBaseSize text-start">{{ 'about.hero_title'|trans }}</h1>
         </div>
         <div class="more">
-            <a href="#backend" class="textBaseSize arrowMore">
-                <span class="textBaseSize">{{ 'about_page.more'|trans }}</span>
-                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
+            <a href="#experience" class="textBaseSize arrowMore">
+                <span class="textBaseSize">{{ 'about.more'|trans }}</span>
+                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="">
             </a>
         </div>
     </main>
-    <section id="backend" class="sectionSkill">
-        <div class="wrapper">
-            <div class="align-center flex flex-column">
-                <h2 class="middleBaseSize mt-0">{{ "backend"|trans }}</h2>
-                <p class="descriptionAbout text-center smallBaseSize">{{ "about_page.backend.description"|trans }}</p>
-                <div class="flex flex-wrap justify-center mt-2">
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/symfony.png') }}" alt="symfony">
-                        <span class="flex align-center smallBaseSize">Symfony</span>
+
+    <section id="experience" class="sectionPath">
+        <h2>{{ 'about.experience_title'|trans }}</h2>
+        <ol class="timeline">
+            {% for item in experience %}
+                {% set k = 'experience.' ~ item.key %}
+                <li>
+                    <div class="tl-when">
+                        {{ (k ~ '.period')|trans }}
+                        <span>{{ (k ~ '.place')|trans }}</span>
                     </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/node.png') }}" alt="angular">
-                        <span class="flex align-center smallBaseSize">NodeJS</span>
+                    <div>
+                        <h3 class="tl-title">{{ (k ~ '.title')|trans }}</h3>
+                        <p class="tl-org">{{ (k ~ '.org')|trans }}</p>
+                        <div class="tl-body">
+                            <ul class="pd-list">
+                                {% for i in 1..item.points %}
+                                    <li>{{ (k ~ '.point_' ~ i)|trans }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/java.png') }}" alt="java">
-                        <span class="flex align-center smallBaseSize">Java</span>
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section id="education" class="sectionPath">
+        <h2>{{ 'about.education_title'|trans }}</h2>
+        <ol class="timeline">
+            {% for key in education %}
+                {% set k = 'education.' ~ key %}
+                <li>
+                    <div class="tl-when">
+                        {{ (k ~ '.period')|trans }}
+                        <span>{{ (k ~ '.place')|trans }}</span>
                     </div>
+                    <div>
+                        <h3 class="tl-title">{{ (k ~ '.title')|trans }}</h3>
+                        <p class="tl-org">{{ (k ~ '.org')|trans }}</p>
+                        <div class="tl-body">
+                            <p>{{ (k ~ '.detail')|trans }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section id="skills" class="sectionPath">
+        <h2>{{ 'about.skills_title'|trans }}</h2>
+        <div class="skillGrid">
+            {% for group in skills %}
+                <div class="skillCard">
+                    <h3>{{ ('about.skills.' ~ group.key ~ '_title')|trans }}</h3>
+                    <p>{{ ('about.skills.' ~ group.key)|trans }}</p>
+                    <ul class="skillList">
+                        {% for item in group.items %}
+                            <li>
+                                {% if item.icon %}
+                                    <img src="{{ asset('assets/img/icon/' ~ item.icon ~ '.png') }}" alt="">
+                                {% endif %}
+                                {{ item.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-            </div>
-        </div>
-        <div class="more">
-            <a href="#frontend" class="textBaseSize arrowMore">
-                <span class="textBaseSize">{{ 'about_page.more'|trans }}</span>
-                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-            </a>
+            {% endfor %}
         </div>
     </section>
-    <section id="frontend" class="sectionSkill">
-        <div class="wrapper">
-            <div class="align-center flex flex-column">
-                <h2 class="middleBaseSize mt-0">{{ "frontend"|trans }}</h2>
-                <p class="descriptionAbout text-center smallBaseSize">{{ "about_page.frontend.description"|trans }}</p>
-                <div class="flex flex-wrap justify-center mt-2">
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/vue.png') }}" alt="vue js">
-                        <span class="flex align-center smallBaseSize">VueJs</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/js.png') }}" alt="js">
-                        <span class="flex align-center smallBaseSize">JS</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/typescript.png') }}" alt="js">
-                        <span class="flex align-center smallBaseSize">Typescript</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/angular.png') }}" alt="angular">
-                        <span class="flex align-center smallBaseSize">Angular</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/bootstrap.png') }}"
-                             alt="bootstrap">
-                        <span class="flex align-center smallBaseSize">Bootstrap</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/tailwinds.png') }}"
-                             alt="tailwinds">
-                        <span class="flex align-center smallBaseSize">Tailwinds</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/twig.png') }}" alt="twig">
-                        <span class="flex align-center smallBaseSize">Twig</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/scss.png') }}" alt="sass">
-                        <span class="flex align-center smallBaseSize">SASS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="more">
-            <a href="#devops" class="textBaseSize arrowMore">
-                <span class="textBaseSize">{{ 'about_page.more'|trans }}</span>
-                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-            </a>
-        </div>
-    </section>
-    <section id="devops" class="sectionSkill">
-        <div class="wrapper">
-            <div class="align-center flex flex-column">
-                <h2 class="middleBaseSize mt-0">{{ "devops_tools"|trans }}</h2>
-                <p class="descriptionAbout text-center smallBaseSize">{{ "about_page.devops.description"|trans }}</p>
-                <div class="flex flex-wrap justify-center mt-2">
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/git.png') }}" alt="git">
-                        <span class="flex align-center smallBaseSize">Git</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/docker.png') }}" alt="docker">
-                        <span class="flex align-center smallBaseSize">Docker</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/figma.png') }}" alt="figma">
-                        <span class="flex align-center smallBaseSize">Figma</span>
-                    </div>
-                    <div class="language">
-                        <img class="icon" src="{{ asset('assets/img/icon/intellij.png') }}" alt="intellij">
-                        <span class="flex align-center smallBaseSize">Intellij</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="more">
-            <a href="#contact" class="textBaseSize arrowMore">
-                <span class="textBaseSize">{{ 'about_page.more'|trans }}</span>
-                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-            </a>
-        </div>
-    </section>
+
     <section id="contact" class="sectionContact">
-        <h1 class="title middleBaseSize text-center">{{ "about_page.contact.title"|trans }}</h1>
-        <p class="smallBaseSize text-center">{{ "about_page.contact.description"|trans }}</p>
-        <a href="{{ asset('assets/files/BASTOS_QUENTIN_CV.pdf') }}" download="Quentin_Bastos_Resume.pdf"
-           class="text-center">
-            <span class="hoverA smallBaseSize">
-            {{ "about_page.contact.resume"|trans }}
-            </span>
+        <h2 class="title middleBaseSize text-center">{{ 'about.contact.title'|trans }}</h2>
+        <p class="smallBaseSize text-center">{{ 'about.contact.description'|trans }}</p>
+        <a href="{{ asset('assets/files/BASTOS_QUENTIN_CV.pdf') }}" download="Quentin_Bastos_CV.pdf" class="text-center">
+            <span class="hoverA smallBaseSize">{{ 'about.contact.resume'|trans }}</span>
         </a>
-        <div class="formGroup">
-            <div class="flex justify-center gap-1 ">
-                <a href="https://fr.linkedin.com/in/quentin-bastos-a02838222" target="_blank">
-                    <img class="iconContact" src="{{ asset('assets/img/icon/linkedin.png') }}" alt="linkedin">
-                </a>
-                <a href="mailto:bastos.quentin.pro@gmail.com" target="_blank">
-                    <img class="iconContact" src="{{ asset('assets/img/icon/mail.png') }}" alt="linkedin">
-                </a>
-                <a href="https://github.com/QuentinBastos" target="_blank">
-                    <img class="iconContact" src="{{ asset('assets/img/icon/github.png') }}" alt="github">
-                </a>
-            </div>
+        <div class="contactLinks">
+            <a href="https://www.linkedin.com/in/quentin-bastos-a02838222" target="_blank" rel="noopener" aria-label="{{ 'about.contact.linkedin'|trans }}">
+                <img class="iconContact" src="{{ asset('assets/img/icon/linkedin.png') }}" alt="">
+            </a>
+            <a href="mailto:bastos.quentin.pro@gmail.com" aria-label="{{ 'about.contact.email'|trans }}">
+                <img class="iconContact" src="{{ asset('assets/img/icon/mail.png') }}" alt="">
+            </a>
+            <a href="https://github.com/QuentinBastos" target="_blank" rel="noopener" aria-label="{{ 'about.contact.github'|trans }}">
+                <img class="iconContact" src="{{ asset('assets/img/icon/github.png') }}" alt="">
+            </a>
         </div>
     </section>
 {% endblock %}
+
 {% block javascripts %}
     <script src="/assets/js/background.js"></script>
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    {{ parent() }}
-{% endblock %}
-
-{% block stylesheets %}
     {{ parent() }}
 {% endblock %}

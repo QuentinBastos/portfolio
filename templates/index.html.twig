@@ -5,243 +5,100 @@
     {% include "header.html.twig" %}
     <main>
         <div class="wrapper">
-            <p class="title titleBaseSize">{{ 'nothing'|trans }}</p>
-            <p class="title titleBaseSize">{{ 'is_impossible'|trans }}</p>
-            <p class="description textBaseSize">{{ 'portfolio_description'|trans }}</p>
+            <span class="heroKicker smallBaseSize">{{ 'hero.kicker'|trans }}</span>
+            <p class="title titleBaseSize">{{ 'hero.line_1'|trans }}</p>
+            <p class="title titleBaseSize">{{ 'hero.line_2'|trans }}</p>
+            <p class="heroLead">{{ 'hero.description'|trans }}</p>
         </div>
         <div class="more">
             <a href="#who" class="textBaseSize arrowMore">
                 <span class="textBaseSize">{{ 'more'|trans }}</span>
-                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
+                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="">
             </a>
         </div>
     </main>
     <section id="who" class="sectionWho">
         <div id="particles-js"></div>
         <div class="wrapper">
-            <p class="titleWho middleBaseSize">{{ 'who_is_quentin'|trans }}</p>
-            <p class="descriptionWho textBaseSize">{{ 'quentin_description'|trans({'%age%': age()}) }}</p>
-            <p class="descriptionWho textBaseSize colorLightGray">{{ 'quentin_details'|trans }}</p>
-            <a class="aboutWho smallBaseSize hoverA" href="{{ path('about') }}">{{ 'learn_more'|trans }}</a>
+            <h2 class="titleWho middleBaseSize">{{ 'home.who_title'|trans }}</h2>
+            <p class="descriptionWho textBaseSize">{{ 'home.who_description'|trans({'%age%': age()}) }}</p>
+            <p class="descriptionWho textBaseSize colorLightGray">{{ 'home.who_details'|trans }}</p>
+            <a class="aboutWho smallBaseSize hoverA" href="{{ path('about') }}">{{ 'home.learn_more'|trans }}</a>
             <div class="more">
                 <a href="#works" class="textBaseSize arrowMore">
                     <span class="textBaseSize">{{ 'more'|trans }}</span>
-                    <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
+                    <img src="{{ asset('assets/svg/arrow.svg') }}" alt="">
                 </a>
             </div>
         </div>
     </section>
     <section id="works" class="sectionWorks">
         <div class="titleWho stickyTitle">
-            <h1 class="middleBaseSize uppercase">{{ 'works'|trans }}</h1>
-            <p class="textBaseSize">{{ 'want_to_see_my_work'|trans }}</p>
-            <p class="textBaseSize">{{ 'come_check_below'|trans }}</p>
-            <a href="#chess" class="textBaseSize arrowMore mt-7">
-                <span class="textBaseSize">{{ 'check_my_projects'|trans }}</span>
-                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
+            <h2 class="middleBaseSize uppercase">{{ 'home.works_title'|trans }}</h2>
+            <p class="textBaseSize">{{ 'home.works_line_1'|trans }}</p>
+            <p class="textBaseSize">{{ 'home.works_line_2'|trans }}</p>
+            <a href="#{{ (projects|first).slug }}" class="textBaseSize arrowMore mt-7">
+                <span class="textBaseSize">{{ 'home.works_cta'|trans }}</span>
+                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="">
             </a>
         </div>
-        <div id="chess" class="projectWrapper">
-            <img src="{{ asset('assets/img/projects/chess/background_chess.png') }}" alt="Centered Image"
-                 class="centeredImage blurDarker">
-            <div class="project">
-                <div class="leftSide">
-                    <a href="#phase10" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">{{ 'next_project'|trans }}</span>
-                        <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                    </a>
-                </div>
-                <div class="middleSide">
-                    <a href="{{ path('project_chess') }}">
-                        <div class="pre-container css-only">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class="language-css" tabindex="0">
-                                 <img src="{{ asset('assets/img/projects/chess/icon_chess.png') }}"
-                                      alt="icon chess game">
-                            <div class="textOverlay">
-                                <p class="midMiddleBaseSize">{{ 'chess.title'|trans }}</p>
+        {% for project in projects %}
+            {% set title = (project.key ~ '.title')|trans %}
+            {% set next = loop.last ? null : projects[loop.index0 + 1] %}
+            {% set image = (app.request.locale == 'en' and project.image_en) ? project.image_en : project.image %}
+            <div id="{{ project.slug }}" class="projectWrapper">
+                <img src="{{ asset(image) }}" alt="" class="centeredImage blurDarker">
+                <div class="project">
+                    <div class="leftSide">
+                        {% if next %}
+                            <a href="#{{ next.slug }}" class="smallBaseSize arrowMore projectNext">
+                                <span class="smallBaseSize">{{ 'project.next'|trans }}</span>
+                                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="">
+                            </a>
+                        {% else %}
+                            <a href="#works" class="smallBaseSize arrowMore projectNext reverseArrow">
+                                <img src="{{ asset('assets/svg/arrow.svg') }}" alt="">
+                                <span class="smallBaseSize">{{ 'project.back_to_works'|trans }}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="middleSide">
+                        <a href="{{ path('project_show', {slug: project.slug}) }}" aria-label="{{ title }}">
+                            <div class="pre-container css-only">
+                                {% for i in 1..9 %}<div></div>{% endfor %}
+                                <pre class="language-css">
+                                    <img src="{{ asset(project.icon) }}" alt="">
+                                    <span class="textOverlay">
+                                        <span class="midMiddleBaseSize">{{ title }}</span>
+                                    </span>
+                                </pre>
                             </div>
-                        </pre>
+                        </a>
+                    </div>
+                    <div class="rightSide">
+                        {% if project.featured %}
+                            <span class="featuredBadge">{{ 'project.featured'|trans }}</span>
+                        {% endif %}
+                        <p class="midMiddleBaseSize title">{{ title }}</p>
+                        <ul class="projectMeta">
+                            <li>{{ ('project.origin.' ~ project.origin)|trans }}</li>
+                            {% if project.year %}<li>{{ project.year|trans }}</li>{% endif %}
+                            {% if project.status %}<li>{{ ('project.status.' ~ project.status)|trans }}</li>{% endif %}
+                        </ul>
+                        <p class="descriptionProject smallBaseSize">{{ (project.key ~ '.tagline')|trans }}</p>
+                        <ul class="tagList">
+                            {% for tech in project.stack|slice(0, 5) %}
+                                <li class="tag">{{ tech }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="projectActions">
+                            <a href="{{ path('project_show', {slug: project.slug}) }}"
+                               class="buttonProject hoverA smallBaseSize">{{ 'project.view'|trans }}</a>
                         </div>
-                    </a>
-                </div>
-                <div class="rightSide">
-                    <p class="midMiddleBaseSize title">{{ 'chess.title'|trans }}</p>
-                    <p class="descriptionProject smallBaseSize">{{ 'chess.description'|trans }}</p>
-                    <a href="{{ path('project_chess') }}"
-                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="phase10" class="projectWrapper">
-            <img src="{{ asset('assets/img/projects/phase10/background_phase10.png') }}" alt="Centered Image"
-                 class="centeredImage blurDarker">
-            <div class="project">
-                <div class="leftSide">
-                    <a href="#interactive-book" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">{{ 'next_project'|trans }} </span>
-                        <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                    </a>
-                </div>
-                <div class="middleSide">
-                    <a href="{{ path('project_phase10') }}">
-                        <div class="pre-container css-only">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class="language-css" tabindex="0">
-                               <img src="{{ asset('assets/img/projects/phase10/icon_phase10.png') }}"
-                                    alt="icon game phase 10">
-                            <span class="textOverlay">
-                                <span class="midMiddleBaseSize">{{ 'phase10.title'|trans }}</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class="rightSide">
-                    <p class="midMiddleBaseSize title">{{ 'phase10.title'|trans }}</p>
-                    <p class="descriptionProject smallBaseSize">{{ 'phase10.description'|trans }}.</p>
-                    <a href="{{ path('project_phase10') }}"
-                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
-                </div>
-            </div>
-        </div>
-        <div id="interactive-book" class="projectWrapper">
-            <img src="{{ asset('assets/img/projects/interactive_book/background_interactive_book.png') }}"
-                 alt="Centered Image"
-                 class="centeredImage blurDarker">
-            <div class="project">
-                <div class="leftSide">
-                    <a href="#spotify" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">{{ 'next_project'|trans }}</span>
-                        <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                    </a>
-                </div>
-                <div class="middleSide">
-                    <a href="{{ path('project_interactive_book') }}">
-                        <div class="pre-container css-only">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class="language-css" tabindex="0">
-                             <img src="{{ asset('assets/img/projects/interactive_book/icon_interactive_book.png') }}"
-                                  alt="interactive book icon">
-                            <span class="textOverlay">
-                                <span class="midMiddleBaseSize">{{ 'interactive_book.title'|trans }}</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class="rightSide">
-                    <p class="midMiddleBaseSize title">{{ 'interactive_book.title'|trans }}</p>
-                    <p class="descriptionProject smallBaseSize">{{ 'interactive_book.description'|trans }}</p>
-                    <a href="{{ path('project_interactive_book') }}"
-                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
-                </div>
-            </div>
-        </div>
-        <div id="spotify" class="projectWrapper">
-            <img src="{{ asset('assets/img/projects/spotify/background_spotify.png') }}" alt="Centered Image"
-                 class="centeredImage blurDarker">
-            <div class="project">
-                <div class="leftSide">
-                    <a href="#aloas" class="smallBaseSize arrowMore projectNext">
-                        <span class="smallBaseSize">{{ 'next_project'|trans }}</span>
-                        <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                    </a>
-                </div>
-                <div class="middleSide">
-                    <a href="{{ path('project_spotify') }}">
-                        <div class="pre-container css-only">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class="language-css" tabindex="0">
-                             <img src="{{ asset('assets/img/projects/spotify/icon_spotify.png') }}"
-                                  alt="interactive book icon">
-                            <span class="textOverlay">
-                                <span class="midMiddleBaseSize">{{ 'spotify.title'|trans }}</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class="rightSide">
-                    <p class="midMiddleBaseSize title">{{ 'spotify.title'|trans }}</p>
-                    <p class="descriptionProject smallBaseSize">{{ 'spotify.description'|trans }}</p>
-                    <a href="{{ path('project_spotify') }}"
-                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
-                </div>
-            </div>
-        </div>
-        <div id="aloas" class="projectWrapper">
-            <img src="{{ asset('assets/img/projects/aloas/background_aloas.png') }}" alt="Centered Image"
-                 class="centeredImage blurDarker">
-            <div class="project">
-                <div class="leftSide">
-                    <a href="#works" class="smallBaseSize arrowMore projectNext reverseArrow">
-                        <img src="{{ asset('assets/svg/arrow.svg') }}" alt="arrow">
-                        <span class="smallBaseSize">{{ 'back_to_works'|trans }}</span>
-                    </a>
-                </div>
-                <div class="middleSide">
-                    <a href="{{ path('project_aloas') }}">
-                        <div class="pre-container css-only">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class="language-css" tabindex="0">
-                             <img src="{{ asset('assets/img/projects/aloas/icon_aloas.png') }}"
-                                  alt="interactive book icon">
-                            <span class="textOverlay">
-                                <span class="midMiddleBaseSize">{{ 'aloas.title'|trans }}</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class="rightSide">
-                    <p class="midMiddleBaseSize title">{{ 'aloas.title'|trans }}</p>
-                    <p class="descriptionProject smallBaseSize">{{ 'aloas.description'|trans }}</p>
-                    <a href="{{ path('project_aloas') }}"
-                       class="buttonProject hoverA smallBaseSize">{{ 'view_project'|trans }}</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </section>
     <div style="height: 1px; width: 100%; margin: 0; padding: 0; overflow: hidden;"></div>
 {% endblock %}

@@ -46,44 +46,48 @@ class __TwigTemplate_216bd4123eb6585b1dcb84da274de353 extends Template
         $macros = $this->macros;
         // line 1
         yield "<!DOCTYPE html>
-<html lang=\"en\">
+<html lang=\"";
+        // line 2
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "request", [], "any", false, true, false, 2), "locale", [], "any", true, true, false, 2)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "request", [], "any", false, false, false, 2), "locale", [], "any", false, false, false, 2), "en")) : ("en")), "html", null, true);
+        yield "\">
 <head>
     <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <title>";
-        // line 5
+        // line 6
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield from $this->unwrap()->yieldBlock('title2', $context, $blocks);
         yield "</title>
     <link rel=\"icon\" href=\"";
-        // line 6
+        // line 7
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/contact/qb.png"), "html", null, true);
         yield "\">
     <meta name=\"description\" content=\"";
-        // line 7
+        // line 8
         yield from $this->unwrap()->yieldBlock('meta_description', $context, $blocks);
         yield "\">
     ";
-        // line 8
+        // line 9
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 17
+        // line 18
         yield "
     ";
-        // line 18
+        // line 19
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 21
+        // line 22
         yield "</head>
 <body>
 ";
-        // line 23
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 24
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 25
         yield "</body>
 </html>
 ";
         yield from [];
     }
 
-    // line 5
+    // line 6
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -103,7 +107,7 @@ class __TwigTemplate_216bd4123eb6585b1dcb84da274de353 extends Template
         yield from [];
     }
 
-    // line 7
+    // line 8
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -114,39 +118,39 @@ class __TwigTemplate_216bd4123eb6585b1dcb84da274de353 extends Template
         yield from [];
     }
 
-    // line 8
+    // line 9
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_stylesheets(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 9
+        // line 10
         yield "        <link rel=\"stylesheet\" href=\"/assets/css/style.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/background.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/basic-rule.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/card.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/particles.css\">
         <link rel=\"stylesheet\" href=\"/assets/css/about.css\">
-        <link rel=\"stylesheet\" href=\"/assets/css/project-view.css\">
+        <link rel=\"stylesheet\" href=\"/assets/css/portfolio-v2.css\">
     ";
         yield from [];
     }
 
-    // line 18
+    // line 19
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 19
+        // line 20
         yield "        <script src=\"/assets/js/language.js\"></script>
     ";
         yield from [];
     }
 
-    // line 23
+    // line 24
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -177,7 +181,7 @@ class __TwigTemplate_216bd4123eb6585b1dcb84da274de353 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  150 => 23,  144 => 19,  137 => 18,  125 => 9,  118 => 8,  107 => 7,  87 => 5,  80 => 24,  78 => 23,  74 => 21,  72 => 18,  69 => 17,  67 => 8,  63 => 7,  59 => 6,  54 => 5,  48 => 1,);
+        return array (  154 => 24,  148 => 20,  141 => 19,  129 => 10,  122 => 9,  111 => 8,  91 => 6,  84 => 25,  82 => 24,  78 => 22,  76 => 19,  73 => 18,  71 => 9,  67 => 8,  63 => 7,  58 => 6,  51 => 2,  48 => 1,);
     }
 
     public function getSourceContext(): Source

@@ -3,15 +3,16 @@
         <ul>
             <li><a href="{{ path('default') }}" class="textBaseSize">_QB</a></li>
             <li class="rightMenu">
-                <a {% if works is defined and works %}href="#works" {% else %}href="{{ path('default')}}#works" {% endif %}class="textBaseSize hoverA">{{ 'works'|trans }}</a>
-                <a href="{{ path('about') }}" class="textBaseSize hoverA">{{ 'about'|trans }}</a>
+                <a {% if works is defined and works %}href="#works" {% else %}href="{{ path('default') }}#works" {% endif %}class="textBaseSize hoverA">{{ 'nav.works'|trans }}</a>
+                <a href="{{ path('about') }}" class="textBaseSize hoverA">{{ 'nav.about'|trans }}</a>
+                <a href="{{ asset('assets/files/BASTOS_QUENTIN_CV.pdf') }}" class="textBaseSize hoverA" target="_blank" rel="noopener">{{ 'nav.cv'|trans }}</a>
                 {% if app.session.get('_locale') == 'fr' %}
-                    <a href="{{ path('change_language', {'language': 'en'}) }}" class="flex" data-toggle="refresh">
-                        <img class="flagCountry" src="{{ asset('assets/svg/uk.svg') }}" alt="flag">
+                    <a href="{{ path('change_language', {'language': 'en'}) }}" class="flex" data-toggle="refresh" aria-label="{{ 'nav.switch_language'|trans }}">
+                        <img class="flagCountry" src="{{ asset('assets/svg/uk.svg') }}" alt="">
                     </a>
                 {% else %}
-                    <a href="{{ path('change_language', {'language': 'fr'}) }}" class="flex" data-toggle="refresh">
-                        <img class="flagCountry" src="{{ asset('assets/svg/france.svg') }}" alt="flag">
+                    <a href="{{ path('change_language', {'language': 'fr'}) }}" class="flex" data-toggle="refresh" aria-label="{{ 'nav.switch_language'|trans }}">
+                        <img class="flagCountry" src="{{ asset('assets/svg/france.svg') }}" alt="">
                     </a>
                 {% endif %}
             </li>

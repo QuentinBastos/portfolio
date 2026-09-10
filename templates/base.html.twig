@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app.request.locale|default('en') }}">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{{ "portfolio"|trans }}{% endblock %}{% block title2 %}{% endblock %}</title>
     <link rel="icon" href="{{ asset('assets/img/contact/qb.png') }}">
     <meta name="description" content="{% block meta_description %}{{ 'default.meta_description'|trans }}{% endblock %}">
@@ -12,7 +13,7 @@
         <link rel="stylesheet" href="/assets/css/card.css">
         <link rel="stylesheet" href="/assets/css/particles.css">
         <link rel="stylesheet" href="/assets/css/about.css">
-        <link rel="stylesheet" href="/assets/css/project-view.css">
+        <link rel="stylesheet" href="/assets/css/portfolio-v2.css">
     {% endblock %}
 
     {% block javascripts %}

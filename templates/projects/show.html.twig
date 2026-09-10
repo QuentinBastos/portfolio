@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+{% set t = project.key %}
+{% set title = (t ~ '.title')|trans %}
+{% set image = (app.request.locale == 'en' and project.image_en) ? project.image_en : project.image %}
+
+{% block title2 %} - {{ title }}{% endblock %}
+{% block meta_description %}{{ (t ~ '.tagline')|trans }}{% endblock %}
+
+{% block body %}
+    <canvas id="projector"></canvas>
+    {% include "header.html.twig" %}
+    <article class="pd">
+        <a class="pd-back hoverA" href="{{ path('default') }}#works">{{ 'project.all_projects'|trans }}</a>
+
+        <div class="pd-hero">
+            <img src="{{ asset(image) }}" alt="{{ title }}">
+        </div>
+
+        <div class="pd-head">
+            {% if project.featured %}
+                <span class="featuredBadge">{{ 'project.featured'|trans }}</span>
+            {% endif %}
+            <h1 class="pd-title">{{ title }}</h1>
+            <p class="pd-tagline">{{ (t ~ '.tagline')|trans }}</p>
+        </div>
+
+        <div class="pd-grid">
+            <div>
+                <section class="pd-section">
+                    <h2 class="pd-label">{{ 'project.context'|trans }}</h2>
+                    <p class="pd-text">{{ (t ~ '.context')|trans }}</p>
+                </section>
+                <section class="pd-section">
+                    <h2 class="pd-label">{{ 'project.role'|trans }}</h2>
+                    <p class="pd-text">{{ (t ~ '.role')|trans }}</p>
+                </section>
+                <section class="pd-section">
+                    <h2 class="pd-label">{{ 'project.highlights'|trans }}</h2>
+                    <ul class="pd-list">
+                        {% for i in 1..project.highlights %}
+                            <li>{{ (t ~ '.highlight_' ~ i)|trans }}</li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </div>
+
+            <aside class="pd-aside">
+                <section class="pd-section">
+                    <h2 class="pd-label">{{ 'project.facts'|trans }}</h2>
+                    <dl class="pd-facts">
+                        <div>
+                            <dt>{{ 'project.origin_label'|trans }}</dt>
+                            <dd>{{ ('project.origin.' ~ project.origin)|trans }}</dd>
+                        </div>
+                        {% if project.year %}
+                            <div>
+                                <dt>{{ 'project.year'|trans }}</dt>
+                                <dd>{{ project.year|trans }}</dd>
+                            </div>
+                        {% endif %}
+                        <div>
+                            <dt>{{ 'project.team'|trans }}</dt>
+                            <dd>
+                                {%- if project.team == 1 -%}
+                                    {{ 'project.team_solo'|trans }}
+                                {%- elseif project.team -%}
+                                    {{ 'project.team_size'|trans({'%count%': project.team}) }}
+                                {%- else -%}
+                                    {{ 'project.team_group'|trans }}
+                                {%- endif -%}
+                            </dd>
+                        </div>
+                        {% if project.status %}
+                            <div>
+                                <dt>{{ 'project.status_label'|trans }}</dt>
+                                <dd>{{ ('project.status.' ~ project.status)|trans }}</dd>
+                            </div>
+                        {% endif %}
+                    </dl>
+                </section>
+
+                <section class="pd-section">
+                    <h2 class="pd-label">{{ 'project.stack'|trans }}</h2>
+                    <ul class="tagList">
+                        {% for tech in project.stack %}
+                            <li class="tag">{{ tech }}</li>
+                        {% endfor %}
+                    </ul>
+                </section>
+
+                {% if project.links is not empty %}
+                    <section class="pd-section">
+                        <h2 class="pd-label">{{ 'project.links'|trans }}</h2>
+                        <div class="pd-links">
+                            {% for link in project.links %}
+                                <a class="linkBtn" href="{{ link.url }}" target="_blank" rel="noopener">
+                                    <span>{{ ('project.link.' ~ link.type)|trans }}</span>
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </section>
+                {% endif %}
+            </aside>
+        </div>
+
+        {% if project.video %}
+            <section class="pd-video">
+                <h2 class="pd-label">{{ 'project.video_title'|trans }}</h2>
+                <video controls preload="metadata">
+                    <source src="{{ asset(project.video) }}" type="video/mp4">
+                    {{ 'project.video_unsupported'|trans }}
+                </video>
+            </section>
+        {% endif %}
+
+        <nav class="pd-nav" aria-label="{{ 'project.all_projects'|trans }}">
+            {% if previous %}
+                <a class="pd-prev hoverA" href="{{ path('project_show', {slug: previous.slug}) }}">
+                    <small>{{ 'project.previous'|trans }}</small>
+                    <span>{{ (previous.key ~ '.title')|trans }}</span>
+                </a>
+            {% endif %}
+            {% if next %}
+                <a class="pd-next hoverA" href="{{ path('project_show', {slug: next.slug}) }}">
+                    <small>{{ 'project.next'|trans }}</small>
+                    <span>{{ (next.key ~ '.title')|trans }}</span>
+                </a>
+            {% endif %}
+        </nav>
+    </article>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/assets/js/background.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    {{ parent() }}
+{% endblock %}

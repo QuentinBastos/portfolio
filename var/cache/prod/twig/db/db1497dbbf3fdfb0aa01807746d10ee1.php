@@ -76,464 +76,307 @@ class __TwigTemplate_0f1bfc632ae4705c77668a9a542f5737 extends Template
         // line 6
         yield "    <main>
         <div class=\"wrapper\">
-            <p class=\"title titleBaseSize\">";
+            <span class=\"heroKicker smallBaseSize\">";
         // line 8
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("nothing"), "html", null, true);
-        yield "</p>
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("hero.kicker"), "html", null, true);
+        yield "</span>
             <p class=\"title titleBaseSize\">";
         // line 9
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("is_impossible"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("hero.line_1"), "html", null, true);
         yield "</p>
-            <p class=\"description textBaseSize\">";
+            <p class=\"title titleBaseSize\">";
         // line 10
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("portfolio_description"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("hero.line_2"), "html", null, true);
+        yield "</p>
+            <p class=\"heroLead\">";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("hero.description"), "html", null, true);
         yield "</p>
         </div>
         <div class=\"more\">
             <a href=\"#who\" class=\"textBaseSize arrowMore\">
                 <span class=\"textBaseSize\">";
-        // line 14
+        // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("more"), "html", null, true);
         yield "</span>
                 <img src=\"";
-        // line 15
+        // line 16
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
+        yield "\" alt=\"\">
             </a>
         </div>
     </main>
     <section id=\"who\" class=\"sectionWho\">
         <div id=\"particles-js\"></div>
         <div class=\"wrapper\">
-            <p class=\"titleWho middleBaseSize\">";
-        // line 22
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("who_is_quentin"), "html", null, true);
-        yield "</p>
-            <p class=\"descriptionWho textBaseSize\">";
+            <h2 class=\"titleWho middleBaseSize\">";
         // line 23
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("quentin_description", ["%age%" => $this->extensions['App\Twig\AppExtension']->getAge()]), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.who_title"), "html", null, true);
+        yield "</h2>
+            <p class=\"descriptionWho textBaseSize\">";
+        // line 24
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.who_description", ["%age%" => $this->extensions['App\Twig\AppExtension']->getAge()]), "html", null, true);
         yield "</p>
             <p class=\"descriptionWho textBaseSize colorLightGray\">";
-        // line 24
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("quentin_details"), "html", null, true);
+        // line 25
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.who_details"), "html", null, true);
         yield "</p>
             <a class=\"aboutWho smallBaseSize hoverA\" href=\"";
-        // line 25
+        // line 26
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about");
         yield "\">";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("learn_more"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.learn_more"), "html", null, true);
         yield "</a>
             <div class=\"more\">
                 <a href=\"#works\" class=\"textBaseSize arrowMore\">
                     <span class=\"textBaseSize\">";
-        // line 28
+        // line 29
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("more"), "html", null, true);
         yield "</span>
                     <img src=\"";
-        // line 29
+        // line 30
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
+        yield "\" alt=\"\">
                 </a>
             </div>
         </div>
     </section>
     <section id=\"works\" class=\"sectionWorks\">
         <div class=\"titleWho stickyTitle\">
-            <h1 class=\"middleBaseSize uppercase\">";
-        // line 36
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("works"), "html", null, true);
-        yield "</h1>
-            <p class=\"textBaseSize\">";
+            <h2 class=\"middleBaseSize uppercase\">";
         // line 37
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("want_to_see_my_work"), "html", null, true);
-        yield "</p>
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.works_title"), "html", null, true);
+        yield "</h2>
             <p class=\"textBaseSize\">";
         // line 38
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("come_check_below"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.works_line_1"), "html", null, true);
         yield "</p>
-            <a href=\"#chess\" class=\"textBaseSize arrowMore mt-7\">
-                <span class=\"textBaseSize\">";
+            <p class=\"textBaseSize\">";
+        // line 39
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.works_line_2"), "html", null, true);
+        yield "</p>
+            <a href=\"#";
         // line 40
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("check_my_projects"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, Twig\Extension\CoreExtension::first($this->env->getCharset(), ($context["projects"] ?? null)), "slug", [], "any", false, false, false, 40), "html", null, true);
+        yield "\" class=\"textBaseSize arrowMore mt-7\">
+                <span class=\"textBaseSize\">";
+        // line 41
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("home.works_cta"), "html", null, true);
         yield "</span>
                 <img src=\"";
-        // line 41
+        // line 42
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
+        yield "\" alt=\"\">
             </a>
         </div>
-        <div id=\"chess\" class=\"projectWrapper\">
-            <img src=\"";
+        ";
         // line 45
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/chess/background_chess.png"), "html", null, true);
-        yield "\" alt=\"Centered Image\"
-                 class=\"centeredImage blurDarker\">
-            <div class=\"project\">
-                <div class=\"leftSide\">
-                    <a href=\"#phase10\" class=\"smallBaseSize arrowMore projectNext\">
-                        <span class=\"smallBaseSize\">";
-        // line 50
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
-        yield "</span>
-                        <img src=\"";
-        // line 51
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
-                    </a>
-                </div>
-                <div class=\"middleSide\">
-                    <a href=\"";
-        // line 55
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_chess");
-        yield "\">
-                        <div class=\"pre-container css-only\">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class=\"language-css\" tabindex=\"0\">
-                                 <img src=\"";
-        // line 67
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/chess/icon_chess.png"), "html", null, true);
-        yield "\"
-                                      alt=\"icon chess game\">
-                            <div class=\"textOverlay\">
-                                <p class=\"midMiddleBaseSize\">";
-        // line 70
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.title"), "html", null, true);
-        yield "</p>
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(($context["projects"] ?? null));
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
+        foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
+            // line 46
+            yield "            ";
+            $context["title"] = $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((CoreExtension::getAttribute($this->env, $this->source, $context["project"], "key", [], "any", false, false, false, 46) . ".title"));
+            // line 47
+            yield "            ";
+            $context["next"] = ((CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "last", [], "any", false, false, false, 47)) ? (null) : ((($_v0 = ($context["projects"] ?? null)) && is_array($_v0) || $_v0 instanceof ArrayAccess ? ($_v0[(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 47) + 1)] ?? null) : null)));
+            // line 48
+            yield "            ";
+            $context["image"] = ((((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["app"] ?? null), "request", [], "any", false, false, false, 48), "locale", [], "any", false, false, false, 48) == "en") && CoreExtension::getAttribute($this->env, $this->source, $context["project"], "image_en", [], "any", false, false, false, 48))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["project"], "image_en", [], "any", false, false, false, 48)) : (CoreExtension::getAttribute($this->env, $this->source, $context["project"], "image", [], "any", false, false, false, 48)));
+            // line 49
+            yield "            <div id=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["project"], "slug", [], "any", false, false, false, 49), "html", null, true);
+            yield "\" class=\"projectWrapper\">
+                <img src=\"";
+            // line 50
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(($context["image"] ?? null)), "html", null, true);
+            yield "\" alt=\"\" class=\"centeredImage blurDarker\">
+                <div class=\"project\">
+                    <div class=\"leftSide\">
+                        ";
+            // line 53
+            if (($context["next"] ?? null)) {
+                // line 54
+                yield "                            <a href=\"#";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "slug", [], "any", false, false, false, 54), "html", null, true);
+                yield "\" class=\"smallBaseSize arrowMore projectNext\">
+                                <span class=\"smallBaseSize\">";
+                // line 55
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.next"), "html", null, true);
+                yield "</span>
+                                <img src=\"";
+                // line 56
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+                yield "\" alt=\"\">
+                            </a>
+                        ";
+            } else {
+                // line 59
+                yield "                            <a href=\"#works\" class=\"smallBaseSize arrowMore projectNext reverseArrow\">
+                                <img src=\"";
+                // line 60
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
+                yield "\" alt=\"\">
+                                <span class=\"smallBaseSize\">";
+                // line 61
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.back_to_works"), "html", null, true);
+                yield "</span>
+                            </a>
+                        ";
+            }
+            // line 64
+            yield "                    </div>
+                    <div class=\"middleSide\">
+                        <a href=\"";
+            // line 66
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, $context["project"], "slug", [], "any", false, false, false, 66)]), "html", null, true);
+            yield "\" aria-label=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["title"] ?? null), "html", null, true);
+            yield "\">
+                            <div class=\"pre-container css-only\">
+                                ";
+            // line 68
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(range(1, 9));
+            foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+                yield "<div></div>";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_key'], $context['i'], $context['_parent']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 69
+            yield "                                <pre class=\"language-css\">
+                                    <img src=\"";
+            // line 70
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, $context["project"], "icon", [], "any", false, false, false, 70)), "html", null, true);
+            yield "\" alt=\"\">
+                                    <span class=\"textOverlay\">
+                                        <span class=\"midMiddleBaseSize\">";
+            // line 72
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["title"] ?? null), "html", null, true);
+            yield "</span>
+                                    </span>
+                                </pre>
                             </div>
-                        </pre>
+                        </a>
+                    </div>
+                    <div class=\"rightSide\">
+                        ";
+            // line 79
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["project"], "featured", [], "any", false, false, false, 79)) {
+                // line 80
+                yield "                            <span class=\"featuredBadge\">";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.featured"), "html", null, true);
+                yield "</span>
+                        ";
+            }
+            // line 82
+            yield "                        <p class=\"midMiddleBaseSize title\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["title"] ?? null), "html", null, true);
+            yield "</p>
+                        <ul class=\"projectMeta\">
+                            <li>";
+            // line 84
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(("project.origin." . CoreExtension::getAttribute($this->env, $this->source, $context["project"], "origin", [], "any", false, false, false, 84))), "html", null, true);
+            yield "</li>
+                            ";
+            // line 85
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["project"], "year", [], "any", false, false, false, 85)) {
+                yield "<li>";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(CoreExtension::getAttribute($this->env, $this->source, $context["project"], "year", [], "any", false, false, false, 85)), "html", null, true);
+                yield "</li>";
+            }
+            // line 86
+            yield "                            ";
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["project"], "status", [], "any", false, false, false, 86)) {
+                yield "<li>";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(("project.status." . CoreExtension::getAttribute($this->env, $this->source, $context["project"], "status", [], "any", false, false, false, 86))), "html", null, true);
+                yield "</li>";
+            }
+            // line 87
+            yield "                        </ul>
+                        <p class=\"descriptionProject smallBaseSize\">";
+            // line 88
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((CoreExtension::getAttribute($this->env, $this->source, $context["project"], "key", [], "any", false, false, false, 88) . ".tagline")), "html", null, true);
+            yield "</p>
+                        <ul class=\"tagList\">
+                            ";
+            // line 90
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["project"], "stack", [], "any", false, false, false, 90), 0, 5));
+            foreach ($context['_seq'] as $context["_key"] => $context["tech"]) {
+                // line 91
+                yield "                                <li class=\"tag\">";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["tech"], "html", null, true);
+                yield "</li>
+                            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_key'], $context['tech'], $context['_parent']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 93
+            yield "                        </ul>
+                        <div class=\"projectActions\">
+                            <a href=\"";
+            // line 95
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, $context["project"], "slug", [], "any", false, false, false, 95)]), "html", null, true);
+            yield "\"
+                               class=\"buttonProject hoverA smallBaseSize\">";
+            // line 96
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.view"), "html", null, true);
+            yield "</a>
                         </div>
-                    </a>
-                </div>
-                <div class=\"rightSide\">
-                    <p class=\"midMiddleBaseSize title\">";
-        // line 77
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.title"), "html", null, true);
-        yield "</p>
-                    <p class=\"descriptionProject smallBaseSize\">";
-        // line 78
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("chess.description"), "html", null, true);
-        yield "</p>
-                    <a href=\"";
-        // line 79
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_chess");
-        yield "\"
-                       class=\"buttonProject hoverA smallBaseSize\">";
-        // line 80
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
-        yield "</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id=\"phase10\" class=\"projectWrapper\">
-            <img src=\"";
-        // line 85
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/phase10/background_phase10.png"), "html", null, true);
-        yield "\" alt=\"Centered Image\"
-                 class=\"centeredImage blurDarker\">
-            <div class=\"project\">
-                <div class=\"leftSide\">
-                    <a href=\"#interactive-book\" class=\"smallBaseSize arrowMore projectNext\">
-                        <span class=\"smallBaseSize\">";
-        // line 90
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
-        yield " </span>
-                        <img src=\"";
-        // line 91
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
-                    </a>
-                </div>
-                <div class=\"middleSide\">
-                    <a href=\"";
-        // line 95
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_phase10");
-        yield "\">
-                        <div class=\"pre-container css-only\">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class=\"language-css\" tabindex=\"0\">
-                               <img src=\"";
-        // line 107
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/phase10/icon_phase10.png"), "html", null, true);
-        yield "\"
-                                    alt=\"icon game phase 10\">
-                            <span class=\"textOverlay\">
-                                <span class=\"midMiddleBaseSize\">";
-        // line 110
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.title"), "html", null, true);
-        yield "</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class=\"rightSide\">
-                    <p class=\"midMiddleBaseSize title\">";
-        // line 117
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.title"), "html", null, true);
-        yield "</p>
-                    <p class=\"descriptionProject smallBaseSize\">";
-        // line 118
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("phase10.description"), "html", null, true);
-        yield ".</p>
-                    <a href=\"";
-        // line 119
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_phase10");
-        yield "\"
-                       class=\"buttonProject hoverA smallBaseSize\">";
-        // line 120
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
-        yield "</a>
-                </div>
-            </div>
-        </div>
-        <div id=\"interactive-book\" class=\"projectWrapper\">
-            <img src=\"";
-        // line 125
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/interactive_book/background_interactive_book.png"), "html", null, true);
-        yield "\"
-                 alt=\"Centered Image\"
-                 class=\"centeredImage blurDarker\">
-            <div class=\"project\">
-                <div class=\"leftSide\">
-                    <a href=\"#spotify\" class=\"smallBaseSize arrowMore projectNext\">
-                        <span class=\"smallBaseSize\">";
-        // line 131
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
-        yield "</span>
-                        <img src=\"";
-        // line 132
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
-                    </a>
-                </div>
-                <div class=\"middleSide\">
-                    <a href=\"";
-        // line 136
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_interactive_book");
-        yield "\">
-                        <div class=\"pre-container css-only\">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class=\"language-css\" tabindex=\"0\">
-                             <img src=\"";
-        // line 148
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/interactive_book/icon_interactive_book.png"), "html", null, true);
-        yield "\"
-                                  alt=\"interactive book icon\">
-                            <span class=\"textOverlay\">
-                                <span class=\"midMiddleBaseSize\">";
-        // line 151
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.title"), "html", null, true);
-        yield "</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class=\"rightSide\">
-                    <p class=\"midMiddleBaseSize title\">";
-        // line 158
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.title"), "html", null, true);
-        yield "</p>
-                    <p class=\"descriptionProject smallBaseSize\">";
-        // line 159
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("interactive_book.description"), "html", null, true);
-        yield "</p>
-                    <a href=\"";
-        // line 160
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_interactive_book");
-        yield "\"
-                       class=\"buttonProject hoverA smallBaseSize\">";
-        // line 161
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
-        yield "</a>
-                </div>
-            </div>
-        </div>
-        <div id=\"spotify\" class=\"projectWrapper\">
-            <img src=\"";
-        // line 166
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/spotify/background_spotify.png"), "html", null, true);
-        yield "\" alt=\"Centered Image\"
-                 class=\"centeredImage blurDarker\">
-            <div class=\"project\">
-                <div class=\"leftSide\">
-                    <a href=\"#aloas\" class=\"smallBaseSize arrowMore projectNext\">
-                        <span class=\"smallBaseSize\">";
-        // line 171
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("next_project"), "html", null, true);
-        yield "</span>
-                        <img src=\"";
-        // line 172
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
-                    </a>
-                </div>
-                <div class=\"middleSide\">
-                    <a href=\"";
-        // line 176
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_spotify");
-        yield "\">
-                        <div class=\"pre-container css-only\">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class=\"language-css\" tabindex=\"0\">
-                             <img src=\"";
-        // line 188
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/spotify/icon_spotify.png"), "html", null, true);
-        yield "\"
-                                  alt=\"interactive book icon\">
-                            <span class=\"textOverlay\">
-                                <span class=\"midMiddleBaseSize\">";
-        // line 191
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("spotify.title"), "html", null, true);
-        yield "</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class=\"rightSide\">
-                    <p class=\"midMiddleBaseSize title\">";
-        // line 198
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("spotify.title"), "html", null, true);
-        yield "</p>
-                    <p class=\"descriptionProject smallBaseSize\">";
-        // line 199
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("spotify.description"), "html", null, true);
-        yield "</p>
-                    <a href=\"";
-        // line 200
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_spotify");
-        yield "\"
-                       class=\"buttonProject hoverA smallBaseSize\">";
-        // line 201
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
-        yield "</a>
-                </div>
-            </div>
-        </div>
-        <div id=\"aloas\" class=\"projectWrapper\">
-            <img src=\"";
-        // line 206
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/aloas/background_aloas.png"), "html", null, true);
-        yield "\" alt=\"Centered Image\"
-                 class=\"centeredImage blurDarker\">
-            <div class=\"project\">
-                <div class=\"leftSide\">
-                    <a href=\"#works\" class=\"smallBaseSize arrowMore projectNext reverseArrow\">
-                        <img src=\"";
-        // line 211
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/svg/arrow.svg"), "html", null, true);
-        yield "\" alt=\"arrow\">
-                        <span class=\"smallBaseSize\">";
-        // line 212
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("back_to_works"), "html", null, true);
-        yield "</span>
-                    </a>
-                </div>
-                <div class=\"middleSide\">
-                    <a href=\"";
-        // line 216
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_aloas");
-        yield "\">
-                        <div class=\"pre-container css-only\">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <pre contenteditable class=\"language-css\" tabindex=\"0\">
-                             <img src=\"";
-        // line 228
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/projects/aloas/icon_aloas.png"), "html", null, true);
-        yield "\"
-                                  alt=\"interactive book icon\">
-                            <span class=\"textOverlay\">
-                                <span class=\"midMiddleBaseSize\">";
-        // line 231
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("aloas.title"), "html", null, true);
-        yield "</span>
-                            </span>
-                        </pre>
-                        </div>
-                    </a>
-                </div>
-                <div class=\"rightSide\">
-                    <p class=\"midMiddleBaseSize title\">";
-        // line 238
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("aloas.title"), "html", null, true);
-        yield "</p>
-                    <p class=\"descriptionProject smallBaseSize\">";
-        // line 239
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("aloas.description"), "html", null, true);
-        yield "</p>
-                    <a href=\"";
-        // line 240
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_aloas");
-        yield "\"
-                       class=\"buttonProject hoverA smallBaseSize\">";
-        // line 241
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("view_project"), "html", null, true);
-        yield "</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        ";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 102
+        yield "    </section>
     <div style=\"height: 1px; width: 100%; margin: 0; padding: 0; overflow: hidden;\"></div>
 ";
         yield from [];
     }
 
-    // line 249
+    // line 106
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 250
+        // line 107
         yield "    <script src=\"/assets/js/background.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/particles.js\"></script>
     <script src=\"/assets/js/particles.js\"></script>
     <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
     ";
-        // line 255
+        // line 112
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
 ";
@@ -561,7 +404,7 @@ class __TwigTemplate_0f1bfc632ae4705c77668a9a542f5737 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  537 => 255,  530 => 250,  523 => 249,  511 => 241,  507 => 240,  503 => 239,  499 => 238,  489 => 231,  483 => 228,  468 => 216,  461 => 212,  457 => 211,  449 => 206,  441 => 201,  437 => 200,  433 => 199,  429 => 198,  419 => 191,  413 => 188,  398 => 176,  391 => 172,  387 => 171,  379 => 166,  371 => 161,  367 => 160,  363 => 159,  359 => 158,  349 => 151,  343 => 148,  328 => 136,  321 => 132,  317 => 131,  308 => 125,  300 => 120,  296 => 119,  292 => 118,  288 => 117,  278 => 110,  272 => 107,  257 => 95,  250 => 91,  246 => 90,  238 => 85,  230 => 80,  226 => 79,  222 => 78,  218 => 77,  208 => 70,  202 => 67,  187 => 55,  180 => 51,  176 => 50,  168 => 45,  161 => 41,  157 => 40,  152 => 38,  148 => 37,  144 => 36,  134 => 29,  130 => 28,  122 => 25,  118 => 24,  114 => 23,  110 => 22,  100 => 15,  96 => 14,  89 => 10,  85 => 9,  81 => 8,  77 => 6,  75 => 5,  72 => 4,  65 => 3,  53 => 2,  42 => 1,);
+        return array (  380 => 112,  373 => 107,  366 => 106,  359 => 102,  339 => 96,  335 => 95,  331 => 93,  322 => 91,  318 => 90,  313 => 88,  310 => 87,  303 => 86,  297 => 85,  293 => 84,  287 => 82,  281 => 80,  279 => 79,  269 => 72,  264 => 70,  261 => 69,  252 => 68,  245 => 66,  241 => 64,  235 => 61,  231 => 60,  228 => 59,  222 => 56,  218 => 55,  213 => 54,  211 => 53,  205 => 50,  200 => 49,  197 => 48,  194 => 47,  191 => 46,  174 => 45,  168 => 42,  164 => 41,  160 => 40,  156 => 39,  152 => 38,  148 => 37,  138 => 30,  134 => 29,  126 => 26,  122 => 25,  118 => 24,  114 => 23,  104 => 16,  100 => 15,  93 => 11,  89 => 10,  85 => 9,  81 => 8,  77 => 6,  75 => 5,  72 => 4,  65 => 3,  53 => 2,  42 => 1,);
     }
 
     public function getSourceContext(): Source
