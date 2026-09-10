@@ -5,10 +5,10 @@
 return [
     'about' => [[], ['_controller' => 'App\\Controller\\AboutController::index'], [], [['text', '/about']], [], [], []],
     'default' => [[], ['_controller' => 'App\\Controller\\DefaultController::index'], [], [['text', '/']], [], [], []],
-    'change_language' => [['language'], ['_controller' => 'App\\Controller\\LanguageController::changeLanguage'], [], [['variable', '/', '[^/]++', 'language', true], ['text', '/change-language']], [], [], []],
+    'change_language' => [['language'], ['_controller' => 'App\\Controller\\LanguageController::changeLanguage'], ['language' => 'fr|en'], [['variable', '/', 'fr|en', 'language', true], ['text', '/change-language']], [], [], []],
     'project_show' => [['slug'], ['_controller' => 'App\\Controller\\ProjectsController::show'], ['slug' => '[a-z0-9-]+'], [['variable', '/', '[a-z0-9-]+', 'slug', true], ['text', '/projects']], [], [], []],
     'App\Controller\AboutController::index' => [[], ['_controller' => 'App\\Controller\\AboutController::index'], [], [['text', '/about']], [], [], []],
     'App\Controller\DefaultController::index' => [[], ['_controller' => 'App\\Controller\\DefaultController::index'], [], [['text', '/']], [], [], []],
-    'App\Controller\LanguageController::changeLanguage' => [['language'], ['_controller' => 'App\\Controller\\LanguageController::changeLanguage'], [], [['variable', '/', '[^/]++', 'language', true], ['text', '/change-language']], [], [], []],
+    'App\Controller\LanguageController::changeLanguage' => [['language'], ['_controller' => 'App\\Controller\\LanguageController::changeLanguage'], ['language' => 'fr|en'], [['variable', '/', 'fr|en', 'language', true], ['text', '/change-language']], [], [], []],
     'App\Controller\ProjectsController::show' => [['slug'], ['_controller' => 'App\\Controller\\ProjectsController::show'], ['slug' => '[a-z0-9-]+'], [['variable', '/', '[a-z0-9-]+', 'slug', true], ['text', '/projects']], [], [], []],
 ];

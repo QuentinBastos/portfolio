@@ -13,13 +13,13 @@ return [
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/change\\-language/([^/]++)(*:33)'
-                .'|/projects/([a-z0-9-]+)(*:62)'
+                .'|/change\\-language/(fr|en)(*:32)'
+                .'|/projects/([a-z0-9-]+)(*:61)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        33 => [[['_route' => 'change_language', '_controller' => 'App\\Controller\\LanguageController::changeLanguage'], ['language'], null, null, false, true, null]],
-        62 => [
+        32 => [[['_route' => 'change_language', '_controller' => 'App\\Controller\\LanguageController::changeLanguage'], ['language'], null, null, false, true, null]],
+        61 => [
             [['_route' => 'project_show', '_controller' => 'App\\Controller\\ProjectsController::show'], ['slug'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

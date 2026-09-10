@@ -416,8 +416,14 @@ button:focus-visible {
         gap: 2.5rem;
     }
 
+    /* Les visuels projet sont plus larges que 16/9 : recadrés, ils perdaient le logo sur les
+       côtés. Sous 1024 px, l'image s'affiche entière, à sa hauteur naturelle. */
     .pd-hero {
-        aspect-ratio: 16 / 9;
+        aspect-ratio: auto;
+    }
+
+    .pd-hero img {
+        height: auto;
     }
 
     .timeline > li {
@@ -620,6 +626,12 @@ button:focus-visible {
 
     .heroLead {
         margin-top: 1.5rem;
+    }
+
+    /* Titre de la page À propos : à 61 px, « DÉVELOPPEUR » se coupait en plein mot. */
+    .wrapper h1.title.middleBaseSize {
+        font-size: 10vw;
+        text-wrap: balance;
     }
 
     .pre-container {
