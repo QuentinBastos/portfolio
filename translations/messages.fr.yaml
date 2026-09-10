@@ -14,8 +14,8 @@ nav:
 
 hero:
   kicker: "Développeur back-end · Élève ingénieur à CPE Lyon"
-  line_1: "Du code"
-  line_2: "en production."
+  line_1: "Quentin"
+  line_2: "Bastos."
   description: "Élève ingénieur en quatrième année, en alternance chez Effet B. Je développe des ERP web utilisés chaque jour et j'exploite ma propre application, SparkleQuiz."
 
 home:
@@ -50,6 +50,7 @@ project:
   status_label: "Statut"
   video_title: "Démonstration"
   video_unsupported: "Votre navigateur ne lit pas cette vidéo."
+  screens: "Captures d'écran"
   status:
     live: "En production"
   origin:
@@ -57,6 +58,7 @@ project:
     but: "Projet BUT"
     cpe: "Projet CPE Lyon"
     perso: "Projet personnel"
+    client: "Projet client"
   link:
     site: "Site web"
     appstore: "App Store"
@@ -77,6 +79,20 @@ projects:
     highlight_4: "Huit pipelines d'intégration et de déploiement continus sur GitHub Actions, dont le déploiement Docker en production et la mise à jour des fiches des stores."
     highlight_5: "Tests de bout en bout avec Playwright sur le web et Maestro sur mobile, analyse statique avec PHPStan, audits de performance avec Lighthouse."
     highlight_6: "Plus de 4 000 commits : le produit est en production et continue d'évoluer chaque semaine."
+  charlotte:
+    title: "Charlotte Bastos"
+    tagline: "Site vitrine et boutique d'une illustratrice freelance, entièrement modifiable depuis un CMS."
+    context: "Charlotte Bastos est illustratrice, motion designer et graphiste freelance. Je lui ai développé un site complet : galeries d'illustrations, d'animations et de graphisme, grille tarifaire interactive, formulaire de commande, boutique en ligne et pages légales, en quatre langues. Tout le contenu se modifie depuis un espace d'administration, sans toucher au code."
+    role: "Conception et développement de bout en bout, seul : front-end, back-end, CMS, paiement et déploiement."
+    highlight_1: "Front-end Nuxt 3 et Tailwind, avec des pages de galerie pré-rendues, du rendu serveur pour le reste, des animations GSAP et des apparitions au défilement."
+    highlight_2: "CMS headless Sanity : 16 schémas sur mesure (illustrations, univers, vidéos, produits, tarifs, témoignages, pages légales) aux champs traduits, pour que Charlotte publie sans développeur."
+    highlight_3: "Boutique avec panier et paiement Stripe Checkout. Un webhook confirme chaque commande et prévient Charlotte par e-mail via Resend."
+    highlight_4: "Grille tarifaire interactive qui calcule le prix selon le cadrage, le niveau de rendu et les suppléments, et formulaire de commande qui s'ouvre ou se ferme depuis les réglages du site."
+    highlight_5: "Site en français, anglais, espagnol et allemand avec Nuxt i18n, appuyé sur 20 routes d'API côté serveur."
+    screen_home: "Page d'accueil"
+    screen_gallery: "Galerie d'illustrations"
+    screen_pricing: "Grille tarifaire interactive"
+    screen_commissions: "Formulaire de commande"
   aloas:
     title: "ALOAS"
     tagline: "Plateforme de gestion de tournois sportifs pour une association, en production."

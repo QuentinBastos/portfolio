@@ -317,88 +317,136 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
 
         ";
         // line 107
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "video", [], "any", false, false, false, 107)) {
+        if ( !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "screens", [], "any", false, false, false, 107))) {
             // line 108
-            yield "            <section class=\"pd-video\">
+            yield "            <section class=\"pd-screens\">
                 <h2 class=\"pd-label\">";
             // line 109
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.screens"), "html", null, true);
+            yield "</h2>
+                <div class=\"pd-screens-grid\">
+                    ";
+            // line 111
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "screens", [], "any", false, false, false, 111));
+            foreach ($context['_seq'] as $context["_key"] => $context["screen"]) {
+                // line 112
+                yield "                        ";
+                $context["caption"] = $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(((($context["t"] ?? null) . ".") . CoreExtension::getAttribute($this->env, $this->source, $context["screen"], "caption", [], "any", false, false, false, 112)));
+                // line 113
+                yield "                        <figure>
+                            <a href=\"";
+                // line 114
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, $context["screen"], "image", [], "any", false, false, false, 114)), "html", null, true);
+                yield "\" target=\"_blank\" rel=\"noopener\">
+                                <img src=\"";
+                // line 115
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, $context["screen"], "image", [], "any", false, false, false, 115)), "html", null, true);
+                yield "\" alt=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["caption"] ?? null), "html", null, true);
+                yield "\" loading=\"lazy\">
+                            </a>
+                            <figcaption>";
+                // line 117
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["caption"] ?? null), "html", null, true);
+                yield "</figcaption>
+                        </figure>
+                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_key'], $context['screen'], $context['_parent']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 120
+            yield "                </div>
+            </section>
+        ";
+        }
+        // line 123
+        yield "
+        ";
+        // line 124
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "video", [], "any", false, false, false, 124)) {
+            // line 125
+            yield "            <section class=\"pd-video\">
+                <h2 class=\"pd-label\">";
+            // line 126
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.video_title"), "html", null, true);
             yield "</h2>
                 <video controls preload=\"metadata\">
                     <source src=\"";
-            // line 111
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "video", [], "any", false, false, false, 111)), "html", null, true);
+            // line 128
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, ($context["project"] ?? null), "video", [], "any", false, false, false, 128)), "html", null, true);
             yield "\" type=\"video/mp4\">
                     ";
-            // line 112
+            // line 129
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.video_unsupported"), "html", null, true);
             yield "
                 </video>
             </section>
         ";
         }
-        // line 116
+        // line 133
         yield "
         <nav class=\"pd-nav\" aria-label=\"";
-        // line 117
+        // line 134
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.all_projects"), "html", null, true);
         yield "\">
             ";
-        // line 118
+        // line 135
         if (($context["previous"] ?? null)) {
-            // line 119
+            // line 136
             yield "                <a class=\"pd-prev hoverA\" href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, ($context["previous"] ?? null), "slug", [], "any", false, false, false, 119)]), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, ($context["previous"] ?? null), "slug", [], "any", false, false, false, 136)]), "html", null, true);
             yield "\">
                     <small>";
-            // line 120
+            // line 137
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.previous"), "html", null, true);
             yield "</small>
                     <span>";
-            // line 121
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((CoreExtension::getAttribute($this->env, $this->source, ($context["previous"] ?? null), "key", [], "any", false, false, false, 121) . ".title")), "html", null, true);
+            // line 138
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((CoreExtension::getAttribute($this->env, $this->source, ($context["previous"] ?? null), "key", [], "any", false, false, false, 138) . ".title")), "html", null, true);
             yield "</span>
                 </a>
             ";
         }
-        // line 124
+        // line 141
         yield "            ";
         if (($context["next"] ?? null)) {
-            // line 125
+            // line 142
             yield "                <a class=\"pd-next hoverA\" href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "slug", [], "any", false, false, false, 125)]), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("project_show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "slug", [], "any", false, false, false, 142)]), "html", null, true);
             yield "\">
                     <small>";
-            // line 126
+            // line 143
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("project.next"), "html", null, true);
             yield "</small>
                     <span>";
-            // line 127
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "key", [], "any", false, false, false, 127) . ".title")), "html", null, true);
+            // line 144
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "key", [], "any", false, false, false, 144) . ".title")), "html", null, true);
             yield "</span>
                 </a>
             ";
         }
-        // line 130
+        // line 147
         yield "        </nav>
     </article>
 ";
         yield from [];
     }
 
-    // line 134
+    // line 151
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_javascripts(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 135
+        // line 152
         yield "    <script src=\"/assets/js/background.js\"></script>
     <script src=\"https://code.createjs.com/1.0.0/createjs.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js\"></script>
     ";
-        // line 138
+        // line 155
         yield from $this->yieldParentBlock("javascripts", $context, $blocks);
         yield "
 ";
@@ -426,7 +474,7 @@ class __TwigTemplate_006f31647b5549d54eda083da0520fce extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  402 => 138,  397 => 135,  390 => 134,  383 => 130,  377 => 127,  373 => 126,  368 => 125,  365 => 124,  359 => 121,  355 => 120,  350 => 119,  348 => 118,  344 => 117,  341 => 116,  334 => 112,  330 => 111,  325 => 109,  322 => 108,  320 => 107,  315 => 104,  310 => 101,  300 => 97,  295 => 96,  291 => 95,  286 => 93,  283 => 92,  281 => 91,  276 => 88,  267 => 86,  263 => 85,  258 => 83,  252 => 79,  246 => 76,  242 => 75,  239 => 74,  237 => 73,  233 => 71,  230 => 69,  227 => 67,  225 => 66,  223 => 65,  221 => 64,  217 => 62,  214 => 61,  208 => 58,  204 => 57,  201 => 56,  199 => 55,  194 => 53,  190 => 52,  184 => 49,  176 => 43,  167 => 41,  163 => 40,  158 => 38,  152 => 35,  148 => 34,  142 => 31,  138 => 30,  129 => 24,  124 => 23,  118 => 21,  116 => 20,  107 => 16,  99 => 13,  96 => 12,  94 => 11,  91 => 10,  84 => 9,  73 => 7,  61 => 6,  56 => 1,  54 => 4,  52 => 3,  50 => 2,  43 => 1,);
+        return array (  450 => 155,  445 => 152,  438 => 151,  431 => 147,  425 => 144,  421 => 143,  416 => 142,  413 => 141,  407 => 138,  403 => 137,  398 => 136,  396 => 135,  392 => 134,  389 => 133,  382 => 129,  378 => 128,  373 => 126,  370 => 125,  368 => 124,  365 => 123,  360 => 120,  351 => 117,  344 => 115,  340 => 114,  337 => 113,  334 => 112,  330 => 111,  325 => 109,  322 => 108,  320 => 107,  315 => 104,  310 => 101,  300 => 97,  295 => 96,  291 => 95,  286 => 93,  283 => 92,  281 => 91,  276 => 88,  267 => 86,  263 => 85,  258 => 83,  252 => 79,  246 => 76,  242 => 75,  239 => 74,  237 => 73,  233 => 71,  230 => 69,  227 => 67,  225 => 66,  223 => 65,  221 => 64,  217 => 62,  214 => 61,  208 => 58,  204 => 57,  201 => 56,  199 => 55,  194 => 53,  190 => 52,  184 => 49,  176 => 43,  167 => 41,  163 => 40,  158 => 38,  152 => 35,  148 => 34,  142 => 31,  138 => 30,  129 => 24,  124 => 23,  118 => 21,  116 => 20,  107 => 16,  99 => 13,  96 => 12,  94 => 11,  91 => 10,  84 => 9,  73 => 7,  61 => 6,  56 => 1,  54 => 4,  52 => 3,  50 => 2,  43 => 1,);
     }
 
     public function getSourceContext(): Source

@@ -104,6 +104,23 @@
             </aside>
         </div>
 
+        {% if project.screens is not empty %}
+            <section class="pd-screens">
+                <h2 class="pd-label">{{ 'project.screens'|trans }}</h2>
+                <div class="pd-screens-grid">
+                    {% for screen in project.screens %}
+                        {% set caption = (t ~ '.' ~ screen.caption)|trans %}
+                        <figure>
+                            <a href="{{ asset(screen.image) }}" target="_blank" rel="noopener">
+                                <img src="{{ asset(screen.image) }}" alt="{{ caption }}" loading="lazy">
+                            </a>
+                            <figcaption>{{ caption }}</figcaption>
+                        </figure>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+
         {% if project.video %}
             <section class="pd-video">
                 <h2 class="pd-label">{{ 'project.video_title'|trans }}</h2>

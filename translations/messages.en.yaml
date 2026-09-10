@@ -14,8 +14,8 @@ nav:
 
 hero:
   kicker: "Back-end developer · Engineering student at CPE Lyon"
-  line_1: "Code"
-  line_2: "that ships."
+  line_1: "Quentin"
+  line_2: "Bastos."
   description: "Fourth-year engineering student on a work-study apprenticeship at Effet B. I build web ERP systems used every day, and I run my own app, SparkleQuiz."
 
 home:
@@ -50,6 +50,7 @@ project:
   status_label: "Status"
   video_title: "Demo"
   video_unsupported: "Your browser cannot play this video."
+  screens: "Screenshots"
   status:
     live: "In production"
   origin:
@@ -57,6 +58,7 @@ project:
     but: "BUT project"
     cpe: "CPE Lyon project"
     perso: "Personal project"
+    client: "Client project"
   link:
     site: "Website"
     appstore: "App Store"
@@ -77,6 +79,20 @@ projects:
     highlight_4: "Eight continuous integration and delivery pipelines on GitHub Actions, including the Docker production deployment and store listing updates."
     highlight_5: "End-to-end tests with Playwright on the web and Maestro on mobile, static analysis with PHPStan, performance audits with Lighthouse."
     highlight_6: "Over 4,000 commits: the product is live and keeps evolving every week."
+  charlotte:
+    title: "Charlotte Bastos"
+    tagline: "Portfolio and online shop for a freelance illustrator, fully editable through a CMS."
+    context: "Charlotte Bastos is a freelance illustrator, motion designer and graphic designer. I built a complete website for Charlotte: illustration, animation and graphic design galleries, an interactive pricing grid, a commission form, an online shop and legal pages, in four languages. All the content is edited from an admin studio, without touching the code."
+    role: "Designed and built end to end on my own: front end, back end, CMS, payments and deployment."
+    highlight_1: "Nuxt 3 and Tailwind front end, with prerendered gallery pages, server-side rendering for the rest, GSAP animations and scroll reveals."
+    highlight_2: "Sanity headless CMS: 16 custom schemas (illustrations, universes, videos, products, pricing, testimonials, legal pages) with translated fields, so Charlotte can publish without a developer."
+    highlight_3: "Shop with a cart and Stripe Checkout payments. A webhook confirms each order and notifies Charlotte by email through Resend."
+    highlight_4: "Interactive pricing grid that computes the price from framing, rendering level and extras, and a commission form that opens or closes from the site settings."
+    highlight_5: "Site in French, English, Spanish and German with Nuxt i18n, backed by 20 server API routes."
+    screen_home: "Home page"
+    screen_gallery: "Illustration gallery"
+    screen_pricing: "Interactive pricing grid"
+    screen_commissions: "Commission form"
   aloas:
     title: "ALOAS"
     tagline: "A sports tournament management platform for a non-profit, in production."

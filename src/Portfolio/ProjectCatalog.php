@@ -30,7 +30,32 @@ final class ProjectCatalog
             'image_en' => 'assets/img/projects/sparklequiz/background_sparklequiz_en.jpg',
             'icon' => 'assets/img/projects/sparklequiz/icon_sparklequiz.png',
             'video' => null,
-            'highlights' => 6,
+            'screens' => [],
+            'highlights' =>6,
+        ],
+        [
+            // Déploiement Vercel retiré et dépôt privé : pas de lien public pour l'instant.
+            'slug' => 'charlotte',
+            'key' => 'projects.charlotte',
+            'featured' => false,
+            'origin' => 'client',
+            'year' => '2026',
+            'team' => 1,
+            'status' => null,
+            'stack' => ['Nuxt 3', 'Vue 3', 'TypeScript', 'Tailwind', 'Sanity', 'Stripe', 'Resend', 'GSAP', 'Vercel'],
+            'links' => [],
+            'image' => 'assets/img/projects/charlotte/background_charlotte.jpg',
+            'image_en' => 'assets/img/projects/charlotte/background_charlotte_en.jpg',
+            'icon' => 'assets/img/projects/charlotte/icon_charlotte.jpg',
+            'video' => null,
+            'screens' => [
+                // La capture d'accueil sert aussi d'image d'en-tête : pas de doublon.
+                ['image' => 'assets/img/projects/charlotte/background_charlotte_en.jpg', 'caption' => 'screen_home'],
+                ['image' => 'assets/img/projects/charlotte/screen_gallery.jpg', 'caption' => 'screen_gallery'],
+                ['image' => 'assets/img/projects/charlotte/screen_pricing.jpg', 'caption' => 'screen_pricing'],
+                ['image' => 'assets/img/projects/charlotte/screen_commissions.jpg', 'caption' => 'screen_commissions'],
+            ],
+            'highlights' =>5,
         ],
         [
             'slug' => 'aloas',
@@ -49,7 +74,8 @@ final class ProjectCatalog
             'image_en' => null,
             'icon' => 'assets/img/projects/aloas/icon_aloas.png',
             'video' => null,
-            'highlights' => 3,
+            'screens' => [],
+            'highlights' =>3,
         ],
         [
             'slug' => 'iot',
@@ -67,7 +93,8 @@ final class ProjectCatalog
             'image_en' => 'assets/img/projects/iot/background_iot_en.jpg',
             'icon' => 'assets/img/projects/iot/icon_iot.png',
             'video' => null,
-            'highlights' => 3,
+            'screens' => [],
+            'highlights' =>3,
         ],
         [
             'slug' => 'interactive-book',
@@ -85,7 +112,8 @@ final class ProjectCatalog
             'image_en' => null,
             'icon' => 'assets/img/projects/interactive_book/icon_interactive_book.png',
             'video' => 'assets/video/interactiveBook.mp4',
-            'highlights' => 3,
+            'screens' => [],
+            'highlights' =>3,
         ],
         [
             'slug' => 'chess',
@@ -103,7 +131,8 @@ final class ProjectCatalog
             'image_en' => null,
             'icon' => 'assets/img/projects/chess/icon_chess.png',
             'video' => 'assets/video/chess.mp4',
-            'highlights' => 2,
+            'screens' => [],
+            'highlights' =>2,
         ],
         [
             'slug' => 'spotify',
@@ -121,7 +150,8 @@ final class ProjectCatalog
             'image_en' => null,
             'icon' => 'assets/img/projects/spotify/icon_spotify.png',
             'video' => 'assets/video/spotify.mp4',
-            'highlights' => 2,
+            'screens' => [],
+            'highlights' =>2,
         ],
         [
             'slug' => 'phase10',
@@ -139,7 +169,8 @@ final class ProjectCatalog
             'image_en' => null,
             'icon' => 'assets/img/projects/phase10/icon_phase10.png',
             'video' => null,
-            'highlights' => 2,
+            'screens' => [],
+            'highlights' =>2,
         ],
     ];
 

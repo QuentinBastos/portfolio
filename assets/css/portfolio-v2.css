@@ -275,6 +275,38 @@ button:focus-visible {
     border-radius: var(--radius);
 }
 
+.pd-screens {
+    margin-top: 3.5rem;
+}
+
+/* Deux colonnes quand la place le permet, une seule sur téléphone, sans media query. */
+.pd-screens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+    gap: 1.5rem;
+}
+
+.pd-screens figure {
+    margin: 0;
+}
+
+.pd-screens img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+    background: #0f1213;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.pd-screens figcaption {
+    margin-top: 0.6rem;
+    color: var(--faint);
+    font-size: 0.85rem;
+}
+
 .pd-nav {
     display: flex;
     justify-content: space-between;
