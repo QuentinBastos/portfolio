@@ -175,6 +175,8 @@ export type GlassOptions = {
   live: 'up' | 'down' | 'unknown';
   onDropHover?: (i: number) => void;
   onDropOpen?: (i: number, x: number, y: number) => void;
+  /** Appelé si la machine ne tient pas l'animation même au plus bas réglage. */
+  onTooSlow?: () => void;
 };
 
 // Double battement, période 1,1 s
@@ -186,10 +188,16 @@ const beat = (t: number) => {
 export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], options: GlassOptions): Glass {
   const mobile = matchMedia('(max-width: 767px)').matches;
   const dpr = Math.min(devicePixelRatio, mobile ? 1.5 : 2);
+  // Plafond de pixels : sur un écran 4K, le verre (rendu deux fois avec la transmission) écroule le GPU
+  const budget = mobile ? 1.6e6 : 2.6e6;
+  let quality = 1;
+  const ratio = () => Math.min(dpr, Math.sqrt(budget / (innerWidth * innerHeight))) * quality;
 
-  const renderer = new WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(dpr);
+  const renderer = new WebGLRenderer({ canvas, antialias: devicePixelRatio < 1.5, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(ratio());
   renderer.toneMapping = NeutralToneMapping;
+  // La réfraction est floue par nature : une demi-résolution ne se voit pas
+  renderer.transmissionResolutionScale = 0.5;
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(35, 1, 0.1, 50);
@@ -335,6 +343,7 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
   const resize = () => {
     const w = innerWidth;
     const h = innerHeight;
+    renderer.setPixelRatio(ratio());
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -367,7 +376,36 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
   const inverse = new Quaternion();
   const toMouse = new Vector3();
 
+  // Qualité adaptative : on mesure la cadence réelle et on baisse la résolution tant qu'elle est trop lente
+  let last = 0;
+  let frames = 0;
+  let spent = 0;
+  let warmup = 30;
+  const govern = (t: number) => {
+    const d = last ? t - last : 0;
+    last = t;
+    // Onglet en arrière-plan ou pause du navigateur : la mesure ne vaut rien
+    if (d <= 0 || d > 250) return;
+    if (warmup > 0) return void warmup--;
+    frames++;
+    spent += d;
+    if (frames < 40) return;
+    const avg = spent / frames;
+    frames = 0;
+    spent = 0;
+    if (avg < 24) return;
+    if (quality > 0.5) {
+      quality = Math.max(0.5, quality * 0.75);
+      resize();
+      warmup = 10;
+    } else if (avg > 45) {
+      options.onTooSlow?.();
+      warmup = Infinity;
+    }
+  };
+
   renderer.setAnimationLoop((t) => {
+    govern(t);
     timer.update(t);
     // Le premier delta peut être négatif (horodatage rAF antérieur au Timer)
     const dt = Math.max(0, Math.min(timer.getDelta(), 0.05));
