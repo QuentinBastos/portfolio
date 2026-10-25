@@ -343,7 +343,13 @@ const parseStat = (v: string) => {
   const ok = () => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
     try {
-      return !!document.createElement('canvas').getContext('webgl2');
+      const gl = document.createElement('canvas').getContext('webgl2');
+      if (!gl) return false;
+      // Accélération matérielle coupée dans le navigateur : rendu logiciel, quelques images par seconde
+      const info = gl.getExtension('WEBGL_debug_renderer_info');
+      const name = String(gl.getParameter(info ? info.UNMASKED_RENDERER_WEBGL : gl.RENDERER));
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      return !/swiftshader|llvmpipe|softpipe|software|basic render/i.test(name);
     } catch {
       return false;
     }
@@ -357,6 +363,10 @@ const parseStat = (v: string) => {
         live: (canvas.dataset.live as 'up' | 'down' | 'unknown') ?? 'unknown',
         onDropHover: (i) => rows.forEach((r, k) => r.classList.toggle('is-on', k === i)),
         onDropOpen: (i, x, y) => liquidGo(drops[i].href, x, y),
+        onTooSlow: () => {
+          canvas.toggleAttribute('data-on', false);
+          setTimeout(() => glass.dispose(), 800);
+        },
       });
       rows.forEach((row, i) => {
         row.addEventListener('pointerenter', () => glass.highlight(i));
