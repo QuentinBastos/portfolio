@@ -1,17 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
-import { ui, routes } from '../i18n';
+import { ui, routes, langs } from '../i18n';
 ---
 
 <Base lang="fr" title="404 · Quentin Bastos" description={ui.notFoundText.fr} alternates={routes.home}>
   <section class="wrap py-32 text-center">
     <p class="text-7xl font-semibold text-accent">404</p>
     <h1 class="mt-6 text-3xl font-semibold">{ui.notFoundTitle.fr}</h1>
-    <p class="mt-3 text-muted">{ui.notFoundText.fr}</p>
-    <p class="mt-1 text-muted" lang="en">{ui.notFoundText.en}</p>
-    <div class="mt-8 flex justify-center gap-3">
-      <a href="/" class="btn btn-solid">Accueil</a>
-      <a href="/en" class="btn" lang="en">Home</a>
+    {langs.map((l) => <p class="mt-2 text-muted" lang={l}>{ui.notFoundText[l]}</p>)}
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      {langs.map((l, i) => <a href={routes.home[l]} lang={l} class:list={['btn', i === 0 && 'btn-solid']}>{ui.home[l]}</a>)}
     </div>
   </section>
 </Base>

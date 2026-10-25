@@ -168,7 +168,7 @@ if (!reduce) {
     const ring = document.createElement('div');
     ring.className = 'cursor';
     ring.setAttribute('aria-hidden', 'true');
-    ring.innerHTML = `<span>${document.documentElement.lang === 'fr' ? 'Ouvrir' : 'Open'}</span>`;
+    ring.innerHTML = `<span>${document.documentElement.dataset.open ?? 'Open'}</span>`;
     document.body.append(ring);
     const pos = { x: -100, y: -100, tx: -100, ty: -100 };
     addEventListener('pointermove', (e) => {
