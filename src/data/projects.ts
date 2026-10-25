@@ -270,12 +270,12 @@ const others: Project[] = [
     name: 'ALOAS',
     year: '2025',
     tagline: {
-      fr: 'Gestion de tournois sportifs pour une association, en production.',
-      en: 'Sports tournament management for a non-profit, in production.',
+      fr: 'Gestion de tournois sportifs pour une association, utilisée lors de vrais tournois.',
+      en: 'Sports tournament management for a non-profit, used at real tournaments.',
     },
     summary: {
-      fr: "ALOAS aide une association à organiser des tournois pour des personnes en situation de handicap : inscriptions, planification, chronomètre, scores et suivi des résultats. Le site sert à de vrais événements.",
-      en: 'ALOAS helps a non-profit run tournaments for people with disabilities: registration, scheduling, timer, scoring and results. The site is used at real events.',
+      fr: "ALOAS aide une association à organiser des tournois pour des personnes en situation de handicap : inscriptions, planification, chronomètre, scores et suivi des résultats. Le site a servi lors de vrais événements.",
+      en: 'ALOAS helps a non-profit run tournaments for people with disabilities: registration, scheduling, timer, scoring and results. The site was used at real events.',
     },
     context: { fr: "Projet d'équipe, IUT", en: 'Team project, IUT' },
     role: {
@@ -292,7 +292,6 @@ const others: Project[] = [
     ],
     stack: ['Symfony', 'Twig', 'Tailwind', 'MySQL', 'Docker', 'GitLab CI/CD'],
     links: [
-      { label: { fr: 'aloas-tournoi.com', en: 'aloas-tournoi.com' }, href: 'https://aloas-tournoi.com' },
       { label: { fr: 'Code sur GitHub', en: 'Code on GitHub' }, href: 'https://github.com/QuentinBastos/ALOAS' },
     ],
     cover: { fr: aloasCover, alt: { fr: 'Liste des tournois', en: 'Tournament list' } },
