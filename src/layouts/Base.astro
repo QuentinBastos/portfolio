@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { ui, type Lang, type T } from '../i18n';
+import { ui, langs, ogLocales, type Lang, type T } from '../i18n';
 import { person } from '../data/profile';
 
 interface Props {
@@ -32,15 +32,14 @@ const personLd = {
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-open={ui.open[lang]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="fr" href={new URL(alternates.fr, site).href} />
-    <link rel="alternate" hreflang="en" href={new URL(alternates.en, site).href} />
+    {langs.map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l], site).href} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(alternates.fr, site).href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -50,7 +49,7 @@ const personLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+    <meta property="og:locale" content={ogLocales[lang]} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd ?? personLd)} />

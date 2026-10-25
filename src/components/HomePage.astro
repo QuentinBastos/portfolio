@@ -1,7 +1,7 @@
 ---
 import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import { ui, routes, type Lang, type T } from '../i18n';
+import { ui, routes, locales, type Lang, type T } from '../i18n';
 import { person, deliver, experience, education, skills, languages } from '../data/profile';
 import { sparklequiz as sq, effetB, otherProjects, githubExtras } from '../data/projects';
 import { getLiveStatus } from '../lib/live';
@@ -11,23 +11,22 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const fr = lang === 'fr';
-const title = fr ? 'Quentin Bastos, développeur PHP / Symfony' : 'Quentin Bastos, PHP / Symfony developer';
+const title = ui.homeTitle[lang];
 const job = experience[0];
 
 const status = await getLiveStatus();
 const labels: Record<string, T> = {
-  app: { fr: 'API', en: 'API' },
-  db: { fr: 'Base', en: 'Database' },
-  redis: { fr: 'Redis', en: 'Redis' },
-  mercure: { fr: 'Temps réel', en: 'Real time' },
+  app: { fr: 'API', en: 'API', de: 'API' },
+  db: { fr: 'Base', en: 'Database', de: 'Datenbank' },
+  redis: { fr: 'Redis', en: 'Redis', de: 'Redis' },
+  mercure: { fr: 'Temps réel', en: 'Real time', de: 'Echtzeit' },
 };
 const services = Object.keys(labels).filter((k) => k in status.services);
-const checked = new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Zurich' }).format(
+const checked = new Intl.DateTimeFormat(locales[lang], { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Zurich' }).format(
   new Date(status.checkedAt),
 );
 const liveState = status.up === false ? 'down' : status.up ? 'up' : 'unknown';
-const live = liveState === 'down' ? (fr ? 'incident en cours' : 'incident ongoing') : fr ? 'en production' : 'in production';
+const live = liveState === 'down' ? ui.incident[lang] : ui.inProduction[lang];
 // Bulles autour de la goutte vivante, placées en pourcentage de la zone
 const orbit = [
   { x: 4, y: 10 },
@@ -38,15 +37,15 @@ const orbit = [
 ];
 
 const facts = [
-  { k: fr ? 'École' : 'School', v: fr ? 'CPE Lyon, 4e année' : 'CPE Lyon, 4th year' },
-  { k: fr ? 'Expérience' : 'Experience', v: fr ? '2 ans de Symfony en prod' : '2 years of Symfony in prod' },
-  { k: fr ? 'Basé à' : 'Based in', v: person.location[lang] },
+  { k: ui.school[lang], v: ui.schoolValue[lang] },
+  { k: ui.experience[lang], v: ui.experienceValue[lang] },
+  { k: ui.basedIn[lang], v: person.location[lang] },
 ];
 
 // Une goutte de verre par projet : la capture est chargée comme texture
 const drops = await Promise.all(
   otherProjects.map(async (p) => ({
-    img: p.cover ? (await getImage({ src: (lang === 'en' && p.cover.en) || p.cover.fr, width: 720, format: 'webp' })).src : null,
+    img: p.cover ? (await getImage({ src: (lang !== 'fr' && p.cover.en) || p.cover.fr, width: 720, format: 'webp' })).src : null,
     href: routes.project(p.slug)[lang],
     name: p.name,
   })),
@@ -86,7 +85,7 @@ const parseStat = (v: string) => {
 
     <dl class="hero-in mt-16 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-5 sm:grid-cols-4" style="--d: 1.05s">
       <div class="col-span-2 sm:col-span-1">
-        <dt class="eyebrow">{fr ? 'Disponible' : 'Available'}</dt>
+        <dt class="eyebrow">{ui.available[lang]}</dt>
         <dd class="mt-1.5 flex items-center gap-2 text-sm font-medium">
           <span class="relative flex size-2"><span class="absolute inset-0 animate-ping rounded-full bg-accent opacity-60"></span><span class="size-2 rounded-full bg-accent"></span></span>
           {person.availabilityShort[lang]}
@@ -107,7 +106,7 @@ const parseStat = (v: string) => {
   <section id="sparklequiz" data-scene class="wrap relative grid min-h-dvh items-center gap-10 py-28 md:grid-cols-12">
     <div data-pane class="pane md:col-span-7 lg:col-span-6">
       <div data-stagger>
-        <p class="eyebrow">01 · {fr ? 'Projet principal' : 'Main project'}</p>
+        <p class="eyebrow">01 · {ui.mainProject[lang]}</p>
         <h2 data-split class="mt-4 text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.9]">{sq.name}</h2>
         <p class="mt-6 text-xl text-pretty">{sq.tagline[lang]}</p>
         <p class="mt-4 text-pretty text-muted">{sq.summary[lang]}</p>
@@ -123,7 +122,7 @@ const parseStat = (v: string) => {
                     {parsed ? (
                       <>
                         {parsed.pre}
-                        <span data-count={parsed.n} data-locale={fr ? 'fr-FR' : 'en-GB'}>{parsed.n.toLocaleString(fr ? 'fr-FR' : 'en-GB')}</span>
+                        <span data-count={parsed.n} data-locale={locales[lang]}>{parsed.n.toLocaleString(locales[lang])}</span>
                         {parsed.post}
                       </>
                     ) : (
@@ -143,7 +142,7 @@ const parseStat = (v: string) => {
       </div>
     </div>
 
-    <div class="relative hidden aspect-square md:col-span-5 md:col-start-8 md:block" aria-label={fr ? 'État de SparkleQuiz en production' : 'SparkleQuiz production status'} data-live-zone>
+    <div class="relative hidden aspect-square md:col-span-5 md:col-start-8 md:block" aria-label={ui.liveStatus[lang]} data-live-zone>
       <span class:list={['pulse-ring', liveState === 'down' && 'is-down']} style="--i: 0"></span>
       <span class:list={['pulse-ring', liveState === 'down' && 'is-down']} style="--i: 1"></span>
       <span class:list={['pulse-ring', liveState === 'down' && 'is-down']} style="--i: 2"></span>
@@ -161,7 +160,7 @@ const parseStat = (v: string) => {
         }
       </ul>
       <p class="absolute -bottom-10 left-0 w-full text-center font-mono text-[0.68rem] text-muted">
-        {fr ? 'Relevé le' : 'Checked on'} <time datetime={status.checkedAt}>{checked}</time>
+        {ui.checkedOn[lang]} <time datetime={status.checkedAt}>{checked}</time>
       </p>
     </div>
   </section>
@@ -185,10 +184,10 @@ const parseStat = (v: string) => {
           }
         </ol>
         <ul class="mt-5 flex flex-wrap gap-1.5">{job.stack.map((t) => <li class="chip">{t}</li>)}</ul>
-        <a href={routes.project(effetB.slug)[lang]} class="btn mt-8" data-magnetic>{fr ? 'Le détail des trois ERP' : 'The three ERPs in detail'} →</a>
+        <a href={routes.project(effetB.slug)[lang]} class="btn mt-8" data-magnetic>{ui.erpDetail[lang]} →</a>
         <div class="mt-14 grid gap-10 sm:grid-cols-2">
           <div>
-            <h3 class="eyebrow">{fr ? 'Formation' : 'Education'}</h3>
+            <h3 class="eyebrow">{ui.education[lang]}</h3>
             <ul class="mt-4 space-y-4">
               {
                 education.map((e) => (
@@ -202,7 +201,7 @@ const parseStat = (v: string) => {
             </ul>
           </div>
           <div>
-            <h3 class="eyebrow">{fr ? 'Outils' : 'Tooling'}</h3>
+            <h3 class="eyebrow">{ui.tooling[lang]}</h3>
             <dl class="mt-4 space-y-3">
               {
                 skills.map((s) => (
@@ -225,7 +224,7 @@ const parseStat = (v: string) => {
     <div data-pane class="pane md:col-span-7 lg:col-span-6">
       <div data-stagger>
         <p class="eyebrow">03 · {ui.navProjects[lang]}</p>
-        <h2 data-split class="mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[0.92]">{fr ? 'Autres projets' : 'Other projects'}</h2>
+        <h2 data-split class="mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[0.92]">{ui.otherProjects[lang]}</h2>
         <ul class="mt-10 border-t border-line" data-project-list>
           {
             otherProjects.map((p, i) => (
@@ -245,7 +244,7 @@ const parseStat = (v: string) => {
           }
         </ul>
         <div class="mt-8">
-          <p class="eyebrow">{fr ? 'Aussi sur GitHub, travaux de cours' : 'Also on GitHub, coursework'}</p>
+          <p class="eyebrow">{ui.coursework[lang]}</p>
           <ul class="mt-3 flex flex-wrap gap-2">
             {
               githubExtras.map((r) => (
@@ -269,7 +268,7 @@ const parseStat = (v: string) => {
   <section id="stage" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
     <div data-pane class="pane md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-7">
       <div data-stagger>
-        <p class="eyebrow">04 · {fr ? 'Stage' : 'Internship'}</p>
+        <p class="eyebrow">04 · {ui.navInternship[lang]}</p>
         <h2 data-split class="mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[0.92]">{deliver.title[lang]}</h2>
         <p class="mt-6 text-pretty text-muted">{deliver.intro[lang]}</p>
         <ul class="mt-10 grid gap-3 sm:grid-cols-2">

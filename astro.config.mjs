@@ -9,15 +9,15 @@ export default defineConfig({
   build: { format: 'file' },
   i18n: {
     defaultLocale: 'fr',
-    locales: ['fr', 'en'],
+    locales: ['fr', 'en', 'de'],
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
     vue(),
     sitemap({
-      i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR', en: 'en-GB' } },
+      i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR', en: 'en-GB', de: 'de-CH' } },
     }),
   ],
-  // three.js (~140 Ko gzip) n'est chargé qu'à l'arrivée sur l'île
+  // three.js (~140 Ko gzip) est chargé après l'affichage de la page d'accueil
   vite: { plugins: [tailwindcss()], build: { chunkSizeWarningLimit: 700 } },
 });

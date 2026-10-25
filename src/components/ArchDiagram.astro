@@ -1,21 +1,20 @@
 ---
-import type { Lang } from '../i18n';
+import { ui, type Lang } from '../i18n';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const fr = lang === 'fr';
 const clients = ['Web', 'Android', 'iOS'];
 const stores = [
-  { name: 'MariaDB', note: fr ? 'données' : 'data' },
-  { name: 'Redis', note: fr ? 'cache, files' : 'cache, queues' },
-  { name: 'Mercure', note: fr ? 'temps réel' : 'real time' },
+  { name: 'MariaDB', note: ui.archData[lang] },
+  { name: 'Redis', note: ui.archCache[lang] },
+  { name: 'Mercure', note: ui.archRealtime[lang] },
 ];
 ---
 
-<figure class="pop p-5 sm:p-6" aria-label={fr ? "Schéma d'architecture de SparkleQuiz" : 'SparkleQuiz architecture diagram'}>
+<figure class="pop p-5 sm:p-6" aria-label={ui.archLabel[lang]}>
   <div class="flex flex-col items-stretch gap-3 text-sm">
     <div class="grid grid-cols-3 gap-2">
       {clients.map((c) => <div class="rounded-lg bg-bg px-2 py-2 text-center">{c}</div>)}
@@ -40,6 +39,6 @@ const stores = [
     </div>
   </div>
   <figcaption class="mt-4 border-t border-line pt-3 text-xs text-muted">
-    {fr ? 'Déployé par GitHub Actions sur un VPS, publié sur les stores à chaque tag.' : 'Deployed by GitHub Actions to a VPS, published to the stores on every tag.'}
+    {ui.archCaption[lang]}
   </figcaption>
 </figure>
