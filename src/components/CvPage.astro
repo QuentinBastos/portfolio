@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { ui, routes, type Lang } from '../i18n';
+import { person } from '../data/profile';
+import cvFr from '../assets/cv/cv-fr.png';
+import cvEn from '../assets/cv/cv-en.png';
+
+/**
+ * Le CV tel qu'envoyé aux recruteurs, rendu depuis le PDF publié dans /files
+ * (version sans adresse ni téléphone). Régénérer les images après chaque nouveau PDF :
+ * pdftoppm -r 220 -png -singlefile public/files/CV-Quentin-Bastos-FR.pdf src/assets/cv/cv-fr
+ */
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const fr = lang === 'fr';
+const cv = fr ? cvFr : cvEn;
+---
+
+<Base lang={lang} title={fr ? 'CV · Quentin Bastos' : 'Resume · Quentin Bastos'} description={person.pitch[lang]} alternates={routes.cv}>
+  <section class="wrap pt-28 pb-10 sm:pt-36">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="eyebrow">{ui.navCv[lang]}</p>
+        <h1 class="mt-3 text-4xl sm:text-5xl">{person.name}</h1>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href={person.cvPdf[lang]} class="btn btn-solid" download>{ui.downloadCv[lang]}</a>
+        <a href={person.cvPdf[lang]} class="btn" target="_blank" rel="noopener">{fr ? 'Ouvrir le PDF' : 'Open the PDF'}</a>
+      </div>
+    </div>
+
+    <Image
+      src={cv}
+      alt={fr ? 'CV de Quentin Bastos, une page' : 'Quentin Bastos resume, one page'}
+      widths={[480, 800, 1200, 1818]}
+      sizes="(min-width: 900px) 52rem, 100vw"
+      loading="eager"
+      class="mx-auto mt-10 w-full max-w-[52rem] rounded-sm shadow-[0_30px_80px_-30px_rgb(17_18_20/0.35)] ring-1 ring-line"
+    />
+  </section>
+</Base>

@@ -1,0 +1,50 @@
+---
+import { ui, routes, other, type Lang, type T } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  alternates: T;
+}
+
+const { lang, alternates } = Astro.props;
+const otherLang = other(lang);
+const home = routes.home[lang];
+const fr = lang === 'fr';
+const nav = [
+  { href: '#sparklequiz', label: 'SparkleQuiz' },
+  { href: '#parcours', label: ui.navWork[lang] },
+  { href: '#projets', label: ui.navProjects[lang] },
+  { href: '#stage', label: fr ? 'Stage' : 'Internship' },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-40 border-b border-transparent bg-bg/70 backdrop-blur-md transition-colors data-[scrolled]:border-line" data-header>
+  <div class="wrap flex h-16 items-center justify-between gap-6">
+    <a href={home} class="font-mono text-[0.78rem] font-medium tracking-tight">
+      quentin<span class="text-accent">/</span>bastos
+    </a>
+    <nav class="flex items-center gap-1 text-sm" aria-label="Navigation">
+      <ul class="hidden items-center gap-1 lg:flex">
+        {nav.map((n) => <li><a href={`${home}${n.href}`} class="rounded-full px-3 py-1.5 text-muted transition-colors hover:text-ink">{n.label}</a></li>)}
+      </ul>
+      <a href={routes.cv[lang]} class="rounded-full px-3 py-1.5 text-muted transition-colors hover:text-ink">{ui.navCv[lang]}</a>
+      <a
+        href={alternates[otherLang]}
+        hreflang={otherLang}
+        lang={otherLang}
+        aria-label={ui.switchLangLabel[lang]}
+        class="rounded-full px-3 py-1.5 font-mono text-xs uppercase text-muted transition-colors hover:text-ink"
+      >
+        {otherLang}
+      </a>
+      <a href={`${home}#contact`} class="btn btn-solid ml-2 px-4 py-1.5 text-sm">{ui.navContact[lang]}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const sync = () => header?.toggleAttribute('data-scrolled', scrollY > 8);
+  addEventListener('scroll', sync, { passive: true });
+  sync();
+</script>

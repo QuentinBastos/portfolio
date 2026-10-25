@@ -1,0 +1,19 @@
+---
+import type { Lang } from '../i18n';
+import { person } from '../data/profile';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="wrap relative mt-24 flex flex-col gap-3 border-t border-line py-8 font-mono text-[0.7rem] text-muted sm:flex-row sm:items-center sm:justify-between">
+  <p>© {new Date().getFullYear()} {person.name}</p>
+  <ul class="flex gap-5">
+    <li><a class="hover:text-ink" href={person.github} rel="me">GitHub</a></li>
+    <li><a class="hover:text-ink" href={person.linkedin} rel="me">LinkedIn</a></li>
+    <li><a class="hover:text-ink" href={`mailto:${person.email}`}>Email</a></li>
+  </ul>
+</footer>
