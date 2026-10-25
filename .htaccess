@@ -1,5 +1,8 @@
 RewriteEngine On
 
+# Pas de liste de fichiers pour les dossiers sans index (/projets, /en/projects, /de/projekte)
+Options -Indexes
+
 # Redirect no-www to www
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.quentin-bastos.com/$1 [R=301,L]
@@ -11,6 +14,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # Old v1 pages. Cibles absolues : en relatif, OVH ajoute « :443 » à l'URL de redirection
 RewriteRule ^projects_en\.html$ https://www.quentin-bastos.com/en#projets [R=301,NE,L]
 RewriteRule ^(about|contact_en)\.html$ https://www.quentin-bastos.com/ [R=301,L]
+
+# Dossiers des pages projets : renvoyés vers la section Projets
+RewriteRule ^projets/?$ https://www.quentin-bastos.com/#projets [R=301,NE,L]
+RewriteRule ^en/projects/?$ https://www.quentin-bastos.com/en#projets [R=301,NE,L]
+RewriteRule ^de/projekte/?$ https://www.quentin-bastos.com/de#projets [R=301,NE,L]
 
 # No trailing slash
 RewriteCond %{REQUEST_URI} !^/$
