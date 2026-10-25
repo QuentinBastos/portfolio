@@ -51,12 +51,6 @@ const drops = await Promise.all(
   })),
 );
 
-// Repli sans carte graphique : une capture du verre par section, prise sur une vraie machine
-const stillFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/still/s*.webp', { eager: true });
-const stills = Object.keys(stillFiles)
-  .sort()
-  .map((k) => stillFiles[k].default.src);
-
 // « 210+ » → préfixe, nombre, suffixe pour le compteur animé
 const parseStat = (v: string) => {
   const m = v.match(/^(\D*)([\d\s ]+)(.*)$/);
@@ -65,6 +59,7 @@ const parseStat = (v: string) => {
 ---
 
 <Base lang={lang} title={title} description={person.pitch[lang]} alternates={routes.home}>
+  <div slot="backdrop" data-backdrop aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden max-md:opacity-60"></div>
   <canvas
     slot="backdrop"
     data-field
@@ -73,12 +68,6 @@ const parseStat = (v: string) => {
     aria-hidden="true"
     class="pointer-events-none fixed inset-0 z-0 h-dvh w-full opacity-0 transition-opacity duration-1000 data-[on]:opacity-100 max-md:data-[on]:opacity-60"
   ></canvas>
-  <div
-    slot="backdrop"
-    data-still={JSON.stringify(stills)}
-    aria-hidden="true"
-    class="still pointer-events-none fixed inset-0 z-0 overflow-hidden opacity-0 transition-opacity duration-1000 data-[on]:opacity-100 max-md:data-[on]:opacity-60"
-  ></div>
 
   <!-- 0 · Accueil -->
   <section data-scene class="wrap relative flex min-h-dvh flex-col justify-end pt-28 pb-10">
@@ -348,70 +337,45 @@ const parseStat = (v: string) => {
 
 <script>
   import { liquidGo } from '../scripts/motion';
+  import { mountBackdrop, sceneProgress } from '../lib/backdrop';
 
-  // Verre 3D : WebGL2 sur une vraie carte graphique et animations autorisées. Sinon, les captures.
+  // Verre 3D dès que WebGL2 existe et que les animations sont autorisées. Sans carte
+  // graphique (rendu logiciel), une version allégée du même verre.
   const canvas = document.querySelector<HTMLCanvasElement>('[data-field]');
-  const still = document.querySelector<HTMLElement>('[data-still]');
-  const showStill = () => {
-    if (!still || still.childElementCount) return;
-    document.documentElement.classList.add('no-gl');
-    const scenes = [...document.querySelectorAll<HTMLElement>('[data-scene]')];
-    const imgs = (JSON.parse(still.dataset.still ?? '[]') as string[]).map((src) => {
-      const img = new Image();
-      img.src = src;
-      img.alt = '';
-      img.decoding = 'async';
-      still.append(img);
-      return img;
-    });
-    let current = -1;
-    let queued = false;
-    // Même rythme que le verre : la section suivante prend la main quand son haut approche du milieu
-    const pick = () => {
-      queued = false;
-      let i = 0;
-      scenes.forEach((s, k) => {
-        if (s.getBoundingClientRect().top < innerHeight * 0.7) i = k;
-      });
-      i = Math.min(i, imgs.length - 1);
-      if (i === current) return;
-      imgs[current]?.classList.remove('on');
-      imgs[i].classList.add('on');
-      current = i;
-    };
-    addEventListener('scroll', () => queued || ((queued = true), requestAnimationFrame(pick)), { passive: true });
-    pick();
-    imgs[0].decode().catch(() => {}).finally(() => still.toggleAttribute('data-on', true));
-  };
+  const scenes = [...document.querySelectorAll<HTMLElement>('[data-scene]')];
+  const backdropEl = document.querySelector<HTMLElement>('[data-backdrop]')!;
+  const backdrop = mountBackdrop(backdropEl);
+  const settle = () => backdrop.update(0, Math.round(sceneProgress(scenes, scenes.length - 1)));
+  settle();
   const rows = [...document.querySelectorAll<HTMLElement>('[data-project-row]')];
-  const ok = () => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  const support = (): 'gpu' | 'software' | null => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
     try {
       const gl = document.createElement('canvas').getContext('webgl2');
-      if (!gl) return false;
-      // Accélération matérielle coupée dans le navigateur : rendu logiciel, quelques images par seconde
+      if (!gl) return null;
+      // Accélération matérielle coupée dans le navigateur : c'est le processeur qui dessine
       const info = gl.getExtension('WEBGL_debug_renderer_info');
       const name = String(gl.getParameter(info ? info.UNMASKED_RENDERER_WEBGL : gl.RENDERER));
       gl.getExtension('WEBGL_lose_context')?.loseContext();
-      return !/swiftshader|llvmpipe|softpipe|software|basic render/i.test(name);
+      return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(name) ? 'software' : 'gpu';
     } catch {
-      return false;
+      return null;
     }
   };
-  if (canvas && ok()) {
+  const mode = canvas ? support() : null;
+  if (canvas && mode) {
+    const lite = mode === 'software';
+    // Le flou derrière les plaques coûte cher sans carte graphique
+    if (lite) document.documentElement.classList.add('lite');
     const start = async () => {
       const { mountGlass } = await import('../lib/glass');
       const drops = JSON.parse(canvas.dataset.drops ?? '[]') as { img: string | null; href: string; name: string }[];
-      const glass = mountGlass(canvas, [...document.querySelectorAll<HTMLElement>('[data-scene]')], {
+      const glass = mountGlass(canvas, backdrop, scenes, {
         drops,
+        lite,
         live: (canvas.dataset.live as 'up' | 'down' | 'unknown') ?? 'unknown',
         onDropHover: (i) => rows.forEach((r, k) => r.classList.toggle('is-on', k === i)),
         onDropOpen: (i, x, y) => liquidGo(drops[i].href, x, y),
-        onTooSlow: () => {
-          canvas.toggleAttribute('data-on', false);
-          showStill();
-          setTimeout(() => glass.dispose(), 800);
-        },
       });
       rows.forEach((row, i) => {
         row.addEventListener('pointerenter', () => glass.highlight(i));
@@ -421,7 +385,12 @@ const parseStat = (v: string) => {
     };
     'requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 500 }) : setTimeout(start, 150);
   } else {
-    showStill();
+    // Sans 3D : le fond seul, dont les halos glissent d'une section à l'autre
+    requestAnimationFrame(() =>
+      backdropEl.querySelectorAll<HTMLElement>('div').forEach((d) => (d.style.transition = 'transform 1.6s cubic-bezier(0.2, 0.75, 0.15, 1)')),
+    );
+    let queued = false;
+    addEventListener('scroll', () => queued || ((queued = true), requestAnimationFrame(() => ((queued = false), settle()))), { passive: true });
   }
 
   document.addEventListener('click', async (e) => {

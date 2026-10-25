@@ -3,11 +3,7 @@ import {
   Color,
   IcosahedronGeometry,
   Mesh,
-  MeshPhysicalMaterial,
-  NeutralToneMapping,
   PerspectiveCamera,
-  PlaneGeometry,
-  PMREMGenerator,
   Quaternion,
   Scene,
   ShaderMaterial,
@@ -16,15 +12,16 @@ import {
   Vector3,
   WebGLRenderer,
 } from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createDrops, type DropInput } from './drops';
+import { GRID, HALOS, INK, PAGE, sceneProgress, type Backdrop } from './backdrop';
 
 /**
- * Goutte de verre irisé plein écran derrière l'accueil. Chaque section porte un
- * `data-scene` : en défilant, la goutte prend la forme suivante. Le fond (couleur
- * de la page, halos pastel, trame fine) est dessiné dans la scène pour que le
- * verre ait quelque chose à réfracter.
+ * Goutte de verre irisé derrière l'accueil. Chaque section porte un `data-scene` :
+ * en défilant, la goutte prend la forme suivante. Le fond est en CSS (backdrop.ts) ;
+ * le verre n'est pas une vraie transmission (qui redessine toute la scène à chaque
+ * image) mais un shader qui recalcule ce fond aux points réfractés. Assez léger
+ * pour tourner sans carte graphique.
  */
 
 // Décalage horizontal et échelle par scène (bureau), dans l'ordre des sections
@@ -130,40 +127,105 @@ const shapes = /* glsl */ `
   }
 `;
 
-const backdropFrag = /* glsl */ `
-  uniform vec2 uRes;
-  uniform float uTime;
-  uniform float uMorph;
-  uniform float uDpr;
-  uniform vec3 uBg;
-  uniform vec3 uA;
-  uniform vec3 uB;
-  uniform vec3 uC;
-  uniform vec3 uD;
-  uniform vec3 uLine;
-  varying vec2 vUv;
+const vertex = /* glsl */ `
+  ${noise}
+  ${shapes}
+  varying vec3 vN;
+  varying vec3 vV;
+  void main() {
+    vec3 dp = displaced(position);
+    vec3 helper = abs(normal.y) < 0.99 ? vec3(0.0, 1.0, 0.0) : vec3(1.0, 0.0, 0.0);
+    vec3 tng = normalize(cross(normal, helper));
+    vec3 btg = normalize(cross(normal, tng));
+    vec3 da = displaced(normalize(position + tng * 0.01));
+    vec3 db = displaced(normalize(position + btg * 0.01));
+    vec3 nn = cross(da - dp, db - dp);
+    // cross(tng, btg) = normal : l'orientation reste vers l'extérieur, même dans les creux.
+    // Garde-fou : une normale nulle donnerait des pixels noirs
+    vec3 objectNormal = dot(nn, nn) > 1e-14 ? normalize(nn) : normal;
+    vN = normalize(normalMatrix * objectNormal);
+    vec4 mv = modelViewMatrix * vec4(dp, 1.0);
+    vV = -mv.xyz;
+    gl_Position = projectionMatrix * mv;
+  }
+`;
 
-  float blob(vec2 uv, vec2 c, float r) {
-    return exp(-dot(uv - c, uv - c) / (r * r));
+const glslColor = (hex: string) => `vec3(${[1, 3, 5].map((i) => (parseInt(hex.slice(i, i + 2), 16) / 255).toFixed(4)).join(', ')})`;
+const halos = HALOS.map(
+  (h, i) => `col = mix(col, ${glslColor(h.color)}, ${h.alpha} * exp(-dot(px - uHalo[${i}], px - uHalo[${i}]) / ${(h.r * h.r).toFixed(4)} / (uRes.y * uRes.y)));`,
+).join('\n    ');
+
+// Tout en sRGB, comme le CSS du fond : les couleurs se raccordent au pixel près
+const fragment = /* glsl */ `
+  uniform vec2 uRes;
+  uniform float uDpr;
+  uniform vec2 uHalo[4];
+  uniform float uRadius;
+  uniform vec3 uTint;
+  uniform float uTintAmount;
+  uniform float uTime;
+  varying vec3 vN;
+  varying vec3 vV;
+
+  // Le fond CSS, recalculé en un point (px CSS, origine en haut à gauche)
+  vec3 backdrop(vec2 px) {
+    vec3 col = ${glslColor(PAGE)};
+    ${halos}
+    vec2 g = mod(px - ${GRID.offset.toFixed(1)}, ${GRID.step.toFixed(1)});
+    float line = 1.0 - step(1.0, min(g.x, g.y));
+    return mix(col, ${glslColor(INK)}, line * ${GRID.alpha});
+  }
+
+  // Boîte à lumière rectangulaire vue dans la direction r : les reflets de fenêtre du verre
+  float softbox(vec3 r, vec3 dir, vec2 size) {
+    vec3 z = normalize(dir);
+    vec3 x = normalize(cross(vec3(0.0, 1.0, 0.0), z));
+    vec3 y = cross(z, x);
+    float k = dot(r, z);
+    if (k <= 0.0) return 0.0;
+    vec2 q = abs(vec2(dot(r, x), dot(r, y)) / k) / size;
+    return 1.0 - smoothstep(0.35, 1.0, max(q.x, q.y));
   }
 
   void main() {
-    vec2 uv = vUv;
-    float asp = uRes.x / uRes.y;
-    vec2 q = vec2(uv.x * asp, uv.y);
-    float t = uTime * 0.05 + uMorph * 0.6;
-    vec3 col = uBg;
-    col = mix(col, uA, 0.55 * blob(q, vec2(asp * (0.72 + 0.12 * sin(t * 2.1)), 0.62 + 0.1 * cos(t * 1.7)), 0.28));
-    col = mix(col, uB, 0.5 * blob(q, vec2(asp * (0.3 + 0.1 * cos(t * 1.3)), 0.3 + 0.12 * sin(t * 1.9)), 0.32));
-    col = mix(col, uC, 0.5 * blob(q, vec2(asp * (0.55 + 0.15 * sin(t * 1.1 + 2.0)), 0.85 + 0.08 * sin(t * 2.3)), 0.25));
-    col = mix(col, uD, 0.4 * blob(q, vec2(asp * (0.88 + 0.08 * cos(t * 1.5)), 0.18 + 0.1 * cos(t * 1.2)), 0.22));
-    // Trame très fine : invisible à l'oeil nu, elle trahit la réfraction dans le verre
-    vec2 px = gl_FragCoord.xy / uDpr;
-    vec2 cell = abs(fract(px / 56.0) - 0.5) * 56.0;
-    float line = 1.0 - smoothstep(0.0, 1.0, min(cell.x, cell.y));
-    col = mix(col, uLine, line * 0.085);
-    gl_FragColor = vec4(col, 1.0);
-    #include <colorspace_fragment>
+    vec3 n = normalize(vN);
+    vec3 v = normalize(vV);
+    // Dans les plis, la normale lissée peut tourner le dos à la caméra : on la redresse
+    float facing = dot(n, v);
+    if (facing < 0.08) n = normalize(n + v * (0.08 - facing));
+    facing = clamp(dot(n, v), 0.0, 1.0);
+    float edge = 1.0 - facing;
+    float fres = 0.04 + 0.96 * pow(edge, 5.0);
+
+    // Réfraction : une bille épaisse renverse et grossit ce qu'il y a derrière
+    vec2 px = vec2(gl_FragCoord.x, uRes.y * uDpr - gl_FragCoord.y) / uDpr;
+    vec2 bend = vec2(-n.x, n.y) * uRadius * (0.42 + 0.25 * edge);
+    vec3 col = vec3(
+      backdrop(px + bend * 0.94).r,
+      backdrop(px + bend).g,
+      backdrop(px + bend * 1.07).b
+    );
+    // Masse du verre : voile laiteux, teinte de la section SparkleQuiz, bord plus dense
+    col = mix(col, vec3(1.0), 0.16);
+    col = mix(col, col * uTint, uTintAmount);
+    col *= 1.0 - 0.1 * pow(edge, 3.0);
+    // Volume : bord inférieur un peu plus sombre, fin liseré gris sur la silhouette
+    col *= 0.95 + 0.05 * n.y;
+    col *= 1.0 - 0.14 * smoothstep(0.78, 0.97, edge);
+
+    // Reflets : studio clair et deux fenêtres floues, surtout visibles en bordure
+    vec3 r = reflect(-v, n);
+    float studio = 0.9 + 0.1 * r.y;
+    float boxes = softbox(r, vec3(-0.6, 0.75, 0.6), vec2(0.36, 0.26)) + softbox(r, vec3(0.8, 0.3, 0.45), vec2(0.14, 0.4)) * 0.7;
+    col = mix(col, vec3(studio), fres * 0.75);
+    col += boxes * (0.12 + 0.6 * fres);
+
+    // Irisation en couche mince, discrète : elle ne colore vraiment que le pourtour
+    float film = edge * 1.4 + n.y * 0.2 + uTime * 0.03;
+    vec3 irid = 0.5 + 0.5 * cos(6.2831 * (film + vec3(0.0, 0.33, 0.67)));
+    col += (irid - 0.5) * (0.025 + 0.16 * pow(edge, 3.0));
+
+    gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
   }
 `;
 
@@ -173,10 +235,10 @@ export type GlassOptions = {
   drops: DropInput[];
   /** État de SparkleQuiz relevé au build : teinte et battement de la goutte. */
   live: 'up' | 'down' | 'unknown';
+  /** Rendu sans carte graphique : moins de pixels, moins de sommets. */
+  lite?: boolean;
   onDropHover?: (i: number) => void;
   onDropOpen?: (i: number, x: number, y: number) => void;
-  /** Appelé si la machine ne tient pas l'animation même au plus bas réglage. */
-  onTooSlow?: () => void;
 };
 
 // Double battement, période 1,1 s
@@ -185,144 +247,81 @@ const beat = (t: number) => {
   return Math.exp(-((m - 0.1) ** 2) * 160) + 0.55 * Math.exp(-((m - 0.32) ** 2) * 160);
 };
 
-export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], options: GlassOptions): Glass {
+export function mountGlass(canvas: HTMLCanvasElement, backdrop: Backdrop, sections: HTMLElement[], options: GlassOptions): Glass {
   const mobile = matchMedia('(max-width: 767px)').matches;
+  const lite = !!options.lite;
   const dpr = Math.min(devicePixelRatio, mobile ? 1.5 : 2);
-  // Plafond de pixels : sur un écran 4K, le verre (rendu deux fois avec la transmission) écroule le GPU
-  const budget = mobile ? 1.6e6 : 2.6e6;
+  // Plafond de pixels : au-delà, un grand écran coûte sans rien apporter de visible
+  const budget = lite ? 0.9e6 : mobile ? 1.6e6 : 3e6;
   let quality = 1;
   const ratio = () => Math.min(dpr, Math.sqrt(budget / (innerWidth * innerHeight))) * quality;
 
-  const renderer = new WebGLRenderer({ canvas, antialias: devicePixelRatio < 1.5, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(ratio());
-  renderer.toneMapping = NeutralToneMapping;
-  // La réfraction est floue par nature : une demi-résolution ne se voit pas
-  renderer.transmissionResolutionScale = 0.5;
+  const renderer = new WebGLRenderer({ canvas, alpha: true, antialias: !lite, powerPreference: 'high-performance' });
+  renderer.setClearColor(0x000000, 0);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(35, 1, 0.1, 50);
   camera.position.set(0, 0, 8);
 
-  const pmrem = new PMREMGenerator(renderer);
-  const env = pmrem.fromScene(new RoomEnvironment(), 0.03).texture;
-  scene.environment = env;
-
-  const css = getComputedStyle(document.documentElement);
-  const token = (name: string, fallback: string) => new Color(css.getPropertyValue(name).trim() || fallback);
-
-  // Fond opaque : c'est lui que le verre réfracte
-  const backdropUniforms = {
-    uRes: { value: new Vector2(1, 1) },
-    uTime: { value: 0 },
-    uMorph: { value: 0 },
-    uDpr: { value: dpr },
-    uBg: { value: token('--color-bg', '#f2f2ee') },
-    uA: { value: new Color('#ffb48f') },
-    uB: { value: new Color('#8fb3ff') },
-    uC: { value: new Color('#d4b8ff') },
-    uD: { value: new Color('#8ee3c8') },
-    uLine: { value: token('--color-ink', '#111214') },
-  };
-  const backdrop = new Mesh(
-    new PlaneGeometry(1, 1),
-    new ShaderMaterial({
-      uniforms: backdropUniforms,
-      vertexShader: 'varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
-      fragmentShader: backdropFrag,
-      toneMapped: false,
-      depthWrite: false,
-    }),
-  );
-  backdrop.position.z = -6;
-  backdrop.renderOrder = -1;
-  scene.add(backdrop);
-  // Les échantillons de réfraction hors du fond retombent sur la couleur de la page
-  renderer.setClearColor(backdropUniforms.uBg.value, 1);
+  const halo = HALOS.map(() => new Vector2());
 
   // Sphère indexée : les sommets partagés gardent la surface lisse pendant la déformation
-  let geometry = new IcosahedronGeometry(1, mobile ? 40 : 72);
+  let geometry = new IcosahedronGeometry(1, lite || mobile ? 40 : 64);
   geometry.deleteAttribute('normal');
   geometry.deleteAttribute('uv');
   geometry = mergeVertices(geometry) as IcosahedronGeometry;
   geometry.setAttribute('normal', new BufferAttribute((geometry.getAttribute('position').array as Float32Array).slice(), 3));
 
+  // Teinte en sRGB, comme le reste du shader
+  const liveTint = new Color(options.live === 'down' ? '#ffb8a3' : '#c2f5d9').convertLinearToSRGB();
   const uniforms = {
     uTime: { value: 0 },
     uMorph: { value: 0 },
     uMouseDir: { value: new Vector3(0, 0, 1) },
     uHover: { value: 0 },
+    uRes: { value: new Vector2(1, 1) },
+    uDpr: { value: 1 },
+    uHalo: { value: halo },
+    uRadius: { value: 100 },
+    uTint: { value: new Vector3(liveTint.r, liveTint.g, liveTint.b) },
+    uTintAmount: { value: 0 },
   };
-
-  const material = new MeshPhysicalMaterial({
-    color: 0xffffff,
-    roughness: 0.03,
-    metalness: 0,
-    transmission: 1,
-    thickness: 1.3,
-    ior: 1.55,
-    dispersion: 6,
-    iridescence: 0.55,
-    iridescenceIOR: 1.35,
-    iridescenceThicknessRange: [120, 720],
-    clearcoat: 1,
-    clearcoatRoughness: 0.04,
-    envMapIntensity: 1.6,
-  });
-  material.onBeforeCompile = (shader) => {
-    Object.assign(shader.uniforms, uniforms);
-    shader.vertexShader = shader.vertexShader
-      .replace('#include <common>', `#include <common>\n${noise}\n${shapes}`)
-      .replace(
-        '#include <beginnormal_vertex>',
-        /* glsl */ `
-        vec3 dp = displaced(position);
-        vec3 helper = abs(normal.y) < 0.99 ? vec3(0.0, 1.0, 0.0) : vec3(1.0, 0.0, 0.0);
-        vec3 tng = normalize(cross(normal, helper));
-        vec3 btg = normalize(cross(normal, tng));
-        vec3 da = displaced(normalize(position + tng * 0.01));
-        vec3 db = displaced(normalize(position + btg * 0.01));
-        vec3 nn = cross(da - dp, db - dp);
-        // cross(tng, btg) = normal : l'orientation reste vers l'extérieur, même dans les creux.
-        // Garde-fou : une normale nulle donnerait des pixels noirs
-        vec3 objectNormal = dot(nn, nn) > 1e-14 ? normalize(nn) : normal;
-        `,
-      )
-      .replace('#include <begin_vertex>', 'vec3 transformed = dp;');
-    // Dans les plis, la normale lissée peut tourner le dos à la caméra : on la redresse
-    shader.fragmentShader = shader.fragmentShader.replace(
-      '#include <normal_fragment_begin>',
-      /* glsl */ `#include <normal_fragment_begin>
-      vec3 toEye = normalize(vViewPosition);
-      float facing = dot(normal, toEye);
-      if (facing < 0.08) normal = normalize(normal + toEye * (0.08 - facing));
-      nonPerturbedNormal = normal;`,
-    );
-  };
+  const material = new ShaderMaterial({ uniforms, vertexShader: vertex, fragmentShader: fragment, toneMapped: false });
 
   const blob = new Mesh(geometry, material);
   scene.add(blob);
 
-  const drops = createDrops(options.drops, mobile);
+  const drops = createDrops(options.drops, mobile, lite);
   scene.add(drops.group);
-  const white = new Color('#ffffff');
-  const liveTint = new Color(options.live === 'down' ? '#ffb8a3' : '#c2f5d9');
 
-  const pointer = { x: 0, y: 0, on: false };
+  const pointer = { x: 0, y: 0, on: false, cx: 0, cy: 0, overUi: false };
   let lastHover = -1;
-  const onMove = (e: PointerEvent) => {
-    pointer.x = (e.clientX / innerWidth) * 2 - 1;
-    pointer.y = -(e.clientY / innerHeight) * 2 + 1;
-    pointer.on = e.pointerType === 'mouse';
-    if (!pointer.on) return;
+  const updateHover = () => {
     // Une goutte sous un lien ou un bouton laisse la priorité au HTML
-    const overUi = e.target instanceof Element && !!e.target.closest('a, button');
-    if (overUi) drops.clearPointer();
-    else drops.pointerAt(e.clientX, e.clientY, camera);
+    if (pointer.overUi) drops.clearPointer();
+    else drops.pointerAt(pointer.cx, pointer.cy, camera);
     if (drops.hovered !== lastHover) {
       lastHover = drops.hovered;
       document.documentElement.toggleAttribute('data-drop-hover', lastHover >= 0);
       options.onDropHover?.(lastHover);
     }
+  };
+  const onMove = (e: PointerEvent) => {
+    pointer.x = (e.clientX / innerWidth) * 2 - 1;
+    pointer.y = -(e.clientY / innerHeight) * 2 + 1;
+    pointer.on = e.pointerType === 'mouse';
+    if (!pointer.on) return;
+    pointer.cx = e.clientX;
+    pointer.cy = e.clientY;
+    pointer.overUi = e.target instanceof Element && !!e.target.closest('a, button');
+    updateHover();
+  };
+  // Le défilement déplace les gouttes sous une souris immobile
+  let hoverQueued = false;
+  const onScroll = () => {
+    if (!pointer.on || hoverQueued) return;
+    hoverQueued = true;
+    setTimeout(() => ((hoverQueued = false), updateHover()), 120);
   };
   const onLeave = () => {
     pointer.on = false;
@@ -336,6 +335,7 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     options.onDropOpen?.(i, at.x, at.y);
   };
   addEventListener('pointermove', onMove, { passive: true });
+  addEventListener('scroll', onScroll, { passive: true });
   addEventListener('click', onClick);
   document.addEventListener('pointerleave', onLeave);
 
@@ -347,30 +347,15 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    // Le fond couvre exactement le cadre de la caméra à sa profondeur
-    const bh = 2 * Math.tan((camera.fov * Math.PI) / 360) * (camera.position.z - backdrop.position.z);
-    backdrop.scale.set(bh * camera.aspect, bh, 1);
-    backdropUniforms.uRes.value.set(w, h);
+    uniforms.uRes.value.set(w, h);
+    uniforms.uDpr.value = renderer.getPixelRatio();
   };
   resize();
   addEventListener('resize', resize);
 
-  // Position continue dans la liste des sections : 2.4 = entre la 3e et la 4e
-  const target = () => {
-    const mid = innerHeight * 0.55;
-    let value = 0;
-    for (let i = 0; i < sections.length; i++) {
-      const r = sections[i].getBoundingClientRect();
-      if (r.top > mid) break;
-      const t = Math.min(1, (mid - r.top) / Math.max(r.height, 1));
-      value = i + (i < sections.length - 1 ? Math.max(0, (t - 0.6) / 0.4) : 0);
-    }
-    return Math.min(value, LAYOUT.length - 1);
-  };
-
   const timer = new Timer();
   timer.connect(document);
-  let morph = target();
+  let morph = sceneProgress(sections, LAYOUT.length - 1);
   let hover = 0;
   let intro = 0;
   const inverse = new Quaternion();
@@ -393,15 +378,10 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     const avg = spent / frames;
     frames = 0;
     spent = 0;
-    if (avg < 24) return;
-    if (quality > 0.5) {
-      quality = Math.max(0.5, quality * 0.75);
-      resize();
-      warmup = 10;
-    } else if (avg > 45) {
-      options.onTooSlow?.();
-      warmup = Infinity;
-    }
+    if (avg < 24 || quality <= 0.5) return;
+    quality = Math.max(0.5, quality * 0.8);
+    resize();
+    warmup = 10;
   };
 
   renderer.setAnimationLoop((t) => {
@@ -411,9 +391,12 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     const dt = Math.max(0, Math.min(timer.getDelta(), 0.05));
     const time = timer.getElapsed();
 
-    morph += (target() - morph) * (1 - Math.exp(-dt * 2.6));
+    morph += (sceneProgress(sections, LAYOUT.length - 1) - morph) * (1 - Math.exp(-dt * 2.6));
     intro = Math.min(1, intro + dt * 0.7);
     const grow = 1 - Math.pow(1 - intro, 4);
+
+    backdrop.update(time, morph);
+    halo.forEach((v, i) => v.set(backdrop.centers[i * 2], backdrop.centers[i * 2 + 1]));
 
     const a = Math.max(0, Math.min(Math.floor(morph), LAYOUT.length - 1));
     const f = morph - a;
@@ -427,8 +410,9 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     const pulse = options.live === 'unknown' ? 0 : beat(time) * 0.05 * w1;
     blob.scale.setScalar((from.s + (to.s - from.s) * k) * (mobile ? 0.62 : 1) * grow * (1 + pulse));
     blob.visible = blob.scale.x > 0.002;
-    material.attenuationColor.copy(white).lerp(liveTint, w1);
-    material.attenuationDistance = 2.2 + (1 - w1) * 40;
+    uniforms.uTintAmount.value = w1 * 0.6;
+    // Rayon apparent en px CSS : règle l'ampleur de la réfraction
+    uniforms.uRadius.value = (blob.scale.x / halfH) * (innerHeight / 2);
 
     // Section Projets : la goutte se divise en une goutte par projet
     const w3raw = Math.max(0, 1 - Math.abs(morph - 3) * 1.5);
@@ -447,8 +431,6 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     uniforms.uHover.value = hover;
     uniforms.uMorph.value = morph;
     uniforms.uTime.value = time;
-    backdropUniforms.uTime.value = time;
-    backdropUniforms.uMorph.value = morph;
 
     renderer.render(scene, camera);
   });
@@ -458,6 +440,7 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
     dispose() {
       renderer.setAnimationLoop(null);
       removeEventListener('pointermove', onMove);
+      removeEventListener('scroll', onScroll);
       removeEventListener('click', onClick);
       drops.dispose();
       removeEventListener('resize', resize);
@@ -465,8 +448,6 @@ export function mountGlass(canvas: HTMLCanvasElement, sections: HTMLElement[], o
       timer.dispose();
       geometry.dispose();
       material.dispose();
-      env.dispose();
-      pmrem.dispose();
       renderer.dispose();
     },
   };
