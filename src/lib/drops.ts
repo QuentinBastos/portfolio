@@ -112,9 +112,9 @@ function nameTexture(name: string): Texture {
   return t;
 }
 
-export function createDrops(inputs: DropInput[], mobile: boolean) {
+export function createDrops(inputs: DropInput[], mobile: boolean, lite = false) {
   const group = new Group();
-  const geometry = new SphereGeometry(1, mobile ? 48 : 96, mobile ? 32 : 64);
+  const geometry = new SphereGeometry(1, mobile || lite ? 48 : 96, mobile || lite ? 32 : 64);
   const loader = new TextureLoader();
   const raycaster = new Raycaster();
   const ndc = new Vector2();
