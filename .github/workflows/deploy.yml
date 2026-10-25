@@ -1,0 +1,52 @@
+# Construit le site et publie dist/ sur la branche `prod`, que l'hébergement OVH
+# (Git intégré, dossier www) récupère par fast-forward. On ajoute donc un commit
+# normal sur prod, jamais de force push : OVH refuserait de déployer.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Rafraîchit le bandeau « SparkleQuiz en production » 4 fois par jour
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      ASTRO_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Publier dist/ sur prod
+        run: |
+          git fetch origin prod
+          git worktree add ../prod origin/prod
+          cd ../prod
+          git checkout -B prod
+          git rm -rq --ignore-unmatch .
+          cp -R "$GITHUB_WORKSPACE/dist/." .
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rien à publier"
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -qm "deploy: ${GITHUB_SHA::7} (${GITHUB_EVENT_NAME})"
+          git push origin prod

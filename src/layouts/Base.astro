@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ui, type Lang, type T } from '../i18n';
+import { person } from '../data/profile';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Chemins de la même page dans chaque langue, pour hreflang et le sélecteur. */
+  alternates: T;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { lang, title, description, alternates, jsonLd } = Astro.props;
+const site = Astro.site!;
+const canonical = new URL(alternates[lang], site).href;
+const ogImage = new URL('/og.png', site).href;
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  jobTitle: person.role[lang],
+  url: site.href,
+  email: `mailto:${person.email}`,
+  sameAs: [person.github, person.linkedin, 'https://sparklequiz.com'],
+  alumniOf: ['CPE Lyon', 'IUT Lyon 1'],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={new URL(alternates.fr, site).href} />
+    <link rel="alternate" hreflang="en" href={new URL(alternates.en, site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(alternates.fr, site).href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd ?? personLd)} />
+
+    <meta name="theme-color" content="#f2f2ee" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline>
+      // Transition liquide, arrivée : la page s'ouvre depuis le point cliqué sur la précédente
+      (function () {
+        try {
+          var o = JSON.parse(sessionStorage.getItem('vt-origin') || 'null');
+          sessionStorage.removeItem('vt-origin');
+          if (!o || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var h = document.documentElement;
+          h.classList.add('liquid-in');
+          h.style.setProperty('--lx', o.x + 'px');
+          h.style.setProperty('--ly', o.y + 'px');
+          setTimeout(function () { h.classList.remove('liquid-in'); }, 1200);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-dvh">
+    <div id="liquid" aria-hidden="true"></div>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 btn btn-solid">
+      {ui.skip[lang]}
+    </a>
+    <Header lang={lang} alternates={alternates} />
+    <slot name="backdrop" />
+    <main id="main" class="relative">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

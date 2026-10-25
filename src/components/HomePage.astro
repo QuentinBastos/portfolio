@@ -1,0 +1,383 @@
+---
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { ui, routes, type Lang, type T } from '../i18n';
+import { person, deliver, experience, education, skills, languages } from '../data/profile';
+import { sparklequiz as sq, effetB, otherProjects, githubExtras } from '../data/projects';
+import { getLiveStatus } from '../lib/live';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const fr = lang === 'fr';
+const title = fr ? 'Quentin Bastos, développeur PHP / Symfony' : 'Quentin Bastos, PHP / Symfony developer';
+const job = experience[0];
+
+const status = await getLiveStatus();
+const labels: Record<string, T> = {
+  app: { fr: 'API', en: 'API' },
+  db: { fr: 'Base', en: 'Database' },
+  redis: { fr: 'Redis', en: 'Redis' },
+  mercure: { fr: 'Temps réel', en: 'Real time' },
+};
+const services = Object.keys(labels).filter((k) => k in status.services);
+const checked = new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Zurich' }).format(
+  new Date(status.checkedAt),
+);
+const liveState = status.up === false ? 'down' : status.up ? 'up' : 'unknown';
+const live = liveState === 'down' ? (fr ? 'incident en cours' : 'incident ongoing') : fr ? 'en production' : 'in production';
+// Bulles autour de la goutte vivante, placées en pourcentage de la zone
+const orbit = [
+  { x: 4, y: 10 },
+  { x: 78, y: 22 },
+  { x: 84, y: 66 },
+  { x: 50, y: 92 },
+  { x: 0, y: 72 },
+];
+
+const facts = [
+  { k: fr ? 'École' : 'School', v: fr ? 'CPE Lyon, 4e année' : 'CPE Lyon, 4th year' },
+  { k: fr ? 'Expérience' : 'Experience', v: fr ? '2 ans de Symfony en prod' : '2 years of Symfony in prod' },
+  { k: fr ? 'Basé à' : 'Based in', v: person.location[lang] },
+];
+
+// Une goutte de verre par projet : la capture est chargée comme texture
+const drops = await Promise.all(
+  otherProjects.map(async (p) => ({
+    img: p.cover ? (await getImage({ src: (lang === 'en' && p.cover.en) || p.cover.fr, width: 720, format: 'webp' })).src : null,
+    href: routes.project(p.slug)[lang],
+    name: p.name,
+  })),
+);
+
+// « 210+ » → préfixe, nombre, suffixe pour le compteur animé
+const parseStat = (v: string) => {
+  const m = v.match(/^(\D*)([\d\s ]+)(.*)$/);
+  return m ? { pre: m[1], n: Number(m[2].replace(/\s| /g, '')), post: m[3] } : null;
+};
+---
+
+<Base lang={lang} title={title} description={person.pitch[lang]} alternates={routes.home}>
+  <canvas
+    slot="backdrop"
+    data-field
+    data-live={liveState}
+    data-drops={JSON.stringify(drops)}
+    aria-hidden="true"
+    class="pointer-events-none fixed inset-0 z-0 h-dvh w-full opacity-0 transition-opacity duration-1000 data-[on]:opacity-100 max-md:data-[on]:opacity-60"
+  ></canvas>
+
+  <!-- 0 · Accueil -->
+  <section data-scene class="wrap relative flex min-h-dvh flex-col justify-end pt-28 pb-10">
+    <div class="max-w-3xl">
+      <p class="eyebrow hero-in" style="--d: 0.1s">{person.role[lang]}</p>
+      <h1 class="mt-5 text-[clamp(4.2rem,15vw,12.5rem)] leading-[0.82] font-semibold tracking-[-0.055em] [font-stretch:78%]" aria-label={person.name}>
+        <span class="block" data-chars style="--d: 0.15s">Quentin</span>
+        <span class="block" data-chars style="--d: 0.35s">Bastos<span class="text-accent">.</span></span>
+      </h1>
+      <p class="hero-in mt-8 max-w-xl text-lg text-pretty text-muted sm:text-xl" style="--d: 0.75s">{person.pitch[lang]}</p>
+      <div class="hero-in mt-8 flex flex-wrap items-center gap-3" style="--d: 0.9s">
+        <a href="#contact" class="btn btn-solid" data-magnetic>{ui.contactMe[lang]}</a>
+        <a href={person.cvPdf[lang]} class="btn" download data-magnetic>{ui.downloadCv[lang]}</a>
+      </div>
+    </div>
+
+    <dl class="hero-in mt-16 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-5 sm:grid-cols-4" style="--d: 1.05s">
+      <div class="col-span-2 sm:col-span-1">
+        <dt class="eyebrow">{fr ? 'Disponible' : 'Available'}</dt>
+        <dd class="mt-1.5 flex items-center gap-2 text-sm font-medium">
+          <span class="relative flex size-2"><span class="absolute inset-0 animate-ping rounded-full bg-accent opacity-60"></span><span class="size-2 rounded-full bg-accent"></span></span>
+          {person.availabilityShort[lang]}
+        </dd>
+      </div>
+      {
+        facts.map((f) => (
+          <div>
+            <dt class="eyebrow">{f.k}</dt>
+            <dd class="mt-1.5 text-sm font-medium">{f.v}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <!-- 1 · SparkleQuiz : la goutte vivante -->
+  <section id="sparklequiz" data-scene class="wrap relative grid min-h-dvh items-center gap-10 py-28 md:grid-cols-12">
+    <div data-pane class="pane md:col-span-7 lg:col-span-6">
+      <div data-stagger>
+        <p class="eyebrow">01 · {fr ? 'Projet principal' : 'Main project'}</p>
+        <h2 data-split class="mt-4 text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.9]">{sq.name}</h2>
+        <p class="mt-6 text-xl text-pretty">{sq.tagline[lang]}</p>
+        <p class="mt-4 text-pretty text-muted">{sq.summary[lang]}</p>
+
+        <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
+          {
+            sq.stats!.map((s) => {
+              const parsed = parseStat(s.value);
+              return (
+                <div class="flex flex-col-reverse bg-paper p-4">
+                  <dt class="mt-1 text-xs leading-snug text-muted">{s.label[lang]}</dt>
+                  <dd class="text-3xl font-semibold tracking-tight tabular-nums [font-stretch:85%]">
+                    {parsed ? (
+                      <>
+                        {parsed.pre}
+                        <span data-count={parsed.n} data-locale={fr ? 'fr-FR' : 'en-GB'}>{parsed.n.toLocaleString(fr ? 'fr-FR' : 'en-GB')}</span>
+                        {parsed.post}
+                      </>
+                    ) : (
+                      s.value
+                    )}
+                  </dd>
+                </div>
+              );
+            })
+          }
+        </dl>
+
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+          <a href={routes.project(sq.slug)[lang]} class="btn btn-solid" data-magnetic>{ui.readCase[lang]} →</a>
+          {sq.links.map((l) => <a href={l.href} class="btn" rel="noopener" data-magnetic>{l.label[lang]}</a>)}
+        </div>
+      </div>
+    </div>
+
+    <div class="relative hidden aspect-square md:col-span-5 md:col-start-8 md:block" aria-label={fr ? 'État de SparkleQuiz en production' : 'SparkleQuiz production status'} data-live-zone>
+      <span class:list={['pulse-ring', liveState === 'down' && 'is-down']} style="--i: 0"></span>
+      <span class:list={['pulse-ring', liveState === 'down' && 'is-down']} style="--i: 1"></span>
+      <span class:list={['pulse-ring', liveState === 'down' && 'is-down']} style="--i: 2"></span>
+      <ul>
+        <li class="live-chip font-medium text-ink" style={`left:${orbit[0].x}%;top:${orbit[0].y}%;--f:0`}>
+          <span class:list={['live-dot', liveState === 'down' && 'is-down']}></span>sparklequiz.com · {live}
+        </li>
+        {
+          services.map((k, i) => (
+            <li class="live-chip" style={`left:${orbit[i + 1].x}%;top:${orbit[i + 1].y}%;--f:${i + 1}`}>
+              <span class:list={['live-dot', status.services[k] !== 'ok' && 'is-down']} />
+              {labels[k][lang]}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="absolute -bottom-10 left-0 w-full text-center font-mono text-[0.68rem] text-muted">
+        {fr ? 'Relevé le' : 'Checked on'} <time datetime={status.checkedAt}>{checked}</time>
+      </p>
+    </div>
+  </section>
+
+  <!-- 2 · Parcours -->
+  <section id="parcours" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
+    <div data-pane class="pane md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-7">
+      <div data-stagger>
+        <p class="eyebrow">02 · {ui.navWork[lang]}</p>
+        <h2 data-split class="mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[0.92]">{job.title[lang]}, {job.org}</h2>
+        <p class="mt-4 font-mono text-[0.72rem] text-muted">{job.place[lang]} · {job.period[lang]}</p>
+        <p class="mt-6 text-pretty text-muted">{job.detail[lang]}</p>
+        <ol class="mt-8 border-t border-line">
+          {
+            job.bullets.map((b, i) => (
+              <li class="grid grid-cols-[2.5rem_1fr] border-b border-line py-4 text-[0.98rem]">
+                <span class="font-mono text-[0.7rem] text-accent">0{i + 1}</span>
+                <span class="text-pretty">{b[lang]}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <ul class="mt-5 flex flex-wrap gap-1.5">{job.stack.map((t) => <li class="chip">{t}</li>)}</ul>
+        <a href={routes.project(effetB.slug)[lang]} class="btn mt-8" data-magnetic>{fr ? 'Le détail des trois ERP' : 'The three ERPs in detail'} →</a>
+        <div class="mt-14 grid gap-10 sm:grid-cols-2">
+          <div>
+            <h3 class="eyebrow">{fr ? 'Formation' : 'Education'}</h3>
+            <ul class="mt-4 space-y-4">
+              {
+                education.map((e) => (
+                  <li>
+                    <p class="font-medium leading-snug">{e.school}</p>
+                    <p class="text-sm text-muted">{e.title[lang]}</p>
+                    <p class="mt-0.5 font-mono text-[0.68rem] text-muted">{e.period[lang]}</p>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="eyebrow">{fr ? 'Outils' : 'Tooling'}</h3>
+            <dl class="mt-4 space-y-3">
+              {
+                skills.map((s) => (
+                  <div>
+                    <dt class="text-sm text-muted">{s.group[lang]}</dt>
+                    <dd class="text-sm font-medium">{s.items.join(', ')}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+            <p class="mt-4 text-sm text-muted">{languages.map((l) => `${l.name[lang]} ${l.level[lang]}`).join(' · ')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Projets : une goutte par projet -->
+  <section id="projets" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
+    <div data-pane class="pane md:col-span-7 lg:col-span-6">
+      <div data-stagger>
+        <p class="eyebrow">03 · {ui.navProjects[lang]}</p>
+        <h2 data-split class="mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[0.92]">{fr ? 'Autres projets' : 'Other projects'}</h2>
+        <ul class="mt-10 border-t border-line" data-project-list>
+          {
+            otherProjects.map((p, i) => (
+              <li class="group border-b border-line" data-project-row={i}>
+                <a href={routes.project(p.slug)[lang]} class="grid gap-1 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6" data-liquid>
+                  <span>
+                    <span class="row-title block text-2xl font-semibold tracking-tight transition-colors duration-300 [font-stretch:85%] sm:text-3xl">
+                      {p.name} <span class="row-arrow inline-block transition-transform duration-500">→</span>
+                    </span>
+                    <span class="mt-1 block text-pretty text-muted">{p.tagline[lang]}</span>
+                    <span class="mt-2 block font-mono text-[0.66rem] text-muted">{p.context[lang]}</span>
+                  </span>
+                  <span class="hidden font-mono text-[0.68rem] text-muted sm:block">{p.year}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-8">
+          <p class="eyebrow">{fr ? 'Aussi sur GitHub, travaux de cours' : 'Also on GitHub, coursework'}</p>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {
+              githubExtras.map((r) => (
+                <li>
+                  <a href={r.href} rel="noopener" class="chip transition-colors hover:border-ink hover:text-ink" title={r.note[lang]}>
+                    {r.name}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <a href={person.github} rel="me" class="chip border-ink text-ink">github.com/QuentinBastos →</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Stage -->
+  <section id="stage" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
+    <div data-pane class="pane md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-7">
+      <div data-stagger>
+        <p class="eyebrow">04 · {fr ? 'Stage' : 'Internship'}</p>
+        <h2 data-split class="mt-4 text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[0.92]">{deliver.title[lang]}</h2>
+        <p class="mt-6 text-pretty text-muted">{deliver.intro[lang]}</p>
+        <ul class="mt-10 grid gap-3 sm:grid-cols-2">
+          {
+            deliver.items.map((item, i) => (
+              <li class="rounded-2xl border border-line bg-paper p-5">
+                <p class="font-mono text-[0.7rem] text-accent">0{i + 1}</p>
+                <h3 class="mt-3 text-lg">{item.title[lang]}</h3>
+                <p class="mt-1 text-sm text-pretty text-muted">{item.text[lang]}</p>
+              </li>
+            ))
+          }
+        </ul>
+        <ol class="mt-10 border-t border-line">
+          {
+            deliver.timeline.map((step) => (
+              <li class="grid gap-1 border-b border-line py-3.5 sm:grid-cols-[11rem_1fr]">
+                <span class="font-mono text-[0.7rem] text-muted sm:pt-1">{step.when[lang]}</span>
+                <span>{step.what[lang]}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="mt-8 text-sm text-muted">
+          <span class="font-medium text-ink">{person.availability[lang]}.</span>
+          {person.availabilityNote[lang]}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Contact -->
+  <section id="contact" data-scene class="wrap relative flex min-h-dvh flex-col items-center justify-center py-28 text-center">
+    <div data-stagger class="flex flex-col items-center">
+      <p class="eyebrow">05 · {ui.navContact[lang]}</p>
+      <h2 data-split class="mt-5 max-w-3xl text-[clamp(2.4rem,6vw,4.8rem)] leading-[0.92]">{person.availabilityShort[lang]}</h2>
+      <a href={`mailto:${person.email}`} class="mt-8 text-[clamp(1.05rem,3vw,1.9rem)] font-medium tracking-tight underline decoration-line decoration-1 underline-offset-[0.25em] transition-colors hover:text-accent hover:decoration-accent">
+        {person.email}
+      </a>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        <button type="button" class="btn btn-solid" data-copy={person.email} data-done={ui.copied[lang]} data-magnetic>{ui.copyEmail[lang]}</button>
+        <a class="btn" href={person.linkedin} rel="me" data-magnetic>LinkedIn</a>
+        <a class="btn" href={person.github} rel="me" data-magnetic>GitHub</a>
+        <a class="btn" href={person.cvPdf[lang]} download data-magnetic>{ui.downloadCv[lang]}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .js .hero-in {
+    animation: rise 1.1s cubic-bezier(0.2, 0.75, 0.15, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  /* Ligne de projet active : survol de la ligne ou de sa goutte */
+  [data-project-row].is-on .row-title,
+  [data-project-row]:hover .row-title {
+    color: var(--color-accent);
+  }
+  [data-project-row].is-on .row-arrow,
+  [data-project-row]:hover .row-arrow {
+    transform: translateX(0.4rem);
+  }
+</style>
+
+<script>
+  import { liquidGo } from '../scripts/motion';
+
+  // Verre 3D : WebGL2 requis et animations autorisées. Sinon la page reste telle quelle.
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-field]');
+  const rows = [...document.querySelectorAll<HTMLElement>('[data-project-row]')];
+  const ok = () => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+    try {
+      return !!document.createElement('canvas').getContext('webgl2');
+    } catch {
+      return false;
+    }
+  };
+  if (canvas && ok()) {
+    const start = async () => {
+      const { mountGlass } = await import('../lib/glass');
+      const drops = JSON.parse(canvas.dataset.drops ?? '[]') as { img: string | null; href: string; name: string }[];
+      const glass = mountGlass(canvas, [...document.querySelectorAll<HTMLElement>('[data-scene]')], {
+        drops,
+        live: (canvas.dataset.live as 'up' | 'down' | 'unknown') ?? 'unknown',
+        onDropHover: (i) => rows.forEach((r, k) => r.classList.toggle('is-on', k === i)),
+        onDropOpen: (i, x, y) => liquidGo(drops[i].href, x, y),
+      });
+      rows.forEach((row, i) => {
+        row.addEventListener('pointerenter', () => glass.highlight(i));
+        row.addEventListener('pointerleave', () => glass.highlight(-1));
+      });
+      requestAnimationFrame(() => canvas.toggleAttribute('data-on', true));
+    };
+    'requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 500 }) : setTimeout(start, 150);
+  }
+
+  document.addEventListener('click', async (e) => {
+    const btn = e.target instanceof Element ? e.target.closest<HTMLButtonElement>('[data-copy]') : null;
+    if (!btn) return;
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy!);
+      const label = btn.textContent;
+      btn.textContent = btn.dataset.done!;
+      setTimeout(() => (btn.textContent = label), 1600);
+    } catch {
+      location.href = `mailto:${btn.dataset.copy}`;
+    }
+  });
+</script>
