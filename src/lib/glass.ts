@@ -389,7 +389,7 @@ export function mountGlass(canvas: HTMLCanvasElement, backdrop: Backdrop, sectio
     const avg = spent / frames;
     frames = 0;
     spent = 0;
-    if (avg < 24 || quality <= 0.5) return;
+    if (avg < 20 || quality <= 0.5) return;
     quality = Math.max(0.5, quality * 0.8);
     resize();
     warmup = 10;
@@ -402,7 +402,8 @@ export function mountGlass(canvas: HTMLCanvasElement, backdrop: Backdrop, sectio
     const dt = Math.max(0, Math.min(timer.getDelta(), 0.05));
     const time = timer.getElapsed();
 
-    morph += (sceneProgress(sections, LAYOUT.length - 1) - morph) * (1 - Math.exp(-dt * 2.6));
+    // Sur téléphone on défile plus vite et plus court : la forme suit plus vite
+    morph += (sceneProgress(sections, LAYOUT.length - 1) - morph) * (1 - Math.exp(-dt * (mobile ? 4.5 : 2.6)));
     intro = Math.min(1, intro + dt * 0.7);
     const grow = 1 - Math.pow(1 - intro, 4);
 
