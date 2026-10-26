@@ -131,17 +131,29 @@ if (!reduce) {
 
   // Plaques de verre : la suivante arrive de la profondeur, la précédente passe derrière le spectateur
   const panes = [...document.querySelectorAll<HTMLElement>('[data-pane]')];
-  const tilt = fine ? 1 : 0.5;
+  // Au doigt, une simple montée : la perspective sur des plaques hautes de plusieurs
+  // écrans gonfle les calques et saccade sur téléphone
+  const last = new Map<HTMLElement, string>();
   const updatePanes = () => {
     const h = innerHeight;
-    for (const p of panes) {
-      const r = p.getBoundingClientRect();
+    // Toutes les lectures d'abord, puis les écritures : un seul calcul de mise en page par image
+    const rects = panes.map((p) => p.getBoundingClientRect());
+    for (const [i, p] of panes.entries()) {
+      const r = rects[i];
       if (r.bottom < -h || r.top > 2 * h) continue;
       const ein = smooth(clamp((r.top - h * 0.16) / (h * 0.84)));
       const eout = Math.pow(clamp((h * 0.62 - r.bottom) / (h * 0.62)), 1.6);
       const z = -ein * 320 + eout * 160;
-      p.style.transform = `perspective(1400px) translate3d(0, ${ein * 60}px, ${z}px) rotateX(${ein * 18 * tilt}deg)`;
-      p.style.opacity = String(clamp(1 - ein * 0.6 - eout * 0.95));
+      const transform = fine
+        ? `perspective(1400px) translate3d(0, ${(ein * 60).toFixed(1)}px, ${z.toFixed(1)}px) rotateX(${(ein * 18).toFixed(2)}deg)`
+        : `translate3d(0, ${(ein * 48).toFixed(1)}px, 0) scale(${(1 - ein * 0.06).toFixed(3)})`;
+      const opacity = clamp(1 - ein * 0.6 - eout * 0.95).toFixed(3);
+      // Rien à écrire quand la plaque est immobile : pas de recalcul de style inutile
+      const key = transform + opacity;
+      if (last.get(p) === key) continue;
+      last.set(p, key);
+      p.style.transform = transform;
+      p.style.opacity = opacity;
     }
   };
   // Mis à jour à chaque image : couvre aussi les sauts d'ancre et la restauration du défilement

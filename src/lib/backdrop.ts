@@ -41,16 +41,23 @@ export function sceneProgress(sections: HTMLElement[], max: number) {
 export type Backdrop = ReturnType<typeof mountBackdrop>;
 
 export function mountBackdrop(el: HTMLElement) {
+  // Les halos sont des dégradés très doux : dessinés dans une petite toile (1/8 de
+  // l'écran) puis agrandis, ils rendent pareil pour une fraction de la mémoire
+  // graphique. En CSS, quatre calques de plusieurs milliers de pixels saccadaient sur téléphone.
+  const SCALE = 8;
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%';
+  el.append(canvas);
+  const ctx = canvas.getContext('2d')!;
   // Profil gaussien exp(-k²) approché par des paliers, jusqu'à 2,5 rayons
   const steps = [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5];
-  const halos = HALOS.map((h) => {
-    const div = document.createElement('div');
+  const tones = HALOS.map((h) => {
     const [r, g, b] = rgb(h.color);
-    const stops = steps.map((k) => `rgb(${r} ${g} ${b} / ${(h.alpha * Math.exp(-k * k)).toFixed(4)}) ${(k / 2.5) * 50}%`);
-    div.style.cssText = `position:absolute;left:0;top:0;border-radius:50%;will-change:transform;background:radial-gradient(closest-side, ${stops.join(',')})`;
-    el.append(div);
-    return { h, div, size: 0 };
+    const stops = steps.map((k) => [k / 5, `rgb(${r} ${g} ${b} / ${(h.alpha * Math.exp(-k * k)).toFixed(4)})`] as const);
+    // Hors de l'ancien disque : rien, comme en CSS
+    return [...stops, [0.5001, `rgb(${r} ${g} ${b} / 0)`] as const];
   });
+
   const grid = document.createElement('div');
   const [ir, ig, ib] = rgb(INK);
   const line = `rgb(${ir} ${ig} ${ib} / ${GRID.alpha})`;
@@ -58,10 +65,8 @@ export function mountBackdrop(el: HTMLElement) {
   el.append(grid);
 
   const resize = () => {
-    halos.forEach((o) => {
-      o.size = Math.round(o.h.r * innerHeight * 5);
-      o.div.style.width = o.div.style.height = `${o.size}px`;
-    });
+    canvas.width = Math.ceil(innerWidth / SCALE);
+    canvas.height = Math.ceil(innerHeight / SCALE);
   };
   resize();
   addEventListener('resize', resize);
@@ -75,12 +80,18 @@ export function mountBackdrop(el: HTMLElement) {
       const t = time * 0.05 + morph * 0.6;
       const w = innerWidth;
       const h = innerHeight;
-      halos.forEach((o, i) => {
-        const x = o.h.x(t) * w;
-        const y = (1 - o.h.y(t)) * h;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      HALOS.forEach((o, i) => {
+        const x = o.x(t) * w;
+        const y = (1 - o.y(t)) * h;
         centers[i * 2] = x;
         centers[i * 2 + 1] = y;
-        o.div.style.transform = `translate3d(${(x - o.size / 2).toFixed(1)}px, ${(y - o.size / 2).toFixed(1)}px, 0)`;
+        // Même géométrie que l'ancien radial-gradient : rayon 2,5 r, paliers à k/5 du rayon
+        const radius = (o.r * h * 2.5) / SCALE;
+        const g = ctx.createRadialGradient(x / SCALE, y / SCALE, 0, x / SCALE, y / SCALE, radius);
+        tones[i].forEach(([at, c]) => g.addColorStop(at, c));
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
       });
     },
     dispose() {

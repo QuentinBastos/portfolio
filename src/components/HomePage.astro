@@ -404,11 +404,18 @@ const parseStat = (v: string) => {
     'requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 500 }) : setTimeout(start, 150);
   } else {
     // Sans 3D : le fond seul, dont les halos glissent d'une section à l'autre
-    requestAnimationFrame(() =>
-      backdropEl.querySelectorAll<HTMLElement>('div').forEach((d) => (d.style.transition = 'transform 1.6s cubic-bezier(0.2, 0.75, 0.15, 1)')),
-    );
-    let queued = false;
-    addEventListener('scroll', () => queued || ((queued = true), requestAnimationFrame(() => ((queued = false), settle()))), { passive: true });
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let shown = Math.round(sceneProgress(scenes, scenes.length - 1));
+    let running = false;
+    const glide = () => {
+      const target = Math.round(sceneProgress(scenes, scenes.length - 1));
+      shown = still ? target : shown + (target - shown) * 0.06;
+      if (Math.abs(target - shown) < 0.002) shown = target;
+      backdrop.update(0, shown);
+      running = shown !== target;
+      if (running) requestAnimationFrame(glide);
+    };
+    addEventListener('scroll', () => running || ((running = true), requestAnimationFrame(glide)), { passive: true });
   }
 
   document.addEventListener('click', async (e) => {
