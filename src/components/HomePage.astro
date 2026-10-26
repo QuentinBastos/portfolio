@@ -59,21 +59,21 @@ const parseStat = (v: string) => {
 ---
 
 <Base lang={lang} title={title} description={person.pitch[lang]} alternates={routes.home}>
-  <div slot="backdrop" data-backdrop aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden max-md:opacity-60"></div>
+  <div slot="backdrop" data-backdrop aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden"></div>
   <canvas
     slot="backdrop"
     data-field
     data-live={liveState}
     data-drops={JSON.stringify(drops)}
     aria-hidden="true"
-    class="pointer-events-none fixed inset-0 z-0 h-dvh w-full opacity-0 transition-opacity duration-1000 data-[on]:opacity-100 max-md:data-[on]:opacity-60"
+    class="pointer-events-none fixed inset-0 z-0 h-dvh w-full opacity-0 transition-opacity duration-1000 data-[on]:opacity-100"
   ></canvas>
 
   <!-- 0 · Accueil -->
-  <section data-scene class="wrap relative flex min-h-dvh flex-col justify-end pt-28 pb-10">
+  <section data-scene class="wrap relative flex min-h-dvh flex-col justify-end pt-28 pb-10 max-md:pt-[40svh]">
     <div class="max-w-3xl">
       <p class="eyebrow hero-in" style="--d: 0.1s">{person.role[lang]}</p>
-      <h1 class="mt-5 text-[clamp(4.2rem,15vw,12.5rem)] leading-[0.82] font-semibold tracking-[-0.055em] [font-stretch:78%]" aria-label={person.name}>
+      <h1 class="mt-5 text-[clamp(4.2rem,15vw,12.5rem)] max-md:text-[22vw] leading-[0.82] font-semibold tracking-[-0.055em] [font-stretch:78%]" aria-label={person.name}>
         <span class="block" data-chars style="--d: 0.15s">Quentin</span>
         <span class="block" data-chars style="--d: 0.35s">Bastos<span class="text-accent">.</span></span>
       </h1>
@@ -84,7 +84,7 @@ const parseStat = (v: string) => {
       </div>
     </div>
 
-    <dl class="hero-in mt-16 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-5 sm:grid-cols-4" style="--d: 1.05s">
+    <dl class="hero-in mt-12 grid sm:mt-16 grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-5 sm:grid-cols-4" style="--d: 1.05s">
       <div class="col-span-2 sm:col-span-1">
         <dt class="eyebrow">{ui.available[lang]}</dt>
         <dd class="mt-1.5 flex items-center gap-2 text-sm font-medium">
@@ -104,7 +104,22 @@ const parseStat = (v: string) => {
   </section>
 
   <!-- 1 · SparkleQuiz : la goutte vivante -->
-  <section id="sparklequiz" data-scene class="wrap relative grid min-h-dvh items-center gap-10 py-28 md:grid-cols-12">
+  <section id="sparklequiz" data-scene class="wrap relative grid min-h-dvh items-center gap-10 py-28 max-md:gap-0 max-md:pt-16 md:grid-cols-12">
+    <div class="stage flex flex-col items-center justify-end pb-6 md:hidden">
+      <ul class="flex flex-wrap justify-center gap-2" aria-label={ui.liveStatus[lang]}>
+        <li class="live-chip live-chip-flat font-medium text-ink">
+          <span class:list={['live-dot', liveState === 'down' && 'is-down']}></span>sparklequiz.com · {live}
+        </li>
+        {
+          services.map((k) => (
+            <li class="live-chip live-chip-flat">
+              <span class:list={['live-dot', status.services[k] !== 'ok' && 'is-down']} />
+              {labels[k][lang]}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
     <div data-pane class="pane md:col-span-7 lg:col-span-6">
       <div data-stagger>
         <p class="eyebrow">01 · {ui.mainProject[lang]}</p>
@@ -167,7 +182,8 @@ const parseStat = (v: string) => {
   </section>
 
   <!-- 2 · Parcours -->
-  <section id="parcours" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
+  <section id="parcours" data-scene class="wrap relative grid min-h-dvh items-center py-28 max-md:pt-16 md:grid-cols-12">
+    <div class="stage md:hidden" aria-hidden="true"></div>
     <div data-pane class="pane md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-7">
       <div data-stagger>
         <p class="eyebrow">02 · {ui.navWork[lang]}</p>
@@ -221,7 +237,8 @@ const parseStat = (v: string) => {
   </section>
 
   <!-- 3 · Projets : une goutte par projet -->
-  <section id="projets" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
+  <section id="projets" data-scene class="wrap relative grid min-h-dvh items-center py-28 max-md:pt-16 md:grid-cols-12">
+    <div class="stage md:hidden" aria-hidden="true"></div>
     <div data-pane class="pane md:col-span-7 lg:col-span-6">
       <div data-stagger>
         <p class="eyebrow">03 · {ui.navProjects[lang]}</p>
@@ -266,7 +283,8 @@ const parseStat = (v: string) => {
   </section>
 
   <!-- 4 · Stage -->
-  <section id="stage" data-scene class="wrap relative grid min-h-dvh items-center py-28 md:grid-cols-12">
+  <section id="stage" data-scene class="wrap relative grid min-h-dvh items-center py-28 max-md:pt-16 md:grid-cols-12">
+    <div class="stage md:hidden" aria-hidden="true"></div>
     <div data-pane class="pane md:col-span-7 md:col-start-6 lg:col-span-6 lg:col-start-7">
       <div data-stagger>
         <p class="eyebrow">04 · {ui.navInternship[lang]}</p>
@@ -309,7 +327,7 @@ const parseStat = (v: string) => {
       <a href={`mailto:${person.email}`} class="mt-8 text-[clamp(1.05rem,3vw,1.9rem)] font-medium tracking-tight underline decoration-line decoration-1 underline-offset-[0.25em] transition-colors hover:text-accent hover:decoration-accent">
         {person.email}
       </a>
-      <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <div class="mt-10 grid w-full max-w-sm grid-cols-2 gap-3 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center [&>*]:justify-center [&>*]:text-center max-sm:[&>*]:px-3">
         <button type="button" class="btn btn-solid" data-copy={person.email} data-done={ui.copied[lang]} data-magnetic>{ui.copyEmail[lang]}</button>
         <a class="btn" href={person.linkedin} rel="me" data-magnetic>LinkedIn</a>
         <a class="btn" href={person.github} rel="me" data-magnetic>GitHub</a>

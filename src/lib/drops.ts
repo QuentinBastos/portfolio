@@ -34,6 +34,18 @@ const SLOTS = [
   { x: 0.05, y: 1.85, r: 0.34 },
 ];
 
+// Mobile : grappe centrée, sur toute la largeur de l'écran
+const SLOTS_MOBILE = [
+  { x: -0.62, y: 0.25, r: 0.36 },
+  { x: 0.05, y: 0.42, r: 0.3 },
+  { x: 0.68, y: 0.22, r: 0.34 },
+  { x: -0.25, y: -0.35, r: 0.32 },
+  { x: 0.42, y: -0.42, r: 0.3 },
+  { x: -0.85, y: -0.4, r: 0.22 },
+  { x: 0.95, y: -0.38, r: 0.22 },
+  { x: 0.1, y: -1.0, r: 0.2 },
+];
+
 const vertex = /* glsl */ `
   uniform float uTime;
   uniform float uSeed;
@@ -119,7 +131,8 @@ export function createDrops(inputs: DropInput[], mobile: boolean, lite = false) 
   const raycaster = new Raycaster();
   const ndc = new Vector2();
 
-  const drops = inputs.slice(0, SLOTS.length).map((input, i) => {
+  const slots = mobile ? SLOTS_MOBILE : SLOTS;
+  const drops = inputs.slice(0, slots.length).map((input, i) => {
     const material = new ShaderMaterial({
       vertexShader: vertex,
       fragmentShader: fragment,
@@ -147,7 +160,7 @@ export function createDrops(inputs: DropInput[], mobile: boolean, lite = false) 
     mesh.visible = false;
     mesh.userData.index = i;
     group.add(mesh);
-    return { mesh, material, slot: SLOTS[i], focus: 0, push: { x: 0, y: 0 } };
+    return { mesh, material, slot: slots[i], focus: 0, push: { x: 0, y: 0 } };
   });
 
   let hovered = -1;
@@ -205,13 +218,13 @@ export function createDrops(inputs: DropInput[], mobile: boolean, lite = false) 
           const dx = d.slot.x - a.x;
           const dy = d.slot.y - a.y;
           const len = Math.hypot(dx, dy) || 1;
-          px = (dx / len) * 0.22;
-          py = (dy / len) * 0.22;
+          px = (dx / len) * (mobile ? 0.12 : 0.22);
+          py = (dy / len) * (mobile ? 0.12 : 0.22);
         }
         d.push.x += (px - d.push.x) * (1 - Math.exp(-dt * 6));
         d.push.y += (py - d.push.y) * (1 - Math.exp(-dt * 6));
 
-        const s = mobile ? 0.5 : fit;
+        const s = fit;
         const tx = d.slot.x * s + d.push.x + (mouse.on ? mouse.x * 0.12 : 0) + Math.sin(time * 0.6 + i) * 0.05;
         const ty = d.slot.y * s * 0.85 - 0.1 + d.push.y + (mouse.on ? mouse.y * 0.08 : 0) + Math.cos(time * 0.5 + i * 1.3) * 0.06;
         d.mesh.position.set(origin.x + tx * e, origin.y + ty * e, 0.2 * d.focus);
