@@ -17,20 +17,20 @@ const nav = [
 ---
 
 <header class="fixed inset-x-0 top-0 z-40 border-b border-transparent bg-bg/70 backdrop-blur-md transition-colors data-[scrolled]:border-line" data-header>
-  <div class="wrap flex h-16 items-center justify-between gap-6">
-    <a href={home} class="font-mono text-[0.78rem] font-medium tracking-tight">
+  <div class="wrap flex h-16 items-center justify-between gap-3 sm:gap-6">
+    <a href={home} class="shrink-0 font-mono text-[0.78rem] font-medium tracking-tight">
       quentin<span class="text-accent">/</span>bastos
     </a>
-    <nav class="flex items-center gap-1 text-sm" aria-label="Navigation">
+    <nav class="flex items-center gap-0.5 text-[0.8rem] sm:gap-1 sm:text-sm" aria-label="Navigation">
       <ul class="hidden items-center gap-1 lg:flex">
         {nav.map((n) => <li><a href={`${home}${n.href}`} class="rounded-full px-3 py-1.5 text-muted transition-colors hover:text-ink">{n.label}</a></li>)}
       </ul>
-      <a href={routes.cv[lang]} class="rounded-full px-3 py-1.5 text-muted transition-colors hover:text-ink">{ui.navCv[lang]}</a>
+      <a href={routes.cv[lang]} class="rounded-full px-1.5 py-1.5 sm:px-3 text-muted transition-colors hover:text-ink">{ui.navCv[lang]}</a>
 
       <!-- Menu langue : <details> fonctionne sans JS, le script ferme au clic extérieur -->
       <details class="lang-menu relative" data-lang-menu>
         <summary
-          class="flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-1.5 font-mono text-xs uppercase text-muted transition-colors hover:text-ink [&::-webkit-details-marker]:hidden"
+          class="flex cursor-pointer list-none items-center gap-1 rounded-full px-1.5 py-1.5 sm:px-3 font-mono text-xs uppercase text-muted transition-colors hover:text-ink [&::-webkit-details-marker]:hidden"
           aria-label={ui.langMenu[lang]}
         >
           {lang}
@@ -59,7 +59,7 @@ const nav = [
         </ul>
       </details>
 
-      <a href={`${home}#contact`} class="btn btn-solid ml-2 px-4 py-1.5 text-sm">{ui.navContact[lang]}</a>
+      <a href={`${home}#contact`} class="btn btn-solid ml-1 px-3.5 py-1.5 text-[0.8rem] sm:ml-2 sm:px-4 sm:text-sm">{ui.navContact[lang]}</a>
     </nav>
   </div>
 </header>

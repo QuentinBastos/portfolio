@@ -34,6 +34,16 @@ const LAYOUT: { x: number; s: number }[] = [
   { x: 0, s: 1.15 },
 ];
 
+// Mobile : la goutte se pose dans le haut de l'écran, au-dessus du contenu de chaque section
+const LAYOUT_MOBILE: { x: number; y: number; s: number }[] = [
+  { x: 0.3, y: 1.45, s: 0.68 },
+  { x: 0, y: 1.6, s: 0.58 },
+  { x: 0, y: 1.45, s: 0.6 },
+  { x: 0, y: 1.45, s: 0.0001 },
+  { x: 0, y: 1.4, s: 0.5 },
+  { x: 0, y: 1.35, s: 0.6 },
+];
+
 const noise = /* glsl */ `
   vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -328,7 +338,8 @@ export function mountGlass(canvas: HTMLCanvasElement, backdrop: Backdrop, sectio
     drops.clearPointer();
   };
   const onClick = (e: MouseEvent) => {
-    if (e.target instanceof Element && e.target.closest('a, button, input')) return;
+    // Un toucher sur le texte d'une plaque ne doit pas ouvrir la goutte cachée dessous
+    if (e.target instanceof Element && e.target.closest('a, button, input, [data-pane]')) return;
     const i = drops.hit(e.clientX, e.clientY, camera);
     if (i < 0) return;
     const at = drops.screenOf(i, camera);
@@ -403,12 +414,15 @@ export function mountGlass(canvas: HTMLCanvasElement, backdrop: Backdrop, sectio
     const k = f * f * (3 - 2 * f);
     const from = LAYOUT[a];
     const to = LAYOUT[Math.min(a + 1, LAYOUT.length - 1)];
-    blob.position.x = mobile ? 1.1 : from.x + (to.x - from.x) * k;
-    blob.position.y = mobile ? 1.9 : Math.sin(time * 0.6) * 0.08;
+    const mFrom = LAYOUT_MOBILE[a];
+    const mTo = LAYOUT_MOBILE[Math.min(a + 1, LAYOUT_MOBILE.length - 1)];
+    blob.position.x = mobile ? mFrom.x + (mTo.x - mFrom.x) * k : from.x + (to.x - from.x) * k;
+    blob.position.y = (mobile ? mFrom.y + (mTo.y - mFrom.y) * k : 0) + Math.sin(time * 0.6) * 0.08;
     // Section SparkleQuiz : la goutte bat et se teinte selon l'état de la prod
     const w1 = Math.max(0, 1 - Math.abs(morph - 1) * 1.4);
     const pulse = options.live === 'unknown' ? 0 : beat(time) * 0.05 * w1;
-    blob.scale.setScalar((from.s + (to.s - from.s) * k) * (mobile ? 0.62 : 1) * grow * (1 + pulse));
+    const size = mobile ? mFrom.s + (mTo.s - mFrom.s) * k : from.s + (to.s - from.s) * k;
+    blob.scale.setScalar(size * grow * (1 + pulse));
     blob.visible = blob.scale.x > 0.002;
     uniforms.uTintAmount.value = w1 * 0.6;
     // Rayon apparent en px CSS : règle l'ampleur de la réfraction
@@ -417,9 +431,11 @@ export function mountGlass(canvas: HTMLCanvasElement, backdrop: Backdrop, sectio
     // Section Projets : la goutte se divise en une goutte par projet
     const w3raw = Math.max(0, 1 - Math.abs(morph - 3) * 1.5);
     const w3 = w3raw * w3raw * (3 - 2 * w3raw);
-    // Le groupe de gouttes tient dans la moitié droite, quel que soit le format d'écran
-    const fit = Math.min(1, Math.max(0.55, (halfH * camera.aspect - LAYOUT[3].x - 0.3) / 2.4));
-    drops.update(dt, time, w3, { x: mobile ? 1.1 : LAYOUT[3].x, y: mobile ? 1.7 : 0 }, pointer, fit);
+    // Le groupe de gouttes tient dans la moitié droite (mobile : toute la largeur), quel que soit le format d'écran
+    const fit = mobile
+      ? Math.min(1, (halfH * camera.aspect - 0.08) / 1.2)
+      : Math.min(1, Math.max(0.55, (halfH * camera.aspect - LAYOUT[3].x - 0.3) / 2.4));
+    drops.update(dt, time, w3, mobile ? { x: 0, y: LAYOUT_MOBILE[3].y } : { x: LAYOUT[3].x, y: 0 }, pointer, fit);
     blob.rotation.y = time * 0.12 + morph * 1.1 + pointer.x * 0.25;
     blob.rotation.x = Math.sin(time * 0.17) * 0.25 - pointer.y * 0.2;
     blob.rotation.z = morph * 0.35;
