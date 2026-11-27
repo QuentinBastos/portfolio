@@ -22,9 +22,9 @@ export const person = {
     de: 'Seit 2024 entwickle ich produktive Web-ERP-Systeme, als dualer Ingenieurstudent an der CPE Lyon. Daneben habe ich allein SparkleQuiz konzipiert und betreibe die Quiz-App, die im Web, bei Google Play und im App Store verfügbar ist.',
   } as T,
   availability: {
-    fr: 'Stage de 10 à 14 semaines, entre le 14 juin et le 19 septembre 2027',
-    en: '10 to 14 week internship, between 14 June and 19 September 2027',
-    de: 'Praktikum von 10 bis 14 Wochen, zwischen dem 14. Juni und dem 19. September 2027',
+    fr: 'Stage de 10 à 14 semaines, entre le 14 juin et le 17 septembre 2027',
+    en: '10 to 14 week internship, between 14 June and 17 September 2027',
+    de: 'Praktikum von 10 bis 14 Wochen, zwischen dem 14. Juni und dem 17. September 2027',
   } as T,
   availabilityShort: { fr: 'Stage été 2027, 10 à 14 semaines', en: 'Summer 2027 internship, 10 to 14 weeks', de: 'Praktikum Sommer 2027, 10 bis 14 Wochen' } as T,
   availabilityNote: {
